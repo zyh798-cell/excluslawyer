@@ -1,0 +1,21 @@
+{
+ "meta": {
+  "note": "用户反馈待标注区：needs_review=true 的用例不计入指标，供人工补标注后转正。"
+ },
+ "cases": [
+  {
+   "id": "FB-001",
+   "category": "用户反馈-wrong",
+   "question": "测试问题",
+   "expect": {
+    "behavior": "answer",
+    "statute_ids": [],
+    "must_contain": [],
+    "must_not_contain": []
+   },
+   "needs_review": true,
+   "note": "模拟反馈",
+   "answer_seen": "测试回答"
+  }
+ ]
+}

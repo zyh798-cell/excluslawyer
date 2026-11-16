@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "note": "跨法域规则概要种子数据（开发用）。各法域条文以官方法源为准：CN flk.npc.gov.cn / JP e-Gov laws.e-gov.go.jp / KR law.go.kr / SG sso.agc.gov.sg。外法域内容为概要占位，正式版接入官源抓取后替换。rows[].cause 标注条目所属案由（通用/合同/劳动/侵权），供按案由过滤，避免劳动时效等条目串入其他案件。",
+    "version": "2026-11"
+  },
+  "topics": [
+    {
+      "topic": "诉讼时效",
+      "keywords": ["诉讼时效", "时效", "过期", "多久内起诉", "胜诉权"],
+      "rows": [
+        {
+          "jurisdiction": "CN",
+          "jurisdiction_name": "中国",
+          "cause": "劳动",
+          "rule_summary": "劳动争议仲裁时效为1年，自当事人知道或者应当知道权利被侵害之日起算。",
+          "statute_ref": "劳动争议调解仲裁法第二十七条",
+          "language": "zh",
+          "original_excerpt": "劳动争议申请仲裁的时效期间为一年。仲裁时效期间从当事人知道或者应当知道其权利被侵害之日起计算。",
+          "gloss": ""
+        },
+        {
+          "jurisdiction": "CN",
+          "jurisdiction_name": "中国",
+          "cause": "通用",
+          "rule_summary": "普通诉讼时效3年，自权利人知道或应当知道权利受损及义务人之日起算；最长保护期20年。",
+          "statute_ref": "民法典第一百八十八条",
+          "language": "zh",
+          "original_excerpt": "向人民法院请求保护民事权利的诉讼时效期间为三年。",
+          "gloss": ""
+        },
+        {
+          "jurisdiction": "JP",
+          "jurisdiction_name": "日本",
+          "cause": "通用",
+          "rule_summary": "债权的消灭时效为10年（2020年民法改正后）；债权以外的财产权为20年。基于侵权行为的损害赔偿请求权3年间不行使而消灭（知悉时起）。",
+          "statute_ref": "民法第166条（概要，需以 e-Gov 官源核对）",
+          "language": "ja",
+          "original_excerpt": "債権は、次に掲げる場合には、時効によって消滅する。（一）債権者が権利を行使することができることを知った時から十年間行使しないとき。",
+          "gloss": "债权自知道可以行使权利时起10年内不行使的，因时效消灭"
+        },
+        {
+          "jurisdiction": "KR",
+          "jurisdiction_name": "韩国",
+          "cause": "通用",
+          "rule_summary": "债权原则上10年消灭时效（2023年民事诉讼法/民法修正后一般为10年）；侵权损害赔偿请求权自知悉损害及加害人起3年。",
+          "statute_ref": "韩国民法第162条、第766条（概要，需以 law.go.kr 官源核对）",
+          "language": "ko",
+          "original_excerpt": "채권은 10년간 행사하지 아니하면 시효로 인하여 소멸한다.",
+          "gloss": "债权10年内不行使的，因时效消灭"
+        },
+        {
+          "jurisdiction": "SG",
+          "jurisdiction_name": "新加坡",
+          "cause": "通用",
+          "rule_summary": "合同与侵权之诉的时效一般为6年（自诉因产生之日起）；盖印合同12年。人身伤害之诉3年。",
+          "statute_ref": "Limitation Act 1959（概要，需以 sso.agc.gov.sg 官源核对）",
+          "language": "en",
+          "original_excerpt": "No action founded on a contract or on tort shall be brought after the expiration of 6 years from the date on which the cause of action accrued.",
+          "gloss": "基于合同或侵权的诉讼，自诉因产生之日起满6年不得提起"
+        }
+      ],
+      "takeaway": "跨境交易注意：中国3年时效远短于日本/韩国的10年、新加坡的6年；同一起纠纷在不同法域起诉，时效结论可能完全不同。"
+    },
+    {
+      "topic": "违约金过高调减",
+      "keywords": ["违约金", "过高", "调减", "罚金", "liquidated"],
+      "rows": [
+        {
+          "jurisdiction": "CN",
+          "jurisdiction_name": "中国",
+          "cause": "合同",
+          "rule_summary": "约定违约金过分高于造成损失的，法院或仲裁机构可依当事人请求适当减少；司法实践常参考损失上浮30%。",
+          "statute_ref": "民法典第五百八十五条",
+          "language": "zh",
+          "original_excerpt": "约定的违约金过分高于造成的损失的，人民法院或者仲裁机构可以根据当事人的请求予以适当减少。",
+          "gloss": ""
+        },
+        {
+          "jurisdiction": "JP",
+          "jurisdiction_name": "日本",
+          "cause": "合同",
+          "rule_summary": "约定损害赔偿额过高时，法院可依请求酌减（判例上以实际损失额为基准衡量均衡）。",
+          "statute_ref": "民法第420条第3项但书（概要，需官源核对）",
+          "language": "ja",
+          "original_excerpt": "賠償額の予定は、これを増加することができない。ただし、その額が著しく不相当であるときは、裁判所は、これを増減することができる。",
+          "gloss": "预定赔偿额原则上不得增加，但数额显著不当时法院可增减"
+        },
+        {
+          "jurisdiction": "KR",
+          "jurisdiction_name": "韩国",
+          "cause": "合同",
+          "rule_summary": "约定的违约金过分高于实际损失的，法院可依请求予以减额（韩国民法第398条第2款）。",
+          "statute_ref": "韩国民法第398条（概要，需官源核对）",
+          "language": "ko",
+          "original_excerpt": "손해배상액의 예정이 부당히 과다한 때에는 법원은 적당히 감액할 수 있다.",
+          "gloss": "预定损害赔偿额不当地过高时，法院可适当减额"
+        },
+        {
+          "jurisdiction": "SG",
+          "jurisdiction_name": "新加坡",
+          "cause": "合同",
+          "rule_summary": "普通法区分 liquidated damages（可执行）与 penalty（不可执行）：约定金额须为违约损失的真实预估（genuine pre-estimate），否则视为罚金不予执行。",
+          "statute_ref": "Dunlop Pneumatic Tyre v New Garage [1915] AC 79（普通法，概要）",
+          "language": "en",
+          "original_excerpt": "The essence of a penalty is a payment of money stipulated as in terrorem of the offending party; the essence of liquidated damages is a genuine covenanted pre-estimate of damage.",
+          "gloss": "罚金的本质是威慑性约定；违约金的本质是对损失的真实预估"
+        }
+      ],
+      "takeaway": "同样一条'违约金100万'条款：中日韩法院可调减、新加坡若被认定为 penalty 则整条不可执行——条款设计必须按管辖法域定制。"
+    },
+    {
+      "topic": "未签书面劳动合同的责任",
+      "keywords": ["未签", "书面劳动合同", "二倍工资", "劳动合同"],
+      "rows": [
+        {
+          "jurisdiction": "CN",
+          "jurisdiction_name": "中国",
+          "cause": "劳动",
+          "rule_summary": "用工之日起超过1个月不满1年未签书面合同的，每月支付二倍工资；满1年视为已订立无固定期限合同。",
+          "statute_ref": "劳动合同法第八十二条、第十四条",
+          "language": "zh",
+          "original_excerpt": "用人单位自用工之日起超过一个月不满一年未与劳动者订立书面劳动合同的，应当向劳动者每月支付二倍的工资。",
+          "gloss": ""
+        },
+        {
+          "jurisdiction": "JP",
+          "jurisdiction_name": "日本",
+          "cause": "劳动",
+          "rule_summary": "无'二倍工资'制度；但雇主有劳动条件通知书交付义务，违反可受行政处分。书面化要求以劳动基准法为准。",
+          "statute_ref": "労働基準法第15条（概要，需官源核对）",
+          "language": "ja",
+          "original_excerpt": "使用者は、労働契約の締結の際、労働者に対して賃金、労働時間その他の労働条件を明示しなければならない。",
+          "gloss": "雇主订立劳动合同时，必须向劳动者明示工资、工时等劳动条件"
+        },
+        {
+          "jurisdiction": "KR",
+          "jurisdiction_name": "韩国",
+          "cause": "劳动",
+          "rule_summary": "雇主须以书面交付劳动合同必备事项（工资、工时、休业等），违反书面交付义务有罚则；无二倍工资民事赔偿制度。",
+          "statute_ref": "근로기준법 제17条（概要，需官源核对）",
+          "language": "ko",
+          "original_excerpt": "사용자는 근로계약을 체결할 때에 임금, 소정근로시간, 휴일 등 대통령령으로 정하는 계약내용을 명시하여야 한다.",
+          "gloss": "雇主订立劳动合同时应明示工资、约定工时、休日等法定事项"
+        },
+        {
+          "jurisdiction": "SG",
+          "jurisdiction_name": "新加坡",
+          "cause": "劳动",
+          "rule_summary": "Employment Act 要求向雇员交付书面关键雇佣条款（KETs），未合规可被处罚；无'二倍工资'惩罚性民事制度。",
+          "statute_ref": "Employment Act 1968 s.95A（概要，需官源核对）",
+          "language": "en",
+          "original_excerpt": "An employer must issue a written record of the key employment terms to an employee.",
+          "gloss": "雇主必须向雇员交付书面关键雇佣条款记录"
+        }
+      ],
+      "takeaway": "'二倍工资'是中国特有的惩罚性制度，日韩新加坡均无同款——跨境用工合规不能把中国经验直接外推。"
+    },
+    {
+      "topic": "合同法定解除",
+      "keywords": ["解除合同", "法定解除", "终止合同", "解约"],
+      "rows": [
+        {
+          "jurisdiction": "CN",
+          "jurisdiction_name": "中国",
+          "cause": "合同",
+          "rule_summary": "不可抗力致合同目的不能实现、预期违约、迟延履行经催告仍不履行等五种情形可法定解除；不定期合同可随时解除但需合理通知。",
+          "statute_ref": "民法典第五百六十三条",
+          "language": "zh",
+          "original_excerpt": "有下列情形之一的，当事人可以解除合同：（一）因不可抗力致使不能实现合同目的……",
+          "gloss": ""
+        },
+        {
+          "jurisdiction": "JP",
+          "jurisdiction_name": "日本",
+          "cause": "合同",
+          "rule_summary": "对方不履行债务的，须定相当期限催告，逾期仍不履行可解除（民法541条）；定期行为或债务不能等无须催告（542条）。",
+          "statute_ref": "民法第541条・第542条（概要，需官源核对）",
+          "language": "ja",
+          "original_excerpt": "当事者の一方がその債務の履行をしない場合において、相手方が相当の期間を定めてその履行を催告し、その期間内に履行がないときは、相手方は、契約の解除をすることができる。",
+          "gloss": "一方不履行时，对方定相当期间催告，期间内仍不履行可解除合同"
+        },
+        {
+          "jurisdiction": "KR",
+          "jurisdiction_name": "韩国",
+          "cause": "合同",
+          "rule_summary": "定期债务不履行可催告解除（民法544条）；履行不能等情形可不经催告解除（545条）。",
+          "statute_ref": "韩国民法第544条・第545条（概要，需官源核对）",
+          "language": "ko",
+          "original_excerpt": "당사자 일방이 채무를 이행하지 아니한 때에는 상당한 기간을 정하여 이행을 최고하고 그 기간 내에 이행하지 아니하면 계약을 해지할 수 있다.",
+          "gloss": "一方不履行债务时，定相当期间催告，期间内不履行可解除合同"
+        },
+        {
+          "jurisdiction": "SG",
+          "jurisdiction_name": "新加坡",
+          "cause": "合同",
+          "rule_summary": "普通法：对方根本违约（repudiatory breach）或条件条款（condition）被违反时，无过错方可解除并索赔；中间条款（innominate term）视后果严重性判断。",
+          "statute_ref": "Hongkong Fir Shipping v Kawasaki Kisen [1962]（普通法，概要）",
+          "language": "en",
+          "original_excerpt": "Whether a breach gives rise to a right of termination depends on the nature and consequences of the breach.",
+          "gloss": "违约是否赋予解除权取决于违约的性质与后果"
+        }
+      ],
+      "takeaway": "大陆法系（中日韩）以催告+法定情形为骨架，新加坡走根本违约判断——合同里'可随时解除'条款的效力与操作路径跨法域差异很大。"
+    }
+  ]
+}

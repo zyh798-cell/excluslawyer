@@ -1,0 +1,25 @@
+# LexSentinel 后端核心依赖（轻量，无 torch；不装 ML 也能跑通演示闭环）
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+pydantic-settings>=2.2
+numpy>=1.26
+requests>=2.31
+python-multipart>=0.0.9
+
+# 向量库（Milvus Lite = 嵌入式本地文件；也可连 Standalone）
+pymilvus>=2.4.0
+
+# PDF 文本抽取（合同扫描用，纯 Python 轻量）
+pypdf>=4.0
+
+# LangGraph 状态机（咨询链路 + 模拟法庭庭审链路）
+langgraph>=0.2
+langgraph-checkpoint-sqlite>=2.0
+
+# PDF 导出（模拟法庭庭审记录，内置中文 CID 字体）
+reportlab>=4.0
+
+# 测试
+pytest>=8.0
+httpx>=0.27

@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   LexSentinel 设计令牌：双主题 CSS 变量（玻璃拟态 + 新拟态）
+   - 亮色 = :root；暗色 = html.dark
+   - 所有颜色走 RGB 三元组变量，支持 Tailwind 透明度修饰符
+   - 图谱/法域色同样走变量，主题切换全局同步，禁止组件内硬编码颜色
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* 底与面 */
+  --c-surface-base: 244 247 252;   /* 页面底 */
+  --c-surface-raised: 255 255 255; /* 卡片面 */
+  --c-surface-sunken: 234 239 248; /* 输入框/代码块 */
+  --c-surface-hover: 228 234 245;
+  --c-line: 203 213 227;
+
+  /* 文字 */
+  --c-fg: 23 32 51;
+  --c-fg-muted: 71 85 105;
+  --c-fg-subtle: 120 135 158;
+
+  /* 品牌与语义 */
+  --c-accent: 47 107 237;
+  --c-accent-soft: 37 91 204;
+  --c-accent-fg: 255 255 255;
+  --c-warn: 180 118 17;
+  --c-warn-soft: 254 243 199;
+  --c-danger: 202 48 48;
+  --c-danger-soft: 254 226 226;
+  --c-ok: 22 137 84;
+  --c-ok-soft: 209 250 229;
+  --c-info-soft: 219 234 254;
+
+  /* 玻璃拟态 */
+  --glass-bg: 255 255 255 / 0.62;
+  --glass-bg-strong: 255 255 255 / 0.82;
+  --glass-border: 255 255 255 / 0.65;
+  --glass-blur: 14px;
+  --glass-shadow: 0 8px 28px rgb(15 23 42 / 0.10);
+
+  /* 新拟态 */
+  --neu-light: 255 255 255 / 0.95;
+  --neu-dark: 148 163 184 / 0.45;
+
+  /* 图谱（G6 画布跟随主题） */
+  --c-graph-line: 100 116 139;
+  --c-graph-text: 30 41 59;
+  --c-graph-node: 255 255 255;
+  --c-graph-node-stroke: 148 163 184;
+
+  /* 法域色系（中/日/韩/新，图谱节点与徽章共用） */
+  --c-jur-cn: 220 38 38;   /* 中国 · 红 */
+  --c-jur-jp: 219 39 119;  /* 日本 · 洋红 */
+  --c-jur-kr: 13 148 136;  /* 韩国 · 青 */
+  --c-jur-sg: 217 119 6;   /* 新加坡 · 琥珀 */
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --c-surface-base: 11 16 32;
+  --c-surface-raised: 17 23 43;
+  --c-surface-sunken: 8 12 26;
+  --c-surface-hover: 26 34 56;
+  --c-line: 255 255 255 / 0.12;
+
+  --c-fg: 226 232 240;
+  --c-fg-muted: 148 163 184;
+  --c-fg-subtle: 100 116 139;
+
+  --c-accent: 91 140 255;
+  --c-accent-soft: 143 176 255;
+  --c-accent-fg: 255 255 255;
+  --c-warn: 242 178 92;
+  --c-warn-soft: 242 178 92 / 0.15;
+  --c-danger: 242 109 109;
+  --c-danger-soft: 242 109 109 / 0.15;
+  --c-ok: 89 201 140;
+  --c-ok-soft: 89 201 140 / 0.15;
+  --c-info-soft: 91 140 255 / 0.15;
+
+  --glass-bg: 17 23 43 / 0.55;
+  --glass-bg-strong: 17 23 43 / 0.82;
+  --glass-border: 255 255 255 / 0.10;
+  --glass-blur: 16px;
+  --glass-shadow: 0 12px 32px rgb(0 0 0 / 0.45);
+
+  --neu-light: 255 255 255 / 0.06;
+  --neu-dark: 0 0 0 / 0.55;
+
+  --c-graph-line: 100 116 139;
+  --c-graph-text: 226 232 240;
+  --c-graph-node: 17 23 43;
+  --c-graph-node-stroke: 71 85 105;
+
+  --c-jur-cn: 248 113 113;
+  --c-jur-jp: 244 114 182;
+  --c-jur-kr: 45 212 191;
+  --c-jur-sg: 251 191 36;
+}
+
+body {
+  @apply bg-surface-base text-fg antialiased;
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgb(var(--c-accent) / 0.35);
+}
+
+/* ========================= 玻璃拟态卡片 ========================= */
+
+.card {
+  border-radius: 0.875rem;
+  border: 1px solid rgb(var(--glass-border));
+  background: rgb(var(--glass-bg));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.25);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.25);
+  box-shadow: var(--glass-shadow);
+}
+
+/* backdrop-filter 不支持 → 降级为普通实体卡片（规范要求的 Fallback） */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .card {
+    background: rgb(var(--glass-bg-strong));
+    border-color: rgb(var(--c-line));
+    box-shadow: 0 6px 20px rgb(var(--c-fg-subtle) / 0.18);
+  }
+}
+
+.card-strong {
+  background: rgb(var(--glass-bg-strong));
+}
+
+/* ========================= 新拟态 ========================= */
+
+.neu {
+  border-radius: 0.875rem;
+  background: rgb(var(--c-surface-raised));
+  box-shadow:
+    6px 6px 14px rgb(var(--neu-dark)),
+    -6px -6px 14px rgb(var(--neu-light));
+}
+
+.neu-inset {
+  border-radius: 0.75rem;
+  background: rgb(var(--c-surface-sunken));
+  box-shadow:
+    inset 4px 4px 10px rgb(var(--neu-dark)),
+    inset -4px -4px 10px rgb(var(--neu-light));
+}
+
+.neu-btn {
+  border-radius: 0.75rem;
+  background: rgb(var(--c-surface-raised));
+  box-shadow:
+    4px 4px 10px rgb(var(--neu-dark)),
+    -4px -4px 10px rgb(var(--neu-light));
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.neu-btn:hover {
+  box-shadow:
+    2px 2px 6px rgb(var(--neu-dark)),
+    -2px -2px 6px rgb(var(--neu-light));
+}
+.neu-btn:active {
+  box-shadow:
+    inset 3px 3px 8px rgb(var(--neu-dark)),
+    inset -3px -3px 8px rgb(var(--neu-light));
+}
+/* 新拟态按钮文字固定深/浅高对比（WCAG AA：正文 ≥4.5:1） */
+.neu-btn {
+  color: rgb(var(--c-fg));
+}
+
+/* ========================= 表单与按钮 ========================= */
+
+.input,
+.select,
+.textarea {
+  @apply w-full rounded-xl border px-3 py-2 text-sm outline-none transition;
+  border-color: rgb(var(--c-line));
+  background: rgb(var(--c-surface-sunken));
+  color: rgb(var(--c-fg));
+}
+.input::placeholder,
+.textarea::placeholder {
+  color: rgb(var(--c-fg-subtle));
+}
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: rgb(var(--c-accent) / 0.7);
+  box-shadow: 0 0 0 3px rgb(var(--c-accent) / 0.18);
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition disabled:opacity-50;
+}
+.btn-primary {
+  background: rgb(var(--c-accent));
+  color: rgb(var(--c-accent-fg));
+}
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.btn-ghost {
+  border: 1px solid rgb(var(--c-line));
+  color: rgb(var(--c-fg-muted));
+}
+.btn-ghost:hover:not(:disabled) {
+  background: rgb(var(--c-surface-hover));
+  color: rgb(var(--c-fg));
+}
+.btn-danger {
+  border: 1px solid rgb(var(--c-danger) / 0.45);
+  color: rgb(var(--c-danger));
+}
+.btn-danger:hover:not(:disabled) {
+  background: rgb(var(--c-danger) / 0.10);
+}
+
+.chip {
+  @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium;
+}
+
+/* ========================= 骨架屏 ========================= */
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: rgb(var(--c-surface-hover));
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(var(--c-fg) / 0.08),
+    transparent
+  );
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ========================= Toast ========================= */
+
+.toast {
+  @apply pointer-events-none fixed bottom-6 right-6 z-[80] flex max-w-sm items-start gap-2 rounded-xl border px-4 py-3 text-sm shadow-xl;
+  background: rgb(var(--glass-bg-strong));
+  border-color: rgb(var(--c-line));
+  color: rgb(var(--c-fg));
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.toast-ok { border-color: rgb(var(--c-ok) / 0.6); }
+.toast-error { border-color: rgb(var(--c-danger) / 0.6); }
+.toast-warn { border-color: rgb(var(--c-warn) / 0.6); }
+
+/* ========================= 免责声明 ========================= */
+
+.disclaimer {
+  @apply rounded-lg border px-3 py-2 text-xs leading-5;
+  border-color: rgb(var(--c-warn) / 0.35);
+  background: rgb(var(--c-warn-soft));
+  color: rgb(var(--c-fg-muted));
+}
+
+/* ========================= 法域色徽章 ========================= */
+
+.jur-cn { color: rgb(var(--c-jur-cn)); border-color: rgb(var(--c-jur-cn) / 0.5); background: rgb(var(--c-jur-cn) / 0.12); }
+.jur-jp { color: rgb(var(--c-jur-jp)); border-color: rgb(var(--c-jur-jp) / 0.5); background: rgb(var(--c-jur-jp) / 0.12); }
+.jur-kr { color: rgb(var(--c-jur-kr)); border-color: rgb(var(--c-jur-kr) / 0.5); background: rgb(var(--c-jur-kr) / 0.12); }
+.jur-sg { color: rgb(var(--c-jur-sg)); border-color: rgb(var(--c-jur-sg) / 0.5); background: rgb(var(--c-jur-sg) / 0.12); }
+
+/* ========================= View Transition（法域切换 FLIP 转场） ========================= */
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.28s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .kg-jur-chip {
+    view-transition-name: kg-jur-active;
+    transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+  }
+  .kg-jur-chip[aria-pressed="true"] {
+    transform: translateY(-1px) scale(1.04);
+  }
+}
+
+/* ========================= 悬停弹性缓动（200-400ms） ========================= */
+
+@media (prefers-reduced-motion: no-preference) {
+  .hover-elastic {
+    transition:
+      transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.28s ease,
+      border-color 0.24s ease;
+  }
+  .hover-elastic:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* ========================= 无障碍：动画降级 ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .skeleton::after {
+    animation: none;
+    transform: none;
+  }
+}

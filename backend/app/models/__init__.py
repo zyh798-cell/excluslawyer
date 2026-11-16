@@ -1,0 +1,27 @@
+"""领域模型包。"""
+
+from app.models.schemas import (  # noqa: F401
+    AskRequest,
+    AskResponse,
+    CaseRecord,
+    CaseSearchRequest,
+    CaseSearchResponse,
+    Citation,
+    ContractClause,
+    ContractScanRequest,
+    ContractScanResponse,
+    Fact,
+    FactSet,
+    FeedbackRequest,
+    NliResult,
+    OpinionRequest,
+    OpinionResponse,
+    OpinionSection,
+    RetrieveRequest,
+    RetrieveResponse,
+    Statute,
+    StatuteRevision,
+    StatuteTimeline,
+    TimelineCard,
+    VerifyRequest,
+)

@@ -1,0 +1,102 @@
+{
+  "comment": "新加坡判例子图种子（普通法系）。判例引用均经公开判例数据库交叉核实；条文链接仅指向本库已收录的新加坡成文法（SG-CONS/SG-CRTP/SG-EA）。",
+  "principles": [
+    {
+      "id": "SG-PRIN-MISTAKE",
+      "name": "单方错误",
+      "aliases": ["unilateral mistake", "错误", "mistake"],
+      "summary": "一方对合同基本条款（如价格）发生错误，且对方明知或应知该错误的，合同可因单方错误无效。"
+    },
+    {
+      "id": "SG-PRIN-ECONTRACT",
+      "name": "电子合同成立",
+      "aliases": ["electronic contract", "电子契约", "网络合同"],
+      "summary": "电子交易适用普通合同法原则；自动确认邮件不因由机器生成而当然无效。"
+    },
+    {
+      "id": "SG-PRIN-DUTY-CARE",
+      "name": "注意义务（Spandeck 框架）",
+      "aliases": ["duty of care", "Spandeck", "过失", "注意义务"],
+      "summary": "过失侵权注意义务三步检验：事实可预见性、法律近邻性、政策考量（Spandeck Engineering v DSTA [2007] SGCA 37 确立）。"
+    },
+    {
+      "id": "SG-PRIN-CONFIDENCE",
+      "name": "违反保密义务",
+      "aliases": ["breach of confidence", "保密", "商业秘密"],
+      "summary": "信息具有保密性质且被不当获取/使用的，即构成违反保密义务，无需证明实际损害使用（I-Admin v Hong Ying Ting [2020] SGCA 32 修正后的检验）。"
+    },
+    {
+      "id": "SG-PRIN-ALGO-CONTRACT",
+      "name": "算法交易的合同责任",
+      "aliases": ["algorithm", "算法", "自动化交易", "程序员"],
+      "summary": "确定性算法之间可成立有约束力的合同；单方错误分析中，程序员的知悉可归属于运营算法的一方（Quoine v B2C2 [2020] SGCA(I) 2）。"
+    },
+    {
+      "id": "SG-PRIN-TPL",
+      "name": "第三方合同权利（成文法）",
+      "aliases": ["third party", "第三方", "第三人"],
+      "summary": "合同第三方在满足法定条件时可强制执行合同条款（Contracts (Rights of Third Parties) Act 2001）。",
+      "statute_ids": ["SG-CRTP-1", "SG-CRTP-2"]
+    },
+    {
+      "id": "SG-PRIN-EA-NOTICE",
+      "name": "雇佣条件书面通知（成文法）",
+      "aliases": ["employment", "雇佣", "Employment Act"],
+      "summary": "雇主须按规定向雇员提供书面雇佣条件通知（Employment Act 1968）。",
+      "statute_ids": ["SG-EA-1", "SG-EA-2"]
+    }
+  ],
+  "precedents": [
+    {
+      "id": "SG-CASE-CHWEE-2005",
+      "name": "Chwee Kin Keong v Digilandmall.com Pte Ltd",
+      "aliases": ["电子合同", "标价错误", "Digilandmall", "单方错误"],
+      "citation": "[2005] SGCA 2; [2005] 1 SLR(R) 502",
+      "court": "SGCA",
+      "year": 2005,
+      "holding": "网上打印机标价错误（S$66 vs 实价约 S$3,854），买家明知错误仍大量下单。上诉法院认定普通合同原则适用于电子交易，合同因单方错误（买家明知）无效。",
+      "principle_ids": ["SG-PRIN-MISTAKE", "SG-PRIN-ECONTRACT"]
+    },
+    {
+      "id": "SG-CASE-QUOINE-2020",
+      "name": "Quoine Pte Ltd v B2C2 Ltd",
+      "aliases": ["算法交易", "加密货币", "程序员", "Quoine", "B2C2"],
+      "citation": "[2020] SGCA(I) 2",
+      "court": "SGCA(I)",
+      "year": 2020,
+      "holding": "确定性算法之间的交互可成立有约束力的合同；交易所单方撤销成交构成违约。单方错误分析中，编程时程序员的知悉可归属于运营方。",
+      "principle_ids": ["SG-PRIN-ALGO-CONTRACT", "SG-PRIN-MISTAKE"]
+    },
+    {
+      "id": "SG-CASE-SPANDECK-2007",
+      "name": "Spandeck Engineering (S) Pte Ltd v Defence Science & Technology Agency",
+      "aliases": ["Spandeck", "注意义务", "纯经济损失", "过失"],
+      "citation": "[2007] SGCA 37",
+      "court": "SGCA",
+      "year": 2007,
+      "holding": "确立新加坡过失侵权注意义务的一般框架：事实可预见性、法律近邻性、政策因素三步检验。",
+      "principle_ids": ["SG-PRIN-DUTY-CARE"]
+    },
+    {
+      "id": "SG-CASE-IADMIN-2020",
+      "name": "I-Admin (Singapore) Pte Ltd v Hong Ying Ting",
+      "aliases": ["保密", "商业秘密", "I-Admin", "离职员工"],
+      "citation": "[2020] SGCA 32; [2020] 1 SLR 1130",
+      "court": "SGCA",
+      "year": 2020,
+      "holding": "修正违反保密义务的检验标准：信息具有保密性质且被不当获取/占有/使用的，即可构成违反保密义务，不再要求原告证明被告实际不当使用。",
+      "principle_ids": ["SG-PRIN-CONFIDENCE"]
+    },
+    {
+      "id": "SG-CASE-SEETOH-2013",
+      "name": "See Toh Siew Kee v Ho Ah Lam Ferrocement (Pte) Ltd",
+      "aliases": ["工地事故", "人身伤害", "See Toh"],
+      "citation": "[2013] SGCA 29",
+      "court": "SGCA",
+      "year": 2013,
+      "holding": "工地事故过失案，适用并阐释 Spandeck 注意义务框架（法律近邻性分析）。",
+      "principle_ids": ["SG-PRIN-DUTY-CARE"],
+      "follows": "SG-CASE-SPANDECK-2007"
+    }
+  ]
+}

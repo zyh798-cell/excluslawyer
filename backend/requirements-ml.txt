@@ -1,0 +1,5 @@
+# 可选 ML 依赖：BGE-M3 多语言 Embedding + BGE-Reranker-v2-m3 重排
+# 安装后 EMBEDDER=bge_m3 / RERANKER=bge_reranker 自动生效（首次运行会下载模型）
+# 注意：torch 体积较大（约 2GB+），无 GPU 也可 CPU 推理，但建议仅在标准模式安装
+sentence-transformers>=2.6.0
+FlagEmbedding>=1.2.10

@@ -1,0 +1,1012 @@
+{
+ "nodes": [
+  {
+   "id": "c:breach",
+   "node_type": "concept",
+   "name": "违约责任",
+   "aliases": [
+    "債務不履行",
+    "채무불이행",
+    "违约",
+    "契約違反",
+    "계약위반"
+   ],
+   "props": {}
+  },
+  {
+   "id": "c:termination",
+   "node_type": "concept",
+   "name": "合同解除",
+   "aliases": [
+    "契約解除",
+    "계약해제",
+    "解除合同"
+   ],
+   "props": {}
+  },
+  {
+   "id": "c:tort",
+   "node_type": "concept",
+   "name": "侵权责任",
+   "aliases": [
+    "不法行為",
+    "불법행위",
+    "侵权"
+   ],
+   "props": {}
+  },
+  {
+   "id": "c:injury",
+   "node_type": "concept",
+   "name": "人身损害赔偿",
+   "aliases": [
+    "人身伤害赔偿",
+    "損害賠償",
+    "인적 손해배상"
+   ],
+   "props": {}
+  },
+  {
+   "id": "c:limitation",
+   "node_type": "concept",
+   "name": "诉讼时效",
+   "aliases": [
+    "消滅時效",
+    "소멸시효",
+    "时效",
+    "時効"
+   ],
+   "props": {}
+  },
+  {
+   "id": "c:labor",
+   "node_type": "concept",
+   "name": "劳动经济补偿",
+   "aliases": [
+    "経済補償",
+    "경제적 보상",
+    "经济补偿",
+    "退職金"
+   ],
+   "props": {}
+  },
+  {
+   "id": "c:double_wage",
+   "node_type": "concept",
+   "name": "二倍工资",
+   "aliases": [
+    "二倍賃金",
+    "이중임금",
+    "未签劳动合同"
+   ],
+   "props": {}
+  },
+  {
+   "id": "e:act",
+   "node_type": "element",
+   "name": "违约行为",
+   "aliases": [
+    "債務不履行行為",
+    "违约",
+    "不履行"
+   ],
+   "props": {}
+  },
+  {
+   "id": "e:damage",
+   "node_type": "element",
+   "name": "损害后果",
+   "aliases": [
+    "損害",
+    "손해",
+    "损失"
+   ],
+   "props": {}
+  },
+  {
+   "id": "e:causation",
+   "node_type": "element",
+   "name": "因果关系",
+   "aliases": [
+    "因果関係",
+    "인과관계"
+   ],
+   "props": {}
+  },
+  {
+   "id": "e:fault",
+   "node_type": "element",
+   "name": "过错",
+   "aliases": [
+    "故意過失",
+    "과실",
+    "故意或过失"
+   ],
+   "props": {}
+  },
+  {
+   "id": "d:continue",
+   "node_type": "duty",
+   "name": "继续履行",
+   "aliases": [
+    "履行請求",
+    "이행청구"
+   ],
+   "props": {}
+  },
+  {
+   "id": "d:remedy",
+   "node_type": "duty",
+   "name": "采取补救措施",
+   "aliases": [
+    "追完請求",
+    "补救"
+   ],
+   "props": {}
+  },
+  {
+   "id": "d:compensate",
+   "node_type": "duty",
+   "name": "赔偿损失",
+   "aliases": [
+    "損害賠償",
+    "손해배상"
+   ],
+   "props": {}
+  },
+  {
+   "id": "d:penalty",
+   "node_type": "duty",
+   "name": "支付违约金",
+   "aliases": [
+    "違約金",
+    "위약벌",
+    "违约金"
+   ],
+   "props": {}
+  },
+  {
+   "id": "d:deposit",
+   "node_type": "duty",
+   "name": "定金罚则",
+   "aliases": [
+    "手付",
+    "계약금"
+   ],
+   "props": {}
+  },
+  {
+   "id": "p:3y",
+   "node_type": "period",
+   "name": "三年诉讼时效",
+   "aliases": [
+    "3年",
+    "三年時効"
+   ],
+   "props": {}
+  },
+  {
+   "id": "p:1y",
+   "node_type": "period",
+   "name": "一年劳动仲裁时效",
+   "aliases": [
+    "1年",
+    "劳动仲裁"
+   ],
+   "props": {}
+  },
+  {
+   "id": "s:CN-MINFA-577",
+   "node_type": "statute",
+   "name": "中华人民共和国民法典 第五百七十七条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "CN",
+    "law_title": "中华人民共和国民法典",
+    "article_no": "第五百七十七条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:JP-MIN-415",
+   "node_type": "statute",
+   "name": "民法 第四百十五条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "JP",
+    "law_title": "民法",
+    "article_no": "第四百十五条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:KR-MIN-390",
+   "node_type": "statute",
+   "name": "민법 제390조(채무불이행과 손해배상)",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "KR",
+    "law_title": "민법",
+    "article_no": "제390조(채무불이행과 손해배상)",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:CN-MINFA-584",
+   "node_type": "statute",
+   "name": "中华人民共和国民法典 第五百八十四条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "CN",
+    "law_title": "中华人民共和国民法典",
+    "article_no": "第五百八十四条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:JP-MIN-416",
+   "node_type": "statute",
+   "name": "民法 第四百十六条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "JP",
+    "law_title": "民法",
+    "article_no": "第四百十六条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:KR-MIN-393",
+   "node_type": "statute",
+   "name": "민법 제393조(손해배상의 범위)",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "KR",
+    "law_title": "민법",
+    "article_no": "제393조(손해배상의 범위)",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:CN-MINFA-585",
+   "node_type": "statute",
+   "name": "中华人民共和国民法典 第五百八十五条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "CN",
+    "law_title": "中华人民共和国民法典",
+    "article_no": "第五百八十五条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:CN-MINFA-586",
+   "node_type": "statute",
+   "name": "中华人民共和国民法典 第五百八十六条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "CN",
+    "law_title": "中华人民共和国民法典",
+    "article_no": "第五百八十六条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:CN-MINFA-563",
+   "node_type": "statute",
+   "name": "中华人民共和国民法典 第五百六十三条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "CN",
+    "law_title": "中华人民共和国民法典",
+    "article_no": "第五百六十三条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:JP-MIN-541",
+   "node_type": "statute",
+   "name": "民法 第五百四十一条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "JP",
+    "law_title": "民法",
+    "article_no": "第五百四十一条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:KR-MIN-543",
+   "node_type": "statute",
+   "name": "민법 제543조(해지, 해제권)",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "KR",
+    "law_title": "민법",
+    "article_no": "제543조(해지, 해제권)",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:CN-MINFA-188",
+   "node_type": "statute",
+   "name": "中华人民共和国民法典 第一百八十八条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "CN",
+    "law_title": "中华人民共和国民法典",
+    "article_no": "第一百八十八条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:JP-MIN-166",
+   "node_type": "statute",
+   "name": "民法 第百六十六条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "JP",
+    "law_title": "民法",
+    "article_no": "第百六十六条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:KR-MIN-162",
+   "node_type": "statute",
+   "name": "민법 제162조(채권, 재산권의 소멸시효)",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "KR",
+    "law_title": "민법",
+    "article_no": "제162조(채권, 재산권의 소멸시효)",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:CN-MINFA-1165",
+   "node_type": "statute",
+   "name": "中华人民共和国民法典 第一千一百六十五条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "CN",
+    "law_title": "中华人民共和国民法典",
+    "article_no": "第一千一百六十五条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:JP-MIN-709",
+   "node_type": "statute",
+   "name": "民法 第七百九条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "JP",
+    "law_title": "民法",
+    "article_no": "第七百九条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:KR-MIN-750",
+   "node_type": "statute",
+   "name": "민법 제750조(불법행위의 내용)",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "KR",
+    "law_title": "민법",
+    "article_no": "제750조(불법행위의 내용)",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:CN-MINFA-1179",
+   "node_type": "statute",
+   "name": "中华人民共和国民法典 第一千一百七十九条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "CN",
+    "law_title": "中华人民共和国民法典",
+    "article_no": "第一千一百七十九条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:JP-MIN-716",
+   "node_type": "statute",
+   "name": "民法 第七百十六条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "JP",
+    "law_title": "民法",
+    "article_no": "第七百十六条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:CN-LDF-47",
+   "node_type": "statute",
+   "name": "中华人民共和国劳动合同法 第四十七条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "CN",
+    "law_title": "中华人民共和国劳动合同法",
+    "article_no": "第四十七条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:CN-LDF-82",
+   "node_type": "statute",
+   "name": "中华人民共和国劳动合同法 第八十二条",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "CN",
+    "law_title": "中华人民共和国劳动合同法",
+    "article_no": "第八十二条",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "SG-PRIN-MISTAKE",
+   "node_type": "principle",
+   "name": "单方错误",
+   "aliases": [
+    "unilateral mistake",
+    "错误",
+    "mistake"
+   ],
+   "props": {
+    "summary": "一方对合同基本条款（如价格）发生错误，且对方明知或应知该错误的，合同可因单方错误无效。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "SG-PRIN-ECONTRACT",
+   "node_type": "principle",
+   "name": "电子合同成立",
+   "aliases": [
+    "electronic contract",
+    "电子契约",
+    "网络合同"
+   ],
+   "props": {
+    "summary": "电子交易适用普通合同法原则；自动确认邮件不因由机器生成而当然无效。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "SG-PRIN-DUTY-CARE",
+   "node_type": "principle",
+   "name": "注意义务（Spandeck 框架）",
+   "aliases": [
+    "duty of care",
+    "Spandeck",
+    "过失",
+    "注意义务"
+   ],
+   "props": {
+    "summary": "过失侵权注意义务三步检验：事实可预见性、法律近邻性、政策考量（Spandeck Engineering v DSTA [2007] SGCA 37 确立）。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "SG-PRIN-CONFIDENCE",
+   "node_type": "principle",
+   "name": "违反保密义务",
+   "aliases": [
+    "breach of confidence",
+    "保密",
+    "商业秘密"
+   ],
+   "props": {
+    "summary": "信息具有保密性质且被不当获取/使用的，即构成违反保密义务，无需证明实际损害使用（I-Admin v Hong Ying Ting [2020] SGCA 32 修正后的检验）。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "SG-PRIN-ALGO-CONTRACT",
+   "node_type": "principle",
+   "name": "算法交易的合同责任",
+   "aliases": [
+    "algorithm",
+    "算法",
+    "自动化交易",
+    "程序员"
+   ],
+   "props": {
+    "summary": "确定性算法之间可成立有约束力的合同；单方错误分析中，程序员的知悉可归属于运营算法的一方（Quoine v B2C2 [2020] SGCA(I) 2）。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "SG-PRIN-TPL",
+   "node_type": "principle",
+   "name": "第三方合同权利（成文法）",
+   "aliases": [
+    "third party",
+    "第三方",
+    "第三人"
+   ],
+   "props": {
+    "summary": "合同第三方在满足法定条件时可强制执行合同条款（Contracts (Rights of Third Parties) Act 2001）。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "s:SG-CRTP-1",
+   "node_type": "statute",
+   "name": "Contracts (Rights of Third Parties) Act 2001 1.",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "SG",
+    "law_title": "Contracts (Rights of Third Parties) Act 2001",
+    "article_no": "1.",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:SG-CRTP-2",
+   "node_type": "statute",
+   "name": "Contracts (Rights of Third Parties) Act 2001 2.",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "SG",
+    "law_title": "Contracts (Rights of Third Parties) Act 2001",
+    "article_no": "2.",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "SG-PRIN-EA-NOTICE",
+   "node_type": "principle",
+   "name": "雇佣条件书面通知（成文法）",
+   "aliases": [
+    "employment",
+    "雇佣",
+    "Employment Act"
+   ],
+   "props": {
+    "summary": "雇主须按规定向雇员提供书面雇佣条件通知（Employment Act 1968）。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "s:SG-EA-1",
+   "node_type": "statute",
+   "name": "Employment Act 1968 1.",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "SG",
+    "law_title": "Employment Act 1968",
+    "article_no": "1.",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "s:SG-EA-2",
+   "node_type": "statute",
+   "name": "Employment Act 1968 2.",
+   "aliases": [],
+   "props": {
+    "jurisdiction": "SG",
+    "law_title": "Employment Act 1968",
+    "article_no": "2.",
+    "status": "effective"
+   }
+  },
+  {
+   "id": "SG-CASE-CHWEE-2005",
+   "node_type": "precedent",
+   "name": "Chwee Kin Keong v Digilandmall.com Pte Ltd",
+   "aliases": [
+    "电子合同",
+    "标价错误",
+    "Digilandmall",
+    "单方错误"
+   ],
+   "props": {
+    "citation": "[2005] SGCA 2; [2005] 1 SLR(R) 502",
+    "court": "SGCA",
+    "year": 2005,
+    "holding": "网上打印机标价错误（S$66 vs 实价约 S$3,854），买家明知错误仍大量下单。上诉法院认定普通合同原则适用于电子交易，合同因单方错误（买家明知）无效。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "SG-CASE-QUOINE-2020",
+   "node_type": "precedent",
+   "name": "Quoine Pte Ltd v B2C2 Ltd",
+   "aliases": [
+    "算法交易",
+    "加密货币",
+    "程序员",
+    "Quoine",
+    "B2C2"
+   ],
+   "props": {
+    "citation": "[2020] SGCA(I) 2",
+    "court": "SGCA(I)",
+    "year": 2020,
+    "holding": "确定性算法之间的交互可成立有约束力的合同；交易所单方撤销成交构成违约。单方错误分析中，编程时程序员的知悉可归属于运营方。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "SG-CASE-SPANDECK-2007",
+   "node_type": "precedent",
+   "name": "Spandeck Engineering (S) Pte Ltd v Defence Science & Technology Agency",
+   "aliases": [
+    "Spandeck",
+    "注意义务",
+    "纯经济损失",
+    "过失"
+   ],
+   "props": {
+    "citation": "[2007] SGCA 37",
+    "court": "SGCA",
+    "year": 2007,
+    "holding": "确立新加坡过失侵权注意义务的一般框架：事实可预见性、法律近邻性、政策因素三步检验。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "SG-CASE-IADMIN-2020",
+   "node_type": "precedent",
+   "name": "I-Admin (Singapore) Pte Ltd v Hong Ying Ting",
+   "aliases": [
+    "保密",
+    "商业秘密",
+    "I-Admin",
+    "离职员工"
+   ],
+   "props": {
+    "citation": "[2020] SGCA 32; [2020] 1 SLR 1130",
+    "court": "SGCA",
+    "year": 2020,
+    "holding": "修正违反保密义务的检验标准：信息具有保密性质且被不当获取/占有/使用的，即可构成违反保密义务，不再要求原告证明被告实际不当使用。",
+    "jurisdiction": "SG"
+   }
+  },
+  {
+   "id": "SG-CASE-SEETOH-2013",
+   "node_type": "precedent",
+   "name": "See Toh Siew Kee v Ho Ah Lam Ferrocement (Pte) Ltd",
+   "aliases": [
+    "工地事故",
+    "人身伤害",
+    "See Toh"
+   ],
+   "props": {
+    "citation": "[2013] SGCA 29",
+    "court": "SGCA",
+    "year": 2013,
+    "holding": "工地事故过失案，适用并阐释 Spandeck 注意义务框架（法律近邻性分析）。",
+    "jurisdiction": "SG"
+   }
+  }
+ ],
+ "edges": [
+  {
+   "src": "c:breach",
+   "dst": "e:act",
+   "relation": "构成要件"
+  },
+  {
+   "src": "c:breach",
+   "dst": "e:damage",
+   "relation": "构成要件"
+  },
+  {
+   "src": "c:breach",
+   "dst": "e:causation",
+   "relation": "构成要件"
+  },
+  {
+   "src": "c:breach",
+   "dst": "d:continue",
+   "relation": "责任方式"
+  },
+  {
+   "src": "c:breach",
+   "dst": "d:remedy",
+   "relation": "责任方式"
+  },
+  {
+   "src": "c:breach",
+   "dst": "d:compensate",
+   "relation": "责任方式"
+  },
+  {
+   "src": "c:breach",
+   "dst": "d:penalty",
+   "relation": "责任方式"
+  },
+  {
+   "src": "c:tort",
+   "dst": "e:fault",
+   "relation": "构成要件"
+  },
+  {
+   "src": "c:tort",
+   "dst": "e:damage",
+   "relation": "构成要件"
+  },
+  {
+   "src": "c:tort",
+   "dst": "e:causation",
+   "relation": "构成要件"
+  },
+  {
+   "src": "c:injury",
+   "dst": "d:compensate",
+   "relation": "责任方式"
+  },
+  {
+   "src": "c:limitation",
+   "dst": "p:3y",
+   "relation": "期间"
+  },
+  {
+   "src": "c:labor",
+   "dst": "p:1y",
+   "relation": "期间"
+  },
+  {
+   "src": "c:breach",
+   "dst": "s:CN-MINFA-577",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:breach",
+   "dst": "s:JP-MIN-415",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:breach",
+   "dst": "s:KR-MIN-390",
+   "relation": "依据条文"
+  },
+  {
+   "src": "d:compensate",
+   "dst": "s:CN-MINFA-584",
+   "relation": "依据条文"
+  },
+  {
+   "src": "d:compensate",
+   "dst": "s:JP-MIN-416",
+   "relation": "依据条文"
+  },
+  {
+   "src": "d:compensate",
+   "dst": "s:KR-MIN-393",
+   "relation": "依据条文"
+  },
+  {
+   "src": "d:penalty",
+   "dst": "s:CN-MINFA-585",
+   "relation": "依据条文"
+  },
+  {
+   "src": "d:deposit",
+   "dst": "s:CN-MINFA-586",
+   "relation": "依据条文"
+  },
+  {
+   "src": "d:continue",
+   "dst": "s:CN-MINFA-577",
+   "relation": "依据条文"
+  },
+  {
+   "src": "d:remedy",
+   "dst": "s:CN-MINFA-577",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:termination",
+   "dst": "s:CN-MINFA-563",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:termination",
+   "dst": "s:JP-MIN-541",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:termination",
+   "dst": "s:KR-MIN-543",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:limitation",
+   "dst": "s:CN-MINFA-188",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:limitation",
+   "dst": "s:JP-MIN-166",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:limitation",
+   "dst": "s:KR-MIN-162",
+   "relation": "依据条文"
+  },
+  {
+   "src": "p:3y",
+   "dst": "s:CN-MINFA-188",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:tort",
+   "dst": "s:CN-MINFA-1165",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:tort",
+   "dst": "s:JP-MIN-709",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:tort",
+   "dst": "s:KR-MIN-750",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:injury",
+   "dst": "s:CN-MINFA-1179",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:injury",
+   "dst": "s:JP-MIN-716",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:labor",
+   "dst": "s:CN-LDF-47",
+   "relation": "依据条文"
+  },
+  {
+   "src": "c:double_wage",
+   "dst": "s:CN-LDF-82",
+   "relation": "依据条文"
+  },
+  {
+   "src": "s:CN-MINFA-577",
+   "dst": "s:JP-MIN-415",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:CN-MINFA-577",
+   "dst": "s:KR-MIN-390",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:JP-MIN-415",
+   "dst": "s:KR-MIN-390",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:CN-MINFA-584",
+   "dst": "s:JP-MIN-416",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:CN-MINFA-584",
+   "dst": "s:KR-MIN-393",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:JP-MIN-416",
+   "dst": "s:KR-MIN-393",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:CN-MINFA-1165",
+   "dst": "s:JP-MIN-709",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:CN-MINFA-1165",
+   "dst": "s:KR-MIN-750",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:JP-MIN-709",
+   "dst": "s:KR-MIN-750",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:CN-MINFA-563",
+   "dst": "s:JP-MIN-541",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:CN-MINFA-563",
+   "dst": "s:KR-MIN-543",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:JP-MIN-541",
+   "dst": "s:KR-MIN-543",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:CN-MINFA-188",
+   "dst": "s:JP-MIN-166",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:CN-MINFA-188",
+   "dst": "s:KR-MIN-162",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "s:JP-MIN-166",
+   "dst": "s:KR-MIN-162",
+   "relation": "ANALOGOUS_TO"
+  },
+  {
+   "src": "SG-PRIN-TPL",
+   "dst": "s:SG-CRTP-1",
+   "relation": "依据条文"
+  },
+  {
+   "src": "SG-PRIN-TPL",
+   "dst": "s:SG-CRTP-2",
+   "relation": "依据条文"
+  },
+  {
+   "src": "SG-PRIN-EA-NOTICE",
+   "dst": "s:SG-EA-1",
+   "relation": "依据条文"
+  },
+  {
+   "src": "SG-PRIN-EA-NOTICE",
+   "dst": "s:SG-EA-2",
+   "relation": "依据条文"
+  },
+  {
+   "src": "SG-CASE-CHWEE-2005",
+   "dst": "SG-PRIN-MISTAKE",
+   "relation": "ESTABLISHES"
+  },
+  {
+   "src": "SG-CASE-CHWEE-2005",
+   "dst": "SG-PRIN-ECONTRACT",
+   "relation": "ESTABLISHES"
+  },
+  {
+   "src": "SG-CASE-QUOINE-2020",
+   "dst": "SG-PRIN-ALGO-CONTRACT",
+   "relation": "ESTABLISHES"
+  },
+  {
+   "src": "SG-CASE-QUOINE-2020",
+   "dst": "SG-PRIN-MISTAKE",
+   "relation": "ESTABLISHES"
+  },
+  {
+   "src": "SG-CASE-SPANDECK-2007",
+   "dst": "SG-PRIN-DUTY-CARE",
+   "relation": "ESTABLISHES"
+  },
+  {
+   "src": "SG-CASE-IADMIN-2020",
+   "dst": "SG-PRIN-CONFIDENCE",
+   "relation": "ESTABLISHES"
+  },
+  {
+   "src": "SG-CASE-SEETOH-2013",
+   "dst": "SG-PRIN-DUTY-CARE",
+   "relation": "ESTABLISHES"
+  },
+  {
+   "src": "SG-CASE-SEETOH-2013",
+   "dst": "SG-CASE-SPANDECK-2007",
+   "relation": "FOLLOWS"
+  }
+ ],
+ "warnings": []
+}

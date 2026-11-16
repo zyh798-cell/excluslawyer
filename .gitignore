@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# 数据与模型缓存（不入库）
+backend/data/*.db
+backend/data/milvus_lite.db
+backend/data/feedback*.jsonl
+model-cache/
+*.onnx
+
+# 构建产物（向量库等，可由 ingest 脚本重建）
+backend/data/vector_*.pkl
+backend/data/numpy_store.pkl
+
+# 模拟法庭运行时状态（含案件数据，属隐私不入库）
+backend/data/trial_checkpoints.sqlite
+backend/data/trial_sessions/
+*.sqlite
+
+# Node / Next.js
+node_modules/
+frontend/.next/
+frontend/out/
+frontend/next-env.d.ts
+
+# 环境与密钥（BYOK 的 Key 只在浏览器 localStorage，后端 .env 不入库）
+.env
+.env.local
+*.pem
+*.key
+
+# 临时文件（验收渲染图、加工中间件、冒烟脚本）
+docs/_*
+backend/scripts/_*.py
+*.log
+
+# 工作区本地数据
+.workbuddy/
+
+# 系统
+.DS_Store
+Thumbs.db
