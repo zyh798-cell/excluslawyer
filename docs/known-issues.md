@@ -1,0 +1,105 @@
+# Known Issues — 遗留缺陷清单
+
+> [English](../README.md) | [简体中文](../README.zh-CN.md) | [日本語](../README.ja.md) | [한국어](../README.ko.md)
+>
+> 任务③交付文档。格式：现象 → 根因 → 影响范围 → 是否阻断 → 后续修复计划。
+> 状态口径：`已修复`（本次迭代落地并有回归用例）/ `待处理`（排期）/ `长期项`（设计约束或需外部条件）。
+
+---
+
+## KI-01 NLI 裁判小结词面重叠不足 → 降级（已修复，含残留限制）
+
+- **现象**：裁判小结（overall）与所引法条词面重叠仅约 21% 时，`nli_check` 判 `status=degraded`
+  （低于 `NLI_THRESHOLD=0.35`），仅作降级标注、不阻断输出。修复前小结为纯计数句
+  （"支持 X 项、驳回 Y 项…"），几乎不复述法条要件，故常态性触发降级。
+- **根因**：小结生成模板未复述所引法条关键要件与关键词；`nli_check` P0 为词面重叠启发式
+  （中日韩按字/英文按词取集合交集），对归纳性表述天然低分。
+- **影响范围**：`build_verdict` 输出的 `overall` 与 `TrialVerdict.nli`；主链路 `/api/ask`、
+  `/api/verify` 同口径共用 `nli_check`（其输入为完整回答，长引用摘录场景较少触发）。
+- **是否阻断**：**否**（降级不阻断输出）。
+- **修复计划（本次已落地）**：
+  1. 小结模板增加**裁判要件复述**段——逐条摘录所引法条（`law_title + article_no + 文本截取 60 字`），
+     复述关键要件与关键词，词面重叠提升至阈值以上（回归用例断言 `score ≥ nli_threshold`）；
+  2. **保留 degraded 降级分支，且不得静默放行**：校验不通过时 overall 仍以 `TRIAL_DISCLAIMER` 前置，
+     其后插入"⚠️【证据不足·引用支撑校验降级】…"警示，`risk_notes` 同步标注；
+  3. 回归用例：`tests/test_verdict_nli.py`（2 例——复述关键词后通过校验 / 降级必须标注证据不足）。
+- **残留限制（长期项）**：词面重叠 ≠ 语义蕴含。P1 计划引入多语言 NLI 模型（cross-lingual entailment）
+  替换启发式；在此之前极低重叠但表述正确的结论仍可能被降级标注（保守方向，符合铁律一）。
+
+## KI-02 跨法域对照混入异案由条目（已修复）
+
+- **现象**：Compare 双查询（"诉讼时效" + 案由查询）合并结果中，同类案件混入劳动时效条目——
+  例如合同案件的 `cross_refs` 出现"劳动争议调解仲裁法第二十七条"（劳动仲裁时效 1 年）。
+- **根因**：① `cross_jurisdiction_topics.json` 的"诉讼时效"主题 CN 行把普通时效（民法典 188 条）
+  与劳动仲裁时效（仲裁法 27 条）混写在同一条目；② 合并结果无按案由过滤，任何案件都取回全量时效行。
+- **影响范围**：`build_verdict` 的 `cross_jurisdiction` / `TrialVerdictItem.cross_refs`、
+  `/api/compare` 之外的裁判引用展示；不影响主检索与裁决结论本身。
+- **是否阻断**：**否**（展示性污染，不产生错误法条结论）。
+- **修复计划（本次已落地）**：
+  1. 数据拆分：CN 时效行拆为"通用"（民法典 188 条）与"劳动"（仲裁法 27 条）两条，全部行打
+     `cause` 标签（通用/合同/劳动/侵权）；
+  2. `CompareService.compare(req, causes=…)` 增加案由过滤：保留 `cause ∈ causes ∪ {通用}` 的条目
+     （API 默认 `causes=None` 不过滤，接口行为不变）；
+  3. `build_verdict` 按当前案由（`_detect_topic`）传入 allowed causes，通用时效条目保留（铁律 3 联动）；
+  4. 回归：`tests/test_p2.py` 新增 3 例（合同案由不混入劳动条目 / 劳动案由保留仲裁时效 / 默认不过滤），
+     Golden Set 双集全量回归通过。
+- **残留限制（长期项）**：案由识别为词面规则（`_detect_topic`），复杂混合案由（如劳动+合同竞合）
+  可能取单一标签；后续可扩展多标签 cause 过滤。
+
+## KI-03 旧版 TrialView.tsx（轮次制前端）待移除（已移除）
+
+- **现象**：P3 状态机前端（MockTrialView）上线后，旧轮次制组件 `TrialView.tsx` 留存于
+  `frontend/src/components/`，存在双入口维护成本。
+- **根因**：任务③前端迭代采用新组件并行开发，旧组件未随切换同步清理。
+- **影响范围**：仅构建体积与维护面；无运行时影响（未被任何入口/路由引用）。
+- **是否阻断**：**否**。
+- **修复计划（本次已落地）**：全仓引用检索确认零 import（入口 `page.tsx` 与 `/mock-trial` 均用
+  `MockTrialView`）后**删除 `TrialView.tsx`**；`npx tsc --noEmit` 0 错误、vitest 16/16 验证无悬空引用。
+  旧 P2 轮次制**后端**接口（`POST /api/trial/start|turn`）为兼容接口，见 KI-06。
+
+## KI-04 INP 待真实交互复测（待处理）
+
+- **现象**：Lighthouse 12 对 `/mock-trial` 无交互样本，INP 显示 N/A（仅 TBT 0 ms 参考）。
+- **根因**：Lighthouse 无头审计不产生真实指针/键盘交互，INP 需要交互 trace。
+- **影响范围**：性能预算项"INP < 200 ms"（用户 UI 规范 2026-11-15）未闭环。
+- **是否阻断**：**否**（LCP 1.9 s / CLS 0 / TBT 0 ms 均达标，INP 大概率无风险）。
+- **后续修复计划**：用 DevTools Performance 面板或 Lighthouse user-flow（mock-trial 页录入→开庭→
+  发言→导出全链路交互）录制 trace 复测 INP；若 > 200 ms 优先排查 SSE 渲染期间的主线程长任务
+  （events 滚动区批量 setState）。
+
+## KI-05 NLI P0 词面启发式的固有局限（长期项）
+
+- **现象**：`nli_check` 以字符/词面集合交集占比近似"结论-依据一致性"，同义改述会被低估，
+  词面拼贴可能被高估。
+- **根因**：P0 设计取"可解释、可离线回归"，不加载模型（`conftest.py` 全局 `reranker=none` 同思路）。
+- **影响范围**：`/api/verify`、Ask/Opinion/Trial 全部 NLI 标注的精度上限。
+- **是否阻断**：**否**（方向保守：不达标只降级标注，从不放行幻觉）。
+- **后续修复计划**：P1 引入多语言 NLI 模型（如 XLM-RoBERTa MNLI 微调），与词面分并行出
+  `score=semantic`；阈值与降级语义保持不变（fail-safe）。
+
+## KI-06 P2 轮次制 API 与 P3 状态机并存（长期项）
+
+- **现象**：`POST /api/trial/start|turn`（P2 轮次制，`TrialService`）与 P3 状态机 6 条路由并存于
+  `/api/trial` 前缀下。
+- **根因**：P2 为已发布接口，测试与潜在外部调用存在，任务③采用增量切换策略。
+- **影响范围**：API 面（8 条 trial 路由中的 2 条）；前端已全部走 P3。
+- **是否阻断**：**否**。
+- **后续修复计划**：标注 deprecated（响应头 `Deprecation: true`）→ 观察一个迭代无调用后移除，
+  并同步收缩 `test_p2.py` 中轮次制用例。
+
+## KI-07 test_kg_neo4j 默认跳过（长期项）
+
+- **现象**：4 例 Neo4j 真库验证用例在无 Docker 环境 collect 后 skip（4 skipped）。
+- **根因**：Neo4j 需 `docker compose up -d neo4j`（Windows 下 Docker 守护进程常需管理员启动）。
+- **影响范围**：`app/kg/neo4j_backend.py` 的真库路径仅在本机手动验证过。
+- **是否阻断**：**否**（内存快照后端全覆盖，快照 55 节点/64 边回退路径有测试）。
+- **后续修复计划**：CI 配置 Neo4j service container 后将 4 例纳入必跑；本地保留 skip 兜底。
+
+## KI-08 SG 官源 AWS WAF 间歇拦截（长期项）
+
+- **现象**：sso.agc.gov.sg 对数据管道请求间歇返回 4xx/202（AWS WAF）。
+- **根因**：官源防护策略，频率敏感。
+- **影响范围**：`fetch_statutes.py` SG 增量抓取的稳定性（已有 SGA1979 PDF 留档可离线重解析）。
+- **是否阻断**：**否**。
+- **后续修复计划**：维持"4xx/202 不底层重试、等冷却增量补齐"策略；关键法案 PDF `_raw` 留档机制
+  扩展到其余 SG 法案。
