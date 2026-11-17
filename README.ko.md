@@ -101,7 +101,7 @@
                 └──────────────────────────────────────────────────┘
 ```
 
-심화 문서: [docs/architecture.md](docs/architecture.md) · [docs/mock-trial.md](docs/mock-trial.md) · [docs/eval.md](docs/eval.md)
+심화 문서: [docs/architecture.md](docs/architecture.md) · [docs/mock-court.md](docs/mock-court.md) · [docs/eval.md](docs/eval.md) · [docs/regression-report.md](docs/regression-report.md) · [docs/known-issues.md](docs/known-issues.md)
 
 ## 핵심 기능
 
@@ -127,7 +127,7 @@ API 키는 브라우저 localStorage에만 보관되며 백엔드로 전달되�
 | 조문 인용 재현율 | **100 %** | ≥ 98 % |
 | 결론–증거 일관성 (NLI) | **100 %** | ≥ 90 % |
 | 시의성 판정 정확도 | **100 %** | ≥ 99 % |
-| 백엔드 테스트 (pytest) | **108 passed · 4 skipped** | 전부 녹색 |
+| 백엔드 테스트 (pytest) | **113 passed · 4 skipped** | 전부 녹색 |
 | 프런트엔드 테스트 (vitest) | **16 / 16** | 전부 녹색 |
 | 프로덕션 빌드 (next build) | **exit 0 · 경고 0** | — |
 | Lighthouse, 모의재판 페이지 | **100 · LCP 1.9 s · CLS 0** | LCP < 2.5 s, CLS < 0.1 |
@@ -168,8 +168,12 @@ npm install && npm run dev
 | 문서 | 내용 |
 | --- | --- |
 | [docs/architecture.md](docs/architecture.md) | 이중 백엔드 검색, BGE-M3, Neo4j 그래프, SGA 1979 PDF 디노이즈 |
-| [docs/mock-trial.md](docs/mock-trial.md) | LangGraph 재판 상태 기계, checkpointer 영속화, 내보내기 스키마 |
+| [docs/mock-court.md](docs/mock-court.md) | 모의재판 상태 기계, trial 라우트 8종, 증거/시의성/쌍방 대립 메커니즘, MD+PDF 출력 |
+| [docs/scenario-entry.md](docs/scenario-entry.md) | 시나리오 진입(일반 사용자용 P0): 8개 생활 시나리오, 단계별 설문, 구조화 요약 사전 입력 |
+| [docs/mock-trial.md](docs/mock-trial.md) | 구현 상세 노트(초기稿): checkpointer 직렬화, SSE 프레이밍, 출력 스키마 |
 | [docs/eval.md](docs/eval.md) | 골든 셋 방법론, 환각 0% 검증, 회귀 매트릭스 |
+| [docs/regression-report.md](docs/regression-report.md) | 이번 이터레이션 회귀 검증 보고서 |
+| [docs/known-issues.md](docs/known-issues.md) | 알려진 결함 목록: 증상·원인·영향·조치 계획 |
 
 ## 보안 및 컴플라이언스
 
@@ -180,7 +184,10 @@ npm install && npm run dev
 
 ## 라이선스
 
-[AGPL-3.0](LICENSE) — open by design, and staying that way.
+- **코드** — [AGPL-3.0](LICENSE): 엔진 소스는 GNU Affero General Public License v3으로 제공됩니다.
+- **데이터셋** — 조문 텍스트와 지식 그래프 스냅샷은 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)으로 제공됩니다: 조문 원문은 각 법역의 공식 법률 데이터베이스(flk.npc.gov.cn / e-Gov / law.go.kr / sso.agc.gov.sg)에서 가져왔고, 구조화·정제와 그래프 구축은 자체 정리 작업물로 출처 표기 후 비영리 재사용이 가능합니다.
+
+> 제품 UI는 현재 중국어(간체)만 제공하며, 영어·일본어·한국어 README는 문서 사본입니다. 다국어 UI는 개발 중(→ [docs/known-issues.md](docs/known-issues.md) KI-09).
 
 <br/>
 

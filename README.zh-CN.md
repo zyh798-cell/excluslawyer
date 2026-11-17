@@ -101,7 +101,7 @@
                 └──────────────────────────────────────────────────┘
 ```
 
-深入阅读：[docs/architecture.md](docs/architecture.md) · [docs/mock-trial.md](docs/mock-trial.md) · [docs/eval.md](docs/eval.md)
+深入阅读：[docs/architecture.md](docs/architecture.md) · [docs/mock-court.md](docs/mock-court.md) · [docs/eval.md](docs/eval.md) · [docs/regression-report.md](docs/regression-report.md) · [docs/known-issues.md](docs/known-issues.md)
 
 ## 核心能力
 
@@ -127,7 +127,7 @@ API Key 只存在于浏览器 localStorage，永不触达后端。服务端仅�
 | 法条引用召回 | **100 %** | ≥ 98 % |
 | 结论-证据一致性（NLI） | **100 %** | ≥ 90 % |
 | 时效判定准确率 | **100 %** | ≥ 99 % |
-| 后端测试集（pytest） | **108 passed · 4 skipped** | 全绿 |
+| 后端测试集（pytest） | **113 passed · 4 skipped** | 全绿 |
 | 前端测试集（vitest） | **16 / 16** | 全绿 |
 | 生产构建（next build） | **exit 0 · 0 警告** | — |
 | Lighthouse，模拟法庭页 | **100 · LCP 1.9 s · CLS 0** | LCP < 2.5 s, CLS < 0.1 |
@@ -168,8 +168,12 @@ npm install && npm run dev
 | 文档 | 内容 |
 | --- | --- |
 | [docs/architecture.md](docs/architecture.md) | 双后端检索、BGE-M3、Neo4j 图谱、SGA 1979 PDF 去污 |
-| [docs/mock-trial.md](docs/mock-trial.md) | LangGraph 庭审状态机、checkpointer 持久化、导出 Schema |
+| [docs/mock-court.md](docs/mock-court.md) | 模拟法庭状态机、8 条 trial 路由、证据/时效/双视角机制、MD+PDF 导出 |
+| [docs/scenario-entry.md](docs/scenario-entry.md) | 场景化入口（普通人友好层 P0）：8 个生活场景、分步问卷、结构化摘要预填 |
+| [docs/mock-trial.md](docs/mock-trial.md) | 实现细节笔记（早期稿）：checkpointer 序列化、SSE 分帧、导出 Schema |
 | [docs/eval.md](docs/eval.md) | Golden Set 方法论、0% 幻觉验证、回归矩阵 |
+| [docs/regression-report.md](docs/regression-report.md) | 本迭代回归验证报告 |
+| [docs/known-issues.md](docs/known-issues.md) | 遗留缺陷清单：现象、根因、影响范围、修复计划 |
 
 ## 安全与合规
 
@@ -180,7 +184,10 @@ npm install && npm run dev
 
 ## 许可证
 
-[AGPL-3.0](LICENSE) — 生而开放，保持开放。
+- **代码** — [AGPL-3.0](LICENSE)：引擎源码采用 GNU Affero General Public License v3 授权。
+- **数据集** — 法条文本与知识图谱快照以 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) 释出：法条原文来自各法域官方法规库（flk.npc.gov.cn / e-Gov / law.go.kr / sso.agc.gov.sg），结构化清洗与图谱构建为原创整理成果，署名后可非商业使用。
+
+> 产品界面目前仅提供简体中文——英文 / 日文 / 韩文版 README 属文档副本；多语言界面仍在开发中（见 [docs/known-issues.md](docs/known-issues.md) KI-09）。
 
 <br/>
 

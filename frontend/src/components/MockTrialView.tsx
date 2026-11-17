@@ -391,7 +391,7 @@ export default function MockTrialView() {
                 value={sessionId}
                 onChange={(e) => setSessionId(e.target.value)}
               />
-              <button className="btn btn-ghost" onClick={onRestore} disabled={busy || !sessionId.trim()} aria-label="恢复已有会话">
+              <button className="btn btn-ghost" onClick={onRestore} disabled={busy || !sessionId.trim()} aria-label="恢复会话（按上方会话 ID 恢复已有会话）">
                 恢复会话
               </button>
               <button

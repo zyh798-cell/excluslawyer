@@ -2,8 +2,10 @@
 
 > [English](../README.md) | [简体中文](../README.zh-CN.md) | [日本語](../README.ja.md) | [한국어](../README.ko.md)
 >
-> 任务③交付文档。本文描述模拟法庭（LangGraph 庭审状态机）的阶段流转、API 路由形态与关键机制；
-> 深度实现细节（checkpointer 序列化、SSE 分帧、导出 Schema 全字段）见 [mock-trial.md](mock-trial.md)。
+> 任务③交付文档（模拟法庭正式文档，文件名以本文为准）。本文描述模拟法庭（LangGraph 庭审状态机）的
+> 阶段流转、API 路由形态与关键机制；checkpointer 持久化、SSE 分帧、导出 Schema 全字段等实现细节
+> 见本文第 2 节（路由与请求/响应形态）、第 4 节（导出流程）与第 5 节（回归）。
+> 早期实现笔记另见 [mock-trial.md](mock-trial.md)（内容已并入本文，保留作历史参考）。
 
 ---
 

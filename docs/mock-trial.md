@@ -1,6 +1,10 @@
-# Mock Trial — LangGraph 庭审状态机
+# Mock Trial — LangGraph 庭审状态机（早期实现笔记）
 
 > [English](../README.md) | [简体中文](../README.zh-CN.md) | [日本語](../README.ja.md) | [한국어](../README.ko.md)
+
+> **本文为早期实现笔记**（保留作历史参考）。模拟法庭的正式交付文档为
+> **[mock-court.md](mock-court.md)**——状态机七阶段流转、8 条 trial 路由清单与请求/响应形态、
+> 双视角对抗 / 证据要件校验 / 时效联动 / 过期挂起机制、MD+PDF 导出流程，均以该文为准。
 
 > 模拟法庭是 EXCLUSLAWYER 的对抗推理中枢：把「主张 → 挂条 → 质证 → 辩论 → 裁判」
 > 建模为显式状态机，每个环节可中断、可恢复、可导出、可回归。

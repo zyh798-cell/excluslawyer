@@ -101,7 +101,7 @@ Four non-negotiable rules run through the entire pipeline:
                 └──────────────────────────────────────────────────┘
 ```
 
-Deep dives: [docs/architecture.md](docs/architecture.md) · [docs/mock-trial.md](docs/mock-trial.md) · [docs/eval.md](docs/eval.md)
+Deep dives: [docs/architecture.md](docs/architecture.md) · [docs/scenario-entry.md](docs/scenario-entry.md) · [docs/mock-court.md](docs/mock-court.md) · [docs/eval.md](docs/eval.md) · [docs/regression-report.md](docs/regression-report.md) · [docs/known-issues.md](docs/known-issues.md)
 
 ## Core Capabilities
 
@@ -127,7 +127,7 @@ API keys stay in browser localStorage and never touch the backend. The server ex
 | Citation recall | **100 %** | ≥ 98 % |
 | Conclusion-evidence consistency (NLI) | **100 %** | ≥ 90 % |
 | Timeliness accuracy | **100 %** | ≥ 99 % |
-| Backend test suite (pytest) | **108 passed · 4 skipped** | all green |
+| Backend test suite (pytest) | **113 passed · 4 skipped** | all green |
 | Frontend test suite (vitest) | **16 / 16** | all green |
 | Production build (next build) | **exit 0 · 0 warnings** | — |
 | Lighthouse, mock-trial page | **100 · LCP 1.9 s · CLS 0** | LCP < 2.5 s, CLS < 0.1 |
@@ -168,8 +168,12 @@ Without `requirements-ml.txt` the engine still runs end-to-end: embeddings fall 
 | Document | Contents |
 | --- | --- |
 | [docs/architecture.md](docs/architecture.md) | Dual-backend retrieval, BGE-M3, Neo4j graph, SGA 1979 PDF de-pollution |
-| [docs/mock-trial.md](docs/mock-trial.md) | LangGraph trial state machine, checkpointer persistence, export schema |
+| [docs/scenario-entry.md](docs/scenario-entry.md) | Scenario entry (lay-person layer P0): 8 life scenarios, stepwise questionnaire, structured summary prefill |
+| [docs/mock-court.md](docs/mock-court.md) | Mock-court state machine, 8 trial routes, evidence / limitation / dual-perspective mechanisms, MD+PDF export |
+| [docs/mock-trial.md](docs/mock-trial.md) | Implementation notes (early draft): checkpointer serialization, SSE framing, export schema |
 | [docs/eval.md](docs/eval.md) | Golden Set methodology, 0 % hallucination verification, regression matrix |
+| [docs/regression-report.md](docs/regression-report.md) | Regression verification report of the current iteration |
+| [docs/known-issues.md](docs/known-issues.md) | Known-issue list: symptom, root cause, impact, remediation plan |
 
 ## Security & Compliance
 
@@ -180,7 +184,10 @@ Without `requirements-ml.txt` the engine still runs end-to-end: embeddings fall 
 
 ## License
 
-[AGPL-3.0](LICENSE) — open by design, and staying that way.
+- **Code** — [AGPL-3.0](LICENSE): the engine source is licensed under GNU Affero General Public License v3.
+- **Dataset** — statute texts and knowledge-graph snapshots are released under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/): the statute wording comes from the official public legal databases (flk.npc.gov.cn / e-Gov / law.go.kr / sso.agc.gov.sg), while the structuring, cleanup and graph construction are original work, reusable non-commercially with attribution.
+
+> The product interface currently ships in Simplified Chinese only — the English / Japanese / Korean READMEs are documentation copies. A multi-language UI is still WIP (see [docs/known-issues.md](docs/known-issues.md) KI-09).
 
 <br/>
 

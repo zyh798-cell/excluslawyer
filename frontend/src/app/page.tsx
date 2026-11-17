@@ -20,6 +20,8 @@ import ContractView from "@/components/ContractView";
 import FactPanel from "@/components/FactPanel";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
 import OpinionView from "@/components/OpinionView";
+import ProductBar from "@/components/ProductBar";
+import ScenarioEntry from "@/components/ScenarioEntry";
 import { SkeletonCard } from "@/components/Skeleton";
 import ToolboxView from "@/components/ToolboxView";
 import MockTrialView from "@/components/MockTrialView";
@@ -39,6 +41,7 @@ import {
   searchCases,
   sendFeedback,
 } from "@/lib/api";
+import type { JurisdictionCode, Scenario } from "@/config/scenarios";
 
 const JURISDICTIONS = [
   { code: "CN", label: "中国" },
@@ -60,7 +63,7 @@ type Mode = (typeof MODES)[number]["id"];
 export default function Home() {
   // ---- 通用 ----
   const [mode, setMode] = useState<Mode>("consult");
-  const [jurisdiction, setJurisdiction] = useState("CN");
+  const [jurisdiction, setJurisdiction] = useState<JurisdictionCode>("CN");
   const [adversarial, setAdversarial] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -196,58 +199,72 @@ export default function Home() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.6fr_1fr]">
-      {/* 左：模式化主工作区 */}
-      <div className="flex flex-col gap-5">
-        {/* 模式切换 */}
-        <nav className="flex flex-wrap gap-2" aria-label="功能模式切换">
-          {MODES.map((m) => {
-            const Icon = m.icon;
-            return (
-              <button
-                key={m.id}
-                aria-pressed={mode === m.id}
-                aria-label={`切换到${m.label}`}
-                className={`btn ${mode === m.id ? "btn-primary" : "btn-ghost"}`}
-                onClick={() => setMode(m.id)}
-              >
-                <Icon size={16} aria-hidden /> {m.label}
-              </button>
-            );
-          })}
-        </nav>
+    <div className="flex flex-col gap-5">
+      {/* 顶部：产品标识 + 法域选择器 */}
+      <ProductBar
+        jurisdiction={jurisdiction}
+        onJurisdictionChange={(j) => setJurisdiction(j)}
+      />
 
-        {/* ===== 法律咨询模式 ===== */}
-        {mode === "consult" && (
-          <>
-            <section className="card p-5">
-              <h1 className="text-lg font-semibold text-fg">法律咨询（检索 → 引用回答 / 五段式意见书）</h1>
-              <p className="mt-1 text-xs text-fg-subtle">
-                铁律：每条结论必挂现行有效法条原文；检索不到就说「证据不足」，不编造。
-              </p>
-              <textarea
-                className="textarea mt-4 h-32 resize-y"
-                placeholder="例如：公司拖欠我三个月工资，我打算离职并索赔，法律上怎么处理？"
-                aria-label="法律问题描述"
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) onAsk();
-                }}
-              />
-              <div className="mt-3 flex flex-wrap items-center gap-3">
-                <select
-                  className="select w-auto"
-                  value={jurisdiction}
-                  aria-label="选择法域"
-                  onChange={(e) => setJurisdiction(e.target.value)}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.6fr_1fr]">
+        {/* 左：模式化主工作区 */}
+        <div className="flex flex-col gap-5">
+          {/* 模式切换 */}
+          <nav className="flex flex-wrap gap-2" aria-label="功能模式切换">
+            {MODES.map((m) => {
+              const Icon = m.icon;
+              return (
+                <button
+                  key={m.id}
+                  aria-pressed={mode === m.id}
+                  aria-label={`切换到${m.label}`}
+                  className={`btn ${mode === m.id ? "btn-primary" : "btn-ghost"}`}
+                  onClick={() => setMode(m.id)}
                 >
-                  {JURISDICTIONS.map((j) => (
-                    <option key={j.code} value={j.code}>
-                      法域：{j.label}
-                    </option>
-                  ))}
-                </select>
+                  <Icon size={16} aria-hidden /> {m.label}
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* ===== 法律咨询模式 ===== */}
+          {mode === "consult" && (
+            <>
+              {/* 场景化入口：选场景 → 问卷 → 结构化摘要预填提问框 */}
+              <ScenarioEntry
+                jurisdiction={jurisdiction}
+                onJurisdictionChange={(j) => setJurisdiction(j)}
+                onSummary={(summary) => setQuestion(summary)}
+              />
+
+              <section className="card p-5">
+                <h1 className="text-lg font-semibold text-fg">法律咨询（检索 → 引用回答 / 五段式意见书）</h1>
+                <p className="mt-1 text-xs text-fg-subtle">
+                  铁律：每条结论必挂现行有效法条原文；检索不到就说「证据不足」，不编造。
+                </p>
+                <textarea
+                  className="textarea mt-4 h-32 resize-y"
+                  placeholder="例如：公司拖欠我三个月工资，我打算离职并索赔，法律上怎么处理？"
+                  aria-label="法律问题描述"
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) onAsk();
+                  }}
+                />
+                <div className="mt-3 flex flex-wrap items-center gap-3">
+                  <select
+                    className="select w-auto"
+                    value={jurisdiction}
+                    aria-label="选择法域"
+                    onChange={(e) => setJurisdiction(e.target.value as JurisdictionCode)}
+                  >
+                    {JURISDICTIONS.map((j) => (
+                      <option key={j.code} value={j.code}>
+                        法域：{j.label}
+                      </option>
+                    ))}
+                  </select>
                 <label className="flex cursor-pointer items-center gap-2 text-xs text-fg-muted">
                   <input
                     type="checkbox"
@@ -499,6 +516,10 @@ export default function Home() {
           </div>
         )}
       </div>
+      </div>
+
+      {/* 底部全局免责声明（各输出区另有分项提示） */}
+      <LegalDisclaimer />
     </div>
   );
 }

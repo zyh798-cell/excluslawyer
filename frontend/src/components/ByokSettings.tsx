@@ -63,10 +63,11 @@ export default function ByokSettings({ onChange }: { onChange: (cfg: ByokConfig)
         className="flex w-full items-center justify-between p-4 text-left"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
-        aria-label="展开或收起 BYOK 设置"
       >
+        {/* 可访问名由可见文本推导；sr-only 前缀仅补充动作说明，保证 accessible name 包含全部可见文本 */}
         <span className="flex items-center gap-2 text-sm font-medium text-fg">
           <Settings2 size={16} className="text-accent-soft" aria-hidden />
+          <span className="sr-only">展开或收起 </span>
           BYOK 设置（Key 只存本地浏览器）
         </span>
         <span className={`chip ${cfg.apiKey ? "bg-ok/15 text-ok" : "bg-surface-hover text-fg-muted"}`}>

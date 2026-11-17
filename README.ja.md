@@ -101,7 +101,7 @@
                 └──────────────────────────────────────────────────┘
 ```
 
-詳細ドキュメント：[docs/architecture.md](docs/architecture.md) · [docs/mock-trial.md](docs/mock-trial.md) · [docs/eval.md](docs/eval.md)
+詳細ドキュメント：[docs/architecture.md](docs/architecture.md) · [docs/mock-court.md](docs/mock-court.md) · [docs/eval.md](docs/eval.md) · [docs/regression-report.md](docs/regression-report.md) · [docs/known-issues.md](docs/known-issues.md)
 
 ## コア機能
 
@@ -127,7 +127,7 @@ API キーはブラウザの localStorage にのみ保持され、バックエ�
 | 条文引用再現率 | **100 %** | ≥ 98 % |
 | 結論と証拠の一貫性（NLI） | **100 %** | ≥ 90 % |
 | 時効性判定精度 | **100 %** | ≥ 99 % |
-| バックエンドテスト（pytest） | **108 passed · 4 skipped** | 全緑 |
+| バックエンドテスト（pytest） | **113 passed · 4 skipped** | 全緑 |
 | フロントエンドテスト（vitest） | **16 / 16** | 全緑 |
 | 本番ビルド（next build） | **exit 0 · 警告 0** | — |
 | Lighthouse（模擬裁判ページ） | **100 · LCP 1.9 s · CLS 0** | LCP < 2.5 s, CLS < 0.1 |
@@ -168,8 +168,12 @@ npm install && npm run dev
 | ドキュメント | 内容 |
 | --- | --- |
 | [docs/architecture.md](docs/architecture.md) | デュアルバックエンド検索、BGE-M3、Neo4j グラフ、SGA 1979 PDF デノイズ |
-| [docs/mock-trial.md](docs/mock-trial.md) | LangGraph 審理ステートマシン、checkpointer 永続化、エクスポートスキーマ |
+| [docs/mock-court.md](docs/mock-court.md) | 模擬裁判ステートマシン、trial ルート8本、証拠/時効/対抗的視点の仕組み、MD+PDF 出力 |
+| [docs/scenario-entry.md](docs/scenario-entry.md) | シナリオ入口（一般ユーザー向け P0）：8 つの生活シナリオ、ステップ式質問票、構造化サマリーの下書き投入 |
+| [docs/mock-trial.md](docs/mock-trial.md) | 実装詳細ノート（初期稿）：checkpointer シリアライズ、SSE フレーミング、出力スキーマ |
 | [docs/eval.md](docs/eval.md) | ゴールデンセット手法、ハルシネーション 0% 検証、回帰マトリクス |
+| [docs/regression-report.md](docs/regression-report.md) | 本イテレーション的回帰検証レポート |
+| [docs/known-issues.md](docs/known-issues.md) | 既知不具合一覧：症状・原因・影響・改修計画 |
 
 ## セキュリティとコンプライアンス
 
@@ -180,7 +184,10 @@ npm install && npm run dev
 
 ## ライセンス
 
-[AGPL-3.0](LICENSE) — open by design, and staying that way.
+- **コード** — [AGPL-3.0](LICENSE)：エンジン本体は GNU Affero General Public License v3 で授權。
+- **データセット** — 条文テキストとナレッジグラフのスナップショットは [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) で提供：条文の文面は各法域の公式法令データベース（flk.npc.gov.cn / e-Gov / law.go.kr / sso.agc.gov.sg）由来、構造化・整形とグラフ構築は当方の独自の整理であり、表示条件下で非商用に再利用可。
+
+> 製品UIは現在簡体字中国語のみ。英語・日本語・韓国語の README は文書の写しであり、多言語UIは開発中（[docs/known-issues.md](docs/known-issues.md) KI-09 参照）。
 
 <br/>
 

@@ -116,7 +116,7 @@ LLM 路径的系统词强制 `[CIT-id]` 格式且「只能使用给定清单」�
 
 ```
 cd backend && python -m pytest tests/ -q
-→ 108 passed · 4 skipped（skip = Neo4j Docker 专项，环境未起图库时跳过）
+→ 113 passed · 4 skipped（skip = Neo4j Docker 专项，环境未起图库时跳过）
 ```
 
 | 测试文件 | 覆盖 |
@@ -157,7 +157,7 @@ cd frontend && npm test
 ### 3.4 一键回归清单
 
 ```bash
-cd backend  && python -m pytest tests/ -q          # 108 passed · 4 skipped
+cd backend  && python -m pytest tests/ -q          # 113 passed · 4 skipped
 cd frontend && npm test && npm run build           # 16/16 + build clean
 ```
 

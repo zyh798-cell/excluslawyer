@@ -1,8 +1,8 @@
-# Regression Report — 任务③模拟法庭深化迭代回归验证报告
+# Regression Report — 任务③模拟法庭深化迭代 + 普通人友好层 P0（场景化入口）回归验证报告
 
 > [English](../README.md) | [简体中文](../README.zh-CN.md) | [日本語](../README.ja.md) | [한국어](../README.ko.md)
 >
-> 生成时间：2026-11-16 · 环境：Windows 11 / Python 3.13.12 / Node（Next.js 14）
+> 生成时间：2026-11-16（任务③） / 2026-11-17（场景化入口 P0 追加核验） · 环境：Windows 11 / Python 3.13.12 / Node 22（Next.js 14.2.5）
 > 测试解释器：`C:/Users/ZTL/.workbuddy/binaries/python/versions/3.13.12/python.exe`
 
 ---
@@ -12,13 +12,14 @@
 | 项目 | 结果 | 判定 |
 | --- | --- | --- |
 | 后端全量（pytest） | **113 passed · 4 skipped · 0 failed**（117 collected） | ✅ |
-| 前端全量（vitest） | **16 / 16** | ✅ |
+| 前端全量（vitest） | **30 / 30**（原 16 + 场景层新增 14） | ✅ |
 | #42 模拟法庭路由回归（test_trial_graph.py） | **11 / 11** | ✅ |
 | Golden Set 主集（100 条） | 未破坏，四指标达标 | ✅ |
 | 庭审 Golden Set（10 例） | 行为闸门 + 四指标达标 | ✅ |
 | 生产构建（next build） | **exit 0 · 0 警告** | ✅ |
 | tsc --noEmit（TrialView 移除后） | 0 错误 | ✅ |
-| Lighthouse（/mock-trial） | 100 分 · LCP 1.9 s · CLS 0 · TBT 0 ms | ✅ |
+| Lighthouse（/）场景入口 | perf 0.99 · **a11y 1.00** · LCP 2.0 s · CLS 0 · TBT 40 ms · a11y 失败项 0 | ✅ |
+| Lighthouse（/mock-trial） | perf 1.00 · **a11y 1.00** · LCP 1.9 s · CLS 0 · TBT 10 ms · a11y 失败项 0 | ✅ |
 | INP | 无交互样本 N/A，**待真实交互复测** | ⚠️ 不阻断 |
 
 > 备注：任务③收尾核对基线为 pytest 108 passed；本次遗留项处理新增 5 例回归用例
@@ -69,27 +70,79 @@ python -m pytest tests/test_trial_graph.py -q   # 11 passed
 - 行为闸门全过；citation_recall ≥ 0.98、hallucination ≤ 0.03、timeliness ≥ 0.99；
 - limitation 用例支持 `checked: false` 期望（如"去年"相对时间不锁 risk_level，防时间漂移）。
 
-## 4. 前端回归（vitest 16/16 + 构建）
+## 4. 前端回归（vitest 30/30 + 构建）
 
 | 测试文件 | 用例 | 覆盖 |
 | --- | --- | --- |
-| src/test/consult-graph.test.tsx | 4 | 咨询状态机交互、中断恢复 |
+| src/test/scenarios.test.tsx | **14** | 场景配置完整性（8 场景/标签/字段/schema）、`buildScenarioSummary` 摘要生成、栅格渲染、问卷必填校验、摘要预填可编辑、退出问卷、法域自动切换、顶部/卡片法域双向同步 |
+| src/test/consult-graph.test.tsx | 3 | 咨询状态机交互、中断恢复 |
 | src/test/kg-canvas.test.tsx | 4 | 图谱画布渲染、节点点击 |
 | src/test/panels.test.tsx | 4 | 引用面板/事实面板/裁决卡片 |
-| src/test/theme-toast-byok.test.tsx | 4 | 双主题、Toast、BYOK 设置 |
+| src/test/theme-toast-byok.test.tsx | 5 | 双主题、Toast、BYOK 设置与密钥自检 |
 
-- `next build`：exit 0，**0 警告**；`/mock-trial` 路由 chunk 2.95 kB / First Load 100 kB；
-- `npx tsc --noEmit`：0 错误（含旧版 TrialView.tsx 移除后无悬空引用）。
+- `next build`：**exit 0 · 0 警告**；`/` 路由 chunk 24.7 kB / First Load 122 kB；
+  `/mock-trial` 路由 chunk 2.95 kB / First Load 101 kB；共享 chunk 87.2 kB
+  （`fd9d1056` 53.6 kB + `23-b66f946` 31.5 kB + other 2.07 kB）；
+- `npx tsc --noEmit`：0 错误；
+- 后端零改动（`git status backend/` 为空），pytest **113 passed / 4 skipped**，与基线一致。
 
-## 5. 性能（Lighthouse 12 · /mock-trial）
+### 4.1 场景化入口人工核对（Playwright + Chrome 157 headless 实跑）
+
+| 核对项 | 实测结果 |
+| --- | --- |
+| 场景卡片数 | 8 ✅ |
+| 栅格类 | `grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4` ✅ |
+| 实际列数 | 375px → 1 列；768px → 2 列；1440px → 3 列；1536px → 4 列 ✅ |
+| 卡片热区 | 285×182 px（≥44×44） ✅ |
+| 顶部产品标识 | 1 个（内联 SVG 徽记 + 定位文案） ✅ |
+| 法域选择器 | radiogroup 4 项 ✅ |
+| 自由提问入口 | `textarea[aria-label="法律问题描述"]` 1 个，保留 ✅ |
+| 场景区 emoji | 0 处；内联 SVG 17 个；`<img>` 0 个 ✅ |
+| 问卷流程 | 选场景 → 问卷出现；必填未填时「下一步」禁用并提示 ✅ |
+| 摘要预填 | `【租房与押金】城市：杭州；租房类型：个人房东直租；争议事项：押金不退；…` ✅ |
+| 摘要可编辑 | 覆盖输入后取值即时更新 ✅ |
+| 法域切换 | 顶部 radio → 咨询卡 select 同步为 `JP` ✅ |
+| 亮暗主题 | `html.dark` 增删正确，两主题下对比度全部达标 ✅ |
+| 浏览器控制台错误 | 仅 1 条资源 404（与场景层无关，无脚本错误） |
+
+### 4.2 本轮修复的可访问性问题（Lighthouse a11y 实测）
+
+| 问题 | 修复前 | 修复后 |
+| --- | --- | --- |
+| BYOK 折叠标题对比度 | 12px `text-fg-subtle` 对白底 < 4.5:1 | 浅色 `--c-fg-subtle` 调深至 `88 100 119`；实测 15.84（标题）/ 5.83（副标题） ✅ |
+| 法域徽章对比度 | 浅色主题法域色过浅 | 四个法域色各降一档；实测 4.98–5.50（浅色）/ 5.91–9.15（暗色） ✅ |
+| 场景卡片可访问名 | `aria-label` 与可见文案不匹配 | 去掉 `aria-label`，可访问名取自可见文本 ✅ |
+| 角色误用 | `<button role="listitem">` | 真实 `ul > li > button` ✅ |
+| BYOK 标题标签 | `aria-label` 覆盖可见文案 | `sr-only` 前缀补充动作说明 ✅ |
+| MockTrialView「恢复会话」 | `aria-label="恢复已有会话"` 与可见文案不匹配 | 改为含可见文案的标签 ✅（顺手修，非本轮引入） |
+
+复测：首页 a11y **1.00 / 0 失败项**；`/mock-trial` a11y **1.00 / 0 失败项**。
+
+## 5. 性能（Lighthouse 12.8.2 · next start 生产构建 · Chrome 157 headless）
+
+### /（场景入口）
 
 | 指标 | 结果 | 预算 |
 | --- | --- | --- |
-| Performance | 100 | — |
+| Performance | 0.99 | — |
+| Accessibility | **1.00**（0 失败项） | — |
+| FCP | 0.8 s | — |
+| LCP | **2.0 s** | < 2.5 s ✅ |
+| CLS | **0** | < 0.1 ✅ |
+| TBT | 40 ms | — |
+| INP | **N/A**（导航模式无交互样本，不强行判定） | < 200 ms ⚠️ 待真实交互复测 |
+
+### /mock-trial
+
+| 指标 | 结果 | 预算 |
+| --- | --- | --- |
+| Performance | 1.00 | — |
+| Accessibility | **1.00**（0 失败项） | — |
+| FCP | 0.8 s | — |
 | LCP | **1.9 s** | < 2.5 s ✅ |
 | CLS | **0** | < 0.1 ✅ |
-| TBT | 0 ms | — |
-| INP | N/A（无交互样本） | < 200 ms ⚠️ 待真实交互复测 |
+| TBT | 10 ms | — |
+| INP | **N/A**（导航模式无交互样本，不强行判定） | < 200 ms ⚠️ 待真实交互复测 |
 
 ## 6. 覆盖范围说明
 
@@ -103,4 +156,6 @@ BYOK fail-closed、跨法域对比（含案由过滤）、KG 查询与快照回�
 - Lighthouse INP 需真实交互样本复测；
 - test_kg_neo4j 依赖 Docker Neo4j，CI 默认 skip；
 - P2 轮次制 `/api/trial/start|turn` 与 P3 状态机并存（兼容保留）；
-- 外法域（JP/KR/SG）对比条目为概要种子，标注"需官源核对"。
+- 外法域（JP/KR/SG）对比条目为概要种子，标注"需官源核对"；
+- 场景化入口的问卷必填校验仅在客户端，无服务端结构化校验（KI-11）；
+- 场景化入口的后端逻辑、大白话解释、程序指引、多语言 UI 尚未实现（KI-09 / KI-10）。

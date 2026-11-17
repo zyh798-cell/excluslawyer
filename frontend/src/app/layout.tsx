@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
 import ToastHost from "@/components/Toast";
+import WarningIcon from "@/components/WarningIcon";
 import { LEGAL_DISCLAIMER } from "@/lib/disclaimer";
 
 export const metadata: Metadata = {
@@ -39,7 +40,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
         <footer className="mx-auto max-w-7xl px-6 pb-10 text-center">
           <p className="disclaimer inline-block text-left">
-            ⚠️ {LEGAL_DISCLAIMER}
+            <WarningIcon className="mr-1 inline-block align-[-2px]" />
+            {LEGAL_DISCLAIMER}
           </p>
           <p className="mt-2 text-xs text-fg-subtle">AGPL-3.0 开源</p>
         </footer>
