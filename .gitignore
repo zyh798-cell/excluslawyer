@@ -46,3 +46,4 @@ backend/scripts/_*.py
 # 系统
 .DS_Store
 Thumbs.db
+frontend/lh-*.json
