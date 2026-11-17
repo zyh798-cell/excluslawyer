@@ -159,3 +159,11 @@ BYOK fail-closed、跨法域对比（含案由过滤）、KG 查询与快照回�
 - 外法域（JP/KR/SG）对比条目为概要种子，标注"需官源核对"；
 - 场景化入口的问卷必填校验仅在客户端，无服务端结构化校验（KI-11）；
 - 场景化入口的后端逻辑、大白话解释、程序指引、多语言 UI 尚未实现（KI-09 / KI-10）。
+
+## 大白话解释层回归（2026-11-18）
+
+- 前端 vitest **49/49**（原有 30 + 新增 19）；	sc --noEmit 0 错误；
+ext build exit 0、0 警告，First Load 131kB。
+- Lighthouse：/ 场景页 perf 0.99 / a11y 1.00 / LCP 2.0s / CLS 0；/mock-trial perf 1.00 / a11y 1.00 / LCP 1.9s / CLS 0；INP 无交互样本 N/A。
+- Playwright 端到端矩阵通过；后端 pytest **113 passed / 4 skipped / 0 failed**，ackend/ 零改动。
+- 遗留 WIP：问卷后端逻辑、程序指引、多语言 UI、证据助手/文书模板/跨境专题。

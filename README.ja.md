@@ -170,6 +170,7 @@ npm install && npm run dev
 | [docs/architecture.md](docs/architecture.md) | デュアルバックエンド検索、BGE-M3、Neo4j グラフ、SGA 1979 PDF デノイズ |
 | [docs/mock-court.md](docs/mock-court.md) | 模擬裁判ステートマシン、trial ルート8本、証拠/時効/対抗的視点の仕組み、MD+PDF 出力 |
 | [docs/scenario-entry.md](docs/scenario-entry.md) | シナリオ入口（一般ユーザー向け P0）：8 つの生活シナリオ、ステップ式質問票、構造化サマリーの下書き投入 |
+| [docs/plain-explain.md](docs/plain-explain.md) | 平易語説明層：かんたんモード切替、テンプレート説明、用語の即時解説（26 語） |
 | [docs/mock-trial.md](docs/mock-trial.md) | 実装詳細ノート（初期稿）：checkpointer シリアライズ、SSE フレーミング、出力スキーマ |
 | [docs/eval.md](docs/eval.md) | ゴールデンセット手法、ハルシネーション 0% 検証、回帰マトリクス |
 | [docs/regression-report.md](docs/regression-report.md) | 本イテレーション的回帰検証レポート |

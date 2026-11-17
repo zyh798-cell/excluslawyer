@@ -13,6 +13,7 @@ import {
 import { KgQueryResponse, kgQuery, kgStats } from "@/lib/api";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
 import KgGraphCanvas from "@/components/KgGraphCanvas";
+import PlainToggle from "@/components/PlainToggle";
 import { showToast } from "@/components/Toast";
 
 /** 各法域官方法源门户（溯源链接）。 */
@@ -103,9 +104,13 @@ export default function KgPanel() {
 
   return (
     <section className="card p-5">
-      <h2 className="flex items-center gap-2 text-base font-semibold text-fg">
-        <Network size={17} className="text-accent-soft" aria-hidden /> 法律知识图谱 · 多跳问答
-      </h2>
+      <div className="flex flex-wrap items-center gap-2">
+        <h2 className="flex items-center gap-2 text-base font-semibold text-fg">
+          <Network size={17} className="text-accent-soft" aria-hidden /> 法律知识图谱 · 多跳问答
+        </h2>
+        {/* 通俗模式开关：与对话页/模拟法庭共享同一全局状态（状态跨页面一致） */}
+        <PlainToggle className="ml-auto" />
+      </div>
 
       <div className="mt-3 flex gap-2">
         <input

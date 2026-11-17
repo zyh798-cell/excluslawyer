@@ -20,6 +20,8 @@ import ContractView from "@/components/ContractView";
 import FactPanel from "@/components/FactPanel";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
 import OpinionView from "@/components/OpinionView";
+import { PlainAnswerSection } from "@/components/PlainAnswerCard";
+import PlainToggle from "@/components/PlainToggle";
 import ProductBar from "@/components/ProductBar";
 import ScenarioEntry from "@/components/ScenarioEntry";
 import { SkeletonCard } from "@/components/Skeleton";
@@ -238,7 +240,10 @@ export default function Home() {
               />
 
               <section className="card p-5">
-                <h1 className="text-lg font-semibold text-fg">法律咨询（检索 → 引用回答 / 五段式意见书）</h1>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h1 className="text-lg font-semibold text-fg">法律咨询（检索 → 引用回答 / 五段式意见书）</h1>
+                  <PlainToggle className="ml-auto" />
+                </div>
                 <p className="mt-1 text-xs text-fg-subtle">
                   铁律：每条结论必挂现行有效法条原文；检索不到就说「证据不足」，不编造。
                 </p>
@@ -329,16 +334,36 @@ export default function Home() {
                   )}
                 </div>
 
-                {/* 执行轨迹（状态机透明性） */}
-                <ol className="mb-3 flex flex-wrap gap-1" aria-label="状态机执行轨迹">
-                  {graph.trace.map((t, i) => (
-                    <li key={i} className="chip border border-line font-mono text-[11px] text-fg-subtle">
-                      {t}
-                    </li>
-                  ))}
-                </ol>
-
-                <article className="whitespace-pre-wrap text-sm leading-7 text-fg-muted">{graph.answer}</article>
+                {/* 通俗模式：白话结论在上，原文/轨迹收进可展开区；关闭时恢复专业展示 */}
+                <PlainAnswerSection
+                  input={{
+                    kind: "graph",
+                    text: graph.answer,
+                    citations: graph.citations,
+                    nli: graph.nli,
+                    confidence: graph.confidence,
+                    riskNotes: graph.status === "degraded" ? ["本次为降级出稿（经人工批准），结论带降级警示"] : [],
+                  }}
+                  sourceLabel="法条原文与专业分析（含执行轨迹）"
+                  professional={
+                    <article className="whitespace-pre-wrap text-sm leading-7 text-fg-muted">{graph.answer}</article>
+                  }
+                  source={
+                    <>
+                      <article className="whitespace-pre-wrap text-sm leading-7 text-fg-muted">{graph.answer}</article>
+                      <div className="mt-3" aria-label="状态机执行轨迹（明细）">
+                        <p className="text-xs font-medium text-fg-muted">执行轨迹</p>
+                        <ol className="mt-1.5 flex flex-wrap gap-1">
+                          {graph.trace.map((t, i) => (
+                            <li key={i} className="chip border border-line font-mono text-[11px] text-fg-subtle">
+                              {t}
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    </>
+                  }
+                />
 
                 {graph.adversarial_notes && (
                   <div className="mt-3 rounded-lg border border-danger/30 bg-danger/5 p-3">
@@ -393,8 +418,40 @@ export default function Home() {
                   <span className="chip border border-line text-fg-muted">
                     置信度 {(result.confidence * 100).toFixed(0)}%
                   </span>
+                  <PlainToggle className="ml-auto" />
                 </div>
-                <article className="whitespace-pre-wrap text-sm leading-7 text-fg-muted">{result.answer}</article>
+                {/* 通俗模式：白话结论在上，原文收进可展开区；关闭时恢复专业展示 */}
+                <PlainAnswerSection
+                  input={{
+                    kind: "ask",
+                    text: result.answer,
+                    citations: result.citations,
+                    nli: result.nli,
+                    confidence: result.confidence,
+                  }}
+                  sourceLabel="法条原文与专业分析"
+                  professional={
+                    <article className="whitespace-pre-wrap text-sm leading-7 text-fg-muted">{result.answer}</article>
+                  }
+                  source={
+                    <>
+                      <article className="whitespace-pre-wrap text-sm leading-7 text-fg-muted">{result.answer}</article>
+                      {result.citations.length > 0 && (
+                        <div className="mt-3">
+                          <p className="text-xs font-medium text-fg-muted">引用法条一览（原文以溯源面板为准）</p>
+                          <ul className="mt-1.5 space-y-1">
+                            {result.citations.map((c) => (
+                              <li key={c.statute_id} className="text-xs leading-5 text-fg-subtle">
+                                · 《{c.law_title}》{c.article_no}
+                                {c.effective_status !== "effective" ? `（${c.effective_status}）` : ""}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </>
+                  }
+                />
                 <div className="mt-5 flex items-center gap-2 border-t border-line pt-4">
                   <span className="text-xs text-fg-subtle">这条回答对你有帮助吗？</span>
                   <button

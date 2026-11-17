@@ -101,7 +101,7 @@ Four non-negotiable rules run through the entire pipeline:
                 └──────────────────────────────────────────────────┘
 ```
 
-Deep dives: [docs/architecture.md](docs/architecture.md) · [docs/scenario-entry.md](docs/scenario-entry.md) · [docs/mock-court.md](docs/mock-court.md) · [docs/eval.md](docs/eval.md) · [docs/regression-report.md](docs/regression-report.md) · [docs/known-issues.md](docs/known-issues.md)
+Deep dives: [docs/architecture.md](docs/architecture.md) · [docs/scenario-entry.md](docs/scenario-entry.md) · [docs/plain-explain.md](docs/plain-explain.md) · [docs/mock-court.md](docs/mock-court.md) · [docs/eval.md](docs/eval.md) · [docs/regression-report.md](docs/regression-report.md) · [docs/known-issues.md](docs/known-issues.md)
 
 ## Core Capabilities
 
@@ -169,6 +169,7 @@ Without `requirements-ml.txt` the engine still runs end-to-end: embeddings fall 
 | --- | --- |
 | [docs/architecture.md](docs/architecture.md) | Dual-backend retrieval, BGE-M3, Neo4j graph, SGA 1979 PDF de-pollution |
 | [docs/scenario-entry.md](docs/scenario-entry.md) | Scenario entry (lay-person layer P0): 8 life scenarios, stepwise questionnaire, structured summary prefill |
+| [docs/plain-explain.md](docs/plain-explain.md) | Plain-language layer: plain-mode toggle, templated explanations, term hints (26 terms) |
 | [docs/mock-court.md](docs/mock-court.md) | Mock-court state machine, 8 trial routes, evidence / limitation / dual-perspective mechanisms, MD+PDF export |
 | [docs/mock-trial.md](docs/mock-trial.md) | Implementation notes (early draft): checkpointer serialization, SSE framing, export schema |
 | [docs/eval.md](docs/eval.md) | Golden Set methodology, 0 % hallucination verification, regression matrix |

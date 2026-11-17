@@ -46,12 +46,18 @@ describe("主页 trace 可视化 + 仲裁裁决联动", () => {
     });
     fireEvent.click(screen.getByRole("button", { name: /状态机深度咨询/ }));
 
+    // 通俗模式（默认开）：trace 收进「法条原文与专业分析」可折叠区，先展开
+    const details = await screen.findByText(/法条原文与专业分析（含执行轨迹）/, {
+      selector: "summary",
+    });
+    fireEvent.click(details);
+
     // trace 链路可视化（每个节点一个 chip）
     await screen.findByText("intake(ok)");
     expect(screen.getByText("retrieve(1 hits, top=0.350)")).toBeInTheDocument();
     expect(screen.getByText("nli_verify(degraded, 0.1)")).toBeInTheDocument();
 
-    // 仲裁裁决 UI（interrupted → alertdialog + 两个裁决按钮）
+    // 仲裁裁决 UI（interrupted → alertdialog + 两个裁决按钮）在折叠区外，始终可见
     expect(screen.getByRole("alertdialog", { name: /NLI 降级人工裁决/ })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /批准带降级警示出稿/ })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /驳回不出结论/ })).toBeInTheDocument();
@@ -63,11 +69,14 @@ describe("主页 trace 可视化 + 仲裁裁决联动", () => {
       target: { value: "对方不履行合同，能要求赔偿吗？" },
     });
     fireEvent.click(screen.getByRole("button", { name: /状态机深度咨询/ }));
+
+    // 展开 trace 折叠区（通俗模式默认开）
+    fireEvent.click(await screen.findByText(/法条原文与专业分析（含执行轨迹）/, { selector: "summary" }));
     await screen.findByRole("alertdialog", { name: /NLI 降级人工裁决/ });
 
     fireEvent.click(screen.getByRole("button", { name: /批准带降级警示出稿/ }));
 
-    // 恢复后 trace 追加 human_confirm(approve) + finalize
+    // 恢复后 trace 追加 human_confirm(approve) + finalize（details 保持展开，追加内容直接可见）
     await screen.findByText("human_confirm(approve)");
     expect(screen.getByText(/finalize\(degraded/)).toBeInTheDocument();
     // 裁决 UI 消失

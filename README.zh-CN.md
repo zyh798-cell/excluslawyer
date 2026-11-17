@@ -170,6 +170,7 @@ npm install && npm run dev
 | [docs/architecture.md](docs/architecture.md) | 双后端检索、BGE-M3、Neo4j 图谱、SGA 1979 PDF 去污 |
 | [docs/mock-court.md](docs/mock-court.md) | 模拟法庭状态机、8 条 trial 路由、证据/时效/双视角机制、MD+PDF 导出 |
 | [docs/scenario-entry.md](docs/scenario-entry.md) | 场景化入口（普通人友好层 P0）：8 个生活场景、分步问卷、结构化摘要预填 |
+| [docs/plain-explain.md](docs/plain-explain.md) | 大白话解释层：通俗模式开关、模板化白话、术语即时释义（26 条） |
 | [docs/mock-trial.md](docs/mock-trial.md) | 实现细节笔记（早期稿）：checkpointer 序列化、SSE 分帧、导出 Schema |
 | [docs/eval.md](docs/eval.md) | Golden Set 方法论、0% 幻觉验证、回归矩阵 |
 | [docs/regression-report.md](docs/regression-report.md) | 本迭代回归验证报告 |

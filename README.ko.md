@@ -170,6 +170,7 @@ npm install && npm run dev
 | [docs/architecture.md](docs/architecture.md) | 이중 백엔드 검색, BGE-M3, Neo4j 그래프, SGA 1979 PDF 디노이즈 |
 | [docs/mock-court.md](docs/mock-court.md) | 모의재판 상태 기계, trial 라우트 8종, 증거/시의성/쌍방 대립 메커니즘, MD+PDF 출력 |
 | [docs/scenario-entry.md](docs/scenario-entry.md) | 시나리오 진입(일반 사용자용 P0): 8개 생활 시나리오, 단계별 설문, 구조화 요약 사전 입력 |
+| [docs/plain-explain.md](docs/plain-explain.md) | 쉬운 말 설명 계층: 일반 모드 토글, 템플릿 설명, 용어 즉시 해설(26개) |
 | [docs/mock-trial.md](docs/mock-trial.md) | 구현 상세 노트(초기稿): checkpointer 직렬화, SSE 프레이밍, 출력 스키마 |
 | [docs/eval.md](docs/eval.md) | 골든 셋 방법론, 환각 0% 검증, 회귀 매트릭스 |
 | [docs/regression-report.md](docs/regression-report.md) | 이번 이터레이션 회귀 검증 보고서 |

@@ -24,6 +24,8 @@ import {
   User,
 } from "lucide-react";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
+import { PlainAnswerSection } from "@/components/PlainAnswerCard";
+import PlainToggle from "@/components/PlainToggle";
 import { Skeleton, SkeletonCard } from "@/components/Skeleton";
 import { showToast } from "@/components/Toast";
 import {
@@ -759,25 +761,8 @@ function LimitationCard({ limitation }: { limitation: LimitationRisk }) {
 }
 
 function VerdictCard({ verdict, onExport }: { verdict: TrialVerdict; onExport: (k: "md" | "pdf") => void }) {
-  return (
-    <section className="card-strong card p-5" aria-label="模拟裁判结果">
-      {/* 强制前置免责 */}
-      <p className="rounded-lg border border-danger/40 bg-danger/10 px-3 py-2 text-sm font-semibold text-danger">
-        {verdict.disclaimer || TRIAL_DISCLAIMER}
-      </p>
-
-      <div className="mt-4 flex flex-wrap items-center gap-2">
-        <h2 className="text-sm font-semibold text-fg">模拟裁判（逐条理由 + 法条溯源）</h2>
-        <button className="btn btn-ghost ml-auto px-3 py-1.5 text-xs hover-elastic" onClick={() => onExport("md")} aria-label="导出 Markdown">
-          <Download size={13} aria-hidden /> 导出 Markdown
-        </button>
-        <button className="btn btn-ghost px-3 py-1.5 text-xs hover-elastic" onClick={() => onExport("pdf")} aria-label="导出 PDF">
-          <FileText size={13} aria-hidden /> 导出 PDF
-        </button>
-      </div>
-
-      <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-fg-muted">{verdict.overall}</p>
-
+  const professional = (
+    <>
       <div className="mt-4 space-y-3">
         {verdict.items.map((it, i) => (
           <div key={i} className="neu-inset p-3.5 hover-elastic">
@@ -813,19 +798,6 @@ function VerdictCard({ verdict, onExport }: { verdict: TrialVerdict; onExport: (
         ))}
       </div>
 
-      {verdict.risk_notes.length > 0 && (
-        <div className="mt-4 rounded-lg border border-warn/40 bg-warn/10 p-3">
-          <p className="text-xs font-semibold text-warn">风险提示</p>
-          <ul className="mt-1 space-y-0.5">
-            {verdict.risk_notes.map((n, i) => (
-              <li key={i} className="text-xs leading-5 text-fg-muted">
-                · {n}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
       {verdict.case_refs.length > 0 && (
         <div className="mt-3">
           <p className="text-xs font-medium text-fg-muted">判例参考（知识图谱）</p>
@@ -847,6 +819,65 @@ function VerdictCard({ verdict, onExport }: { verdict: TrialVerdict; onExport: (
               <li key={i} className="text-xs leading-5 text-fg-subtle">
                 · [{r.jurisdiction_name}] {r.rule_summary}
                 {r.statute_ref ? `（${r.statute_ref}）` : ""}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
+  );
+
+  return (
+    <section className="card-strong card p-5" aria-label="模拟裁判结果">
+      {/* 强制前置免责 */}
+      <p className="rounded-lg border border-danger/40 bg-danger/10 px-3 py-2 text-sm font-semibold text-danger">
+        {verdict.disclaimer || TRIAL_DISCLAIMER}
+      </p>
+
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <h2 className="text-sm font-semibold text-fg">模拟裁判（逐条理由 + 法条溯源）</h2>
+        <PlainToggle className="ml-auto" />
+        <button className="btn btn-ghost px-3 py-1.5 text-xs hover-elastic" onClick={() => onExport("md")} aria-label="导出 Markdown">
+          <Download size={13} aria-hidden /> 导出 Markdown
+        </button>
+        <button className="btn btn-ghost px-3 py-1.5 text-xs hover-elastic" onClick={() => onExport("pdf")} aria-label="导出 PDF">
+          <FileText size={13} aria-hidden /> 导出 PDF
+        </button>
+      </div>
+
+      {/* 通俗模式：白话结论在上（风险原样保留），逐条裁决明细收进可展开区；关闭时恢复专业展示 */}
+      <PlainAnswerSection
+        className="mt-3"
+        input={{
+          kind: "verdict",
+          text: verdict.overall,
+          citations: verdict.citations,
+          nli: verdict.nli,
+          decisions: verdict.items.map((it) => it.decision),
+          riskNotes: verdict.risk_notes,
+        }}
+        sourceLabel="裁判明细（逐条理由 / 法条引用 / 类案与跨法域对照）"
+        professional={
+          <>
+            <p className="mt-3 whitespace-pre-wrap text-sm leading-7 text-fg-muted">{verdict.overall}</p>
+            {professional}
+          </>
+        }
+        source={
+          <>
+            <p className="whitespace-pre-wrap text-sm leading-7 text-fg-muted">{verdict.overall}</p>
+            {professional}
+          </>
+        }
+      />
+
+      {verdict.risk_notes.length > 0 && (
+        <div className="mt-4 rounded-lg border border-warn/40 bg-warn/10 p-3">
+          <p className="text-xs font-semibold text-warn">风险提示</p>
+          <ul className="mt-1 space-y-0.5">
+            {verdict.risk_notes.map((n, i) => (
+              <li key={i} className="text-xs leading-5 text-fg-muted">
+                · {n}
               </li>
             ))}
           </ul>
