@@ -6,7 +6,7 @@
 
 用法（backend/ 目录下）：
     python scripts/bge_quality_report.py
-模型缓存设到 D 盘（HF_HOME="D:/项目/法律咨询顾问/hf-cache" HF_ENDPOINT=https://hf-mirror.com python scripts/bge_quality_report.py）
+模型缓存建议放在容量充足的磁盘（HF_HOME="<你的缓存目录>/hf-cache" HF_ENDPOINT=https://hf-mirror.com python scripts/bge_quality_report.py）
 """
 
 import os

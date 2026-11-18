@@ -3,7 +3,7 @@
 > [English](../README.md) | [简体中文](../README.zh-CN.md) | [日本語](../README.ja.md) | [한국어](../README.ko.md)
 >
 > 生成时间：2026-11-16（任务③） / 2026-11-17（场景化入口 P0） / 2026-11-18（大白话解释层 + **v0.1.0 发布核验**） · 环境：Windows 11 / Python 3.13.12 / Node 22.22.2（Next.js 14.2.5）
-> 测试解释器：`C:/Users/ZTL/.workbuddy/binaries/python/versions/3.13.12/python.exe`
+> 测试解释器：Python 3.13.12（发行版内置解释器，路径形如 `<home>/.workbuddy/binaries/python/versions/<version>/python.exe`）
 
 ---
 

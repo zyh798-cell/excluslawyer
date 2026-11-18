@@ -47,3 +47,4 @@ backend/scripts/_*.py
 .DS_Store
 Thumbs.db
 frontend/lh-*.json
+frontend/fe_lighthouse_report.json
