@@ -21,7 +21,7 @@ export default function CitationPanel({ citations }: { citations: Citation[] }) 
   if (citations.length === 0) {
     return (
       <div className="card p-5 text-sm text-fg-muted">
-        暂无引用。LexSentinel 的铁律是：没有法条依据就不给结论——这叫「证据不足」，不叫「AI 幻觉」。
+        暂无引用。EXCLUSLAWYER 的铁律是：没有法条依据就不给结论——这叫「证据不足」，不叫「AI 幻觉」。
       </div>
     );
   }

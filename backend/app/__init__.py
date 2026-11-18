@@ -1,1 +1,1 @@
-"""LexSentinel 后端包。"""
+"""EXCLUSLAWYER 后端包。"""

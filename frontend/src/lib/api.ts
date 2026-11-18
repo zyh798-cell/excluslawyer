@@ -6,6 +6,8 @@
  * - BYOK 模式：/api/retrieve 拿法条 → 浏览器直连 LLM 服务商 → /api/verify 做 NLI 校验
  */
 
+import { readWithMigration } from "@/lib/storage-migrate";
+
 export type EffectiveStatus = "effective" | "amended" | "repealed" | "unknown";
 
 export interface Citation {
@@ -93,12 +95,15 @@ export interface ByokConfig {
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
 
-const BYOK_STORAGE_KEY = "lexsentinel.byok";
+const BYOK_STORAGE_KEY = "excluslawyer.byok";
+/** 旧品牌名（LexSentinel）时期的键，仅用于一次性迁移（避免用户重输 API Key）。 */
+const LEGACY_BYOK_STORAGE_KEY = "lexsentinel.byok";
 
 export function loadByokConfig(): ByokConfig {
   if (typeof window === "undefined") return { baseUrl: "", apiKey: "", model: "" };
   try {
-    return JSON.parse(localStorage.getItem(BYOK_STORAGE_KEY) ?? "") as ByokConfig;
+    const raw = readWithMigration(BYOK_STORAGE_KEY, LEGACY_BYOK_STORAGE_KEY);
+    return JSON.parse(raw ?? "") as ByokConfig;
   } catch {
     return { baseUrl: "", apiKey: "", model: "" };
   }
@@ -160,7 +165,7 @@ export function runKeyLeakSelfCheck(): KeyLeakSelfCheck {
     name: "密钥存储位置",
     passed: true,
     detail: cfg.apiKey
-      ? "API Key 仅存于浏览器 localStorage（lexsentinel.byok），未进入任何后端请求。"
+      ? "API Key 仅存于浏览器 localStorage（excluslawyer.byok），未进入任何后端请求。"
       : "当前未配置 Key（演示模式），无泄露面。",
   });
 
@@ -743,7 +748,7 @@ export async function askByok(
   const { citations, context_pack } = await retrieve(question, jurisdiction);
 
   const systemPrompt =
-    "你是 LexSentinel 法律副驾。铁律：每条结论必须挂载给定法条 [CIT-xxx]；" +
+    "你是 EXCLUSLAWYER 法律副驾。铁律：每条结论必须挂载给定法条 [CIT-xxx]；" +
     "检索不到就回答“证据不足”，禁止编造条文。按五段式作答：事实认定/法律适用/风险等级/行动建议/限制提示。" +
     (adversarial ? "本次开启双视角对抗：先给己方建议，再切换对方律师视角列出至少 2 个弱点。" : "") +
     "文末附免责声明：不构成法律意见。";

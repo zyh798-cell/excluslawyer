@@ -31,7 +31,7 @@
   <a href="#法域とデータソース"><img src="https://img.shields.io/badge/statutes-7%2C054-C8861A?style=flat-square" alt="7054 official statutes"></a>
   <a href="#法域とデータソース"><img src="https://img.shields.io/badge/jurisdictions-CN%20%C2%B7%20JP%20%C2%B7%20KR%20%C2%B7%20SG-5EA9C9?style=flat-square" alt="China Japan Korea Singapore"></a>
   <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/pytest-113%20passed%20%C2%B7%204%20skipped-5EA9C9?style=flat-square" alt="backend 113 passed 4 skipped"></a>
-  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/vitest-49%2F49-5EA9C9?style=flat-square" alt="frontend 49 of 49"></a>
+  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/vitest-56%2F56-5EA9C9?style=flat-square" alt="frontend 56 of 56"></a>
   <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/Lighthouse%20a11y-1.00-C8861A?style=flat-square" alt="Lighthouse accessibility 1.00"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-AGPL--3.0-5EA9C9?style=flat-square" alt="code license AGPL-3.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/dataset-CC%20BY--NC%204.0-5EA9C9?style=flat-square" alt="dataset license CC BY-NC 4.0"></a>
@@ -98,8 +98,8 @@ EXCLUSLAWYER はチャットラッパーではなく、リーガル推論エン�
 | 時効判定の正確率 | **100 %** | ≥ 99 % |
 | 法廷 Golden Set（10例） | 行動ゲート全通過、4指標すべてしきい値内 | — |
 | バックエンドテスト（pytest） | **113 passed · 4 skipped · 0 failed** | 0 failed |
-| フロントエンドテスト（vitest） | 6ファイルで **49 / 49** | すべて green |
-| 本番ビルド（`next build`） | **exit 0 · 0 警告**——`/` 22.9 kB、First Load 131 kB | — |
+| フロントエンドテスト（vitest） | 7ファイルで **56 / 56** | すべて green |
+| 本番ビルド（`next build`） | **exit 0 · 0 警告**——`/` 22.9 kB、First Load 132 kB | — |
 | Lighthouse、シナリオページ（`/`） | perf **0.99** · a11y **1.00** · LCP **2.0 s** · CLS **0** · TBT 90 ms | LCP < 2.5 s、CLS < 0.1 |
 | Lighthouse、模擬法廷（`/mock-trial`） | perf **1.00** · a11y **1.00** · LCP **1.9 s** · CLS **0** · TBT 50 ms | LCP < 2.5 s、CLS < 0.1 |
 | 操作レイテンシ（INP） | **N/A**——ヘッドレス監査では操作サンプルが出ない、再測定待ち | < 200 ms、未検証 |
@@ -163,7 +163,7 @@ flowchart TB
 | 検索 | FlagEmbedding（BGE-M3、bge-reranker-v2-m3）· pymilvus ≥ 2.4 · NumPy フォールバック | モデルホスト到達不能時は再順位付けをベクトル類似度へ自動的にベクトル類似度へフォールバック |
 | 文書 | pypdf ≥ 4.0 · reportlab ≥ 4.0 | 契約スキャン、法条 PDF の改行・汚染除去、法廷記録の書き出し |
 | インフラ | Docker Compose · Redis 7 · Milvus 2.4.4（etcd + MinIO）· Neo4j 5.20 · Celery worker | minimal / full の 2 プロファイル |
-| テスト | pytest ≥ 8.0 · vitest 2.1 · Lighthouse 12.8 · Playwright（Chromium） | バックエンド 117 ケース、フロントエンド 49 ケース、アクセシビリティと性能のゲート |
+| テスト | pytest ≥ 8.0 · vitest 2.1 · Lighthouse 12.8 · Playwright（Chromium） | バックエンド 117 ケース、フロントエンド 56 ケース、アクセシビリティと性能のゲート |
 | ランタイム | Python ≥ 3.11（実測 3.13.12）· Node ≥ 18（実測 22.22） | フロントエンドのツールチェーンは Node 22 を推奨 |
 
 ## 法域とデータソース
@@ -233,7 +233,7 @@ python scripts/build_kg.py                            # ナレッジグラフの
 
 1. Web インターフェースを開き、ヘッダーの **BYOK 设置** を展開します。
 2. OpenAI 互換のエンドポイント、API キー、モデル名を入力します。
-3. キーはブラウザの `localStorage`（`lexsentinel.byok`）に書き込まれ、そこに留まります。
+3. キーはブラウザの `localStorage`（`excluslawyer.byok`）に書き込まれ、そこに留まります。
 
 ブラウザは選択したモデルプロバイダへ直接接続します。バックエンドが露出するのはステートレスな検索（`/api/retrieve`）と検証（`/api/verify`）のみで、サーバーへ送るすべての载荷は秘密情報を含まぬことを表明し、サーバーは設計上キーを保持しません。キーがない場合、回答は抜粋モード——条文本文のみ、自由な文章生成なし——に退避します。
 
@@ -242,7 +242,7 @@ python scripts/build_kg.py                            # ナレッジグラフの
 ## リポジトリ構成
 
 ```text
-lex-sentinel/
+excluslawyer/
 ├── backend/
 │   ├── app/
 │   │   ├── api/             # REST と SSE のルート
@@ -262,7 +262,7 @@ lex-sentinel/
 │   ├── src/components/      # UI コンポーネント
 │   ├── src/config/          # シナリオ定義
 │   ├── src/lib/             # API クライアント · テーマ · 平易な言葉エンジン · 用語集
-│   └── src/test/            # vitest スイート — 49 ケース
+│   └── src/test/            # vitest スイート — 56 ケース
 ├── assets/                  # ブランドベクター原版（logo.svg）
 ├── tools/                  # ブランド資産ビルダーと README 整合性チェッカー
 ├── docs/                    # ドキュメント一式とブランド素材

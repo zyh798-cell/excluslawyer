@@ -36,7 +36,7 @@ def build_service():
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="LexSentinel Golden Set 回归")
+    parser = argparse.ArgumentParser(description="EXCLUSLAWYER Golden Set 回归")
     parser.add_argument("--golden", type=Path, default=DEFAULT_GOLDEN)
     parser.add_argument("--report", type=Path, default=BASE_DIR / "data" / "golden_report.md")
     args = parser.parse_args()

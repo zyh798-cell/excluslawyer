@@ -75,7 +75,7 @@ def ingest_statutes(statutes: list[Statute], embedder, store) -> int:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="LexSentinel 法条入库")
+    parser = argparse.ArgumentParser(description="EXCLUSLAWYER 法条入库")
     parser.add_argument("--input", type=Path, default=DEFAULT_SEED, help="法条 JSON 文件")
     parser.add_argument("--jurisdiction", default=None, help="仅灌入指定法域（过滤用）")
     args = parser.parse_args()

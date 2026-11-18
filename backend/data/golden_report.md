@@ -1,4 +1,4 @@
-# LexSentinel Golden Set 回归报告
+# EXCLUSLAWYER Golden Set 回归报告
 
 - 运行模式：NumpyVectorStore
 - 用例总数：101（通过 101 / 失败 0）

@@ -40,16 +40,16 @@ describe("通俗模式开关（plain-mode store）", () => {
   });
 
   it("默认开启（无存储时）", () => {
-    localStorage.removeItem("lexsentinel.plain");
+    localStorage.removeItem("excluslawyer.plain");
     expect(getPlainMode()).toBe("plain");
   });
 
-  it("切换后持久化到 localStorage（键 lexsentinel.plain）", () => {
+  it("切换后持久化到 localStorage（键 excluslawyer.plain）", () => {
     expect(togglePlainMode()).toBe("pro");
-    expect(localStorage.getItem("lexsentinel.plain")).toBe("pro");
+    expect(localStorage.getItem("excluslawyer.plain")).toBe("pro");
     expect(getPlainMode()).toBe("pro");
     expect(togglePlainMode()).toBe("plain");
-    expect(localStorage.getItem("lexsentinel.plain")).toBe("plain");
+    expect(localStorage.getItem("excluslawyer.plain")).toBe("plain");
   });
 
   it("开关组件切换 role=switch 且全站状态一致（两个实例同步）", () => {
@@ -67,7 +67,7 @@ describe("通俗模式开关（plain-mode store）", () => {
     fireEvent.click(switches[0]);
     expect(switches[0]).toHaveAttribute("aria-checked", "false");
     expect(switches[1]).toHaveAttribute("aria-checked", "false");
-    expect(localStorage.getItem("lexsentinel.plain")).toBe("pro");
+    expect(localStorage.getItem("excluslawyer.plain")).toBe("pro");
     unmount();
   });
 });

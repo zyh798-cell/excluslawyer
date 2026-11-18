@@ -1,6 +1,10 @@
-# LexSentinel 前端构建报告（任务①）
+# EXCLUSLAWYER 前端构建报告（任务①）
 
 日期：2026-11-15 ｜ Next.js 14.2.5 ｜ Node 22.22.2
+
+> 本表为**任务①阶段快照**（2026-11-15），保留当时实测值不回改。
+> 当前口径（v0.1.0 发布核验）见 `docs/regression-report.md`：`/` 22.9 kB · First Load 132 kB ·
+> 共享 87.2 kB，vitest 56/56，pytest 113 passed / 4 skipped。
 
 ## 1. 构建结果
 
@@ -34,7 +38,7 @@
 |---|---|
 | `.next/static`+`.next/server` 硬编码 API Key（sk-*/Bearer Token） | ✅ 未检出 |
 | 敏感环境变量内联 | ✅ 仅 `NEXT_PUBLIC_API_BASE`（后端地址，非密钥，默认 localhost） |
-| `lexsentinel.byok` | 仅 localStorage 键名逻辑引用，不含键值 |
+| `excluslawyer.byok` | 仅 localStorage 键名逻辑引用，不含键值 |
 | 运行时防线 | fetch 封装 `assertNoSecretsToBackend` fail-closed + 错误出口 `redactSecrets` 打码 |
 
 ## 5. 布局校验

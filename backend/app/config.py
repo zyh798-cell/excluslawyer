@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     redis_url: str = "redis://localhost:6379/0"
     neo4j_uri: str = "bolt://localhost:7687"
     neo4j_user: str = "neo4j"
-    neo4j_password: str = "lexsentinel"
+    neo4j_password: str = "excluslawyer"
 
     # CORS：本地开发前端
     cors_origins: list[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]

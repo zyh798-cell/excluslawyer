@@ -31,7 +31,7 @@
   <a href="#jurisdictions--data-sources"><img src="https://img.shields.io/badge/statutes-7%2C054-C8861A?style=flat-square" alt="7054 official statutes"></a>
   <a href="#jurisdictions--data-sources"><img src="https://img.shields.io/badge/jurisdictions-CN%20%C2%B7%20JP%20%C2%B7%20KR%20%C2%B7%20SG-5EA9C9?style=flat-square" alt="China Japan Korea Singapore"></a>
   <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/pytest-113%20passed%20%C2%B7%204%20skipped-5EA9C9?style=flat-square" alt="backend 113 passed 4 skipped"></a>
-  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/vitest-49%2F49-5EA9C9?style=flat-square" alt="frontend 49 of 49"></a>
+  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/vitest-56%2F56-5EA9C9?style=flat-square" alt="frontend 56 of 56"></a>
   <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/Lighthouse%20a11y-1.00-C8861A?style=flat-square" alt="Lighthouse accessibility 1.00"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-AGPL--3.0-5EA9C9?style=flat-square" alt="code license AGPL-3.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/dataset-CC%20BY--NC%204.0-5EA9C9?style=flat-square" alt="dataset license CC BY-NC 4.0"></a>
@@ -98,8 +98,8 @@ Everything listed here ships in this repository and is exercised by the test sui
 | Timeliness accuracy | **100 %** | ≥ 99 % |
 | Mock-trial Golden Set (10 cases) | all gates passed, four metrics within threshold | — |
 | Backend suite (pytest) | **113 passed · 4 skipped · 0 failed** | 0 failed |
-| Frontend suite (vitest) | **49 / 49** across 6 files | all green |
-| Production build (`next build`) | **exit 0 · 0 warnings** — `/` 22.9 kB, First Load 131 kB | — |
+| Frontend suite (vitest) | **56 / 56** across 7 files | all green |
+| Production build (`next build`) | **exit 0 · 0 warnings** — `/` 22.9 kB, First Load 132 kB | — |
 | Lighthouse, scenario page (`/`) | perf **0.99** · a11y **1.00** · LCP **2.0 s** · CLS **0** · TBT 90 ms | LCP < 2.5 s, CLS < 0.1 |
 | Lighthouse, mock trial (`/mock-trial`) | perf **1.00** · a11y **1.00** · LCP **1.9 s** · CLS **0** · TBT 50 ms | LCP < 2.5 s, CLS < 0.1 |
 | Interaction latency (INP) | **N/A** — headless audits produce no interaction sample, re-test pending | < 200 ms, unverified |
@@ -163,7 +163,7 @@ flowchart TB
 | Retrieval | FlagEmbedding (BGE-M3, bge-reranker-v2-m3) · pymilvus ≥ 2.4 · NumPy fallback | Reranker degrades to vector similarity if the model host is unreachable |
 | Documents | pypdf ≥ 4.0 · reportlab ≥ 4.0 | Contract scanning, statute PDF de-pollution, trial-record export |
 | Infrastructure | Docker Compose · Redis 7 · Milvus 2.4.4 (etcd + MinIO) · Neo4j 5.20 · Celery worker | Minimal and full profiles |
-| Testing | pytest ≥ 8.0 · vitest 2.1 · Lighthouse 12.8 · Playwright (Chromium) | 117 backend cases, 49 frontend cases, accessibility and performance gates |
+| Testing | pytest ≥ 8.0 · vitest 2.1 · Lighthouse 12.8 · Playwright (Chromium) | 117 backend cases, 56 frontend cases, accessibility and performance gates |
 | Runtime | Python ≥ 3.11 (verified on 3.13.12) · Node ≥ 18 (verified on 22.22) | Node 22 recommended for the frontend toolchain |
 
 ## Jurisdictions & Data Sources
@@ -233,7 +233,7 @@ Model access is optional and the key never reaches the server.
 
 1. Open the web interface and expand **BYOK 设置** in the header.
 2. Paste an OpenAI-compatible endpoint, API key and model name.
-3. The key is written to the browser's `localStorage` under `lexsentinel.byok` and stays there.
+3. The key is written to the browser's `localStorage` under `excluslawyer.byok` and stays there.
 
 The browser calls your model provider directly. The backend exposes only stateless retrieval (`/api/retrieve`) and verification (`/api/verify`); every payload sent to it is asserted free of secrets, and the server refuses to hold a key at all. Without a key, answers fall back to extractive mode — statute excerpts only, with no free-text generation.
 
@@ -242,7 +242,7 @@ For server-side demo mode, copy `.env.example` to `.env` and set `LLM_BASE_URL`,
 ## Repository Structure
 
 ```text
-lex-sentinel/
+excluslawyer/
 ├── backend/
 │   ├── app/
 │   │   ├── api/             # REST and SSE routes
@@ -262,7 +262,7 @@ lex-sentinel/
 │   ├── src/components/      # UI components
 │   ├── src/config/          # scenario definitions
 │   ├── src/lib/             # API client · theme · plain-language engine · term glossary
-│   └── src/test/            # vitest suites — 49 cases
+│   └── src/test/            # vitest suites — 56 cases
 ├── assets/                  # brand vector source (logo.svg)
 ├── tools/                  # brand-asset builder and README consistency checker
 ├── docs/                    # documentation set and brand assets

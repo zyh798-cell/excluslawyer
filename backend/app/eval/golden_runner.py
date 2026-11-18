@@ -208,7 +208,7 @@ def run_regression(service, cases: list[GoldenCase], valid_ids: set[str]) -> Reg
 
 def format_report(report: RegressionReport, mode: str = "hash+numpy") -> str:
     lines = [
-        "# LexSentinel Golden Set 回归报告",
+        "# EXCLUSLAWYER Golden Set 回归报告",
         "",
         f"- 运行模式：{mode}",
         f"- 用例总数：{report.total}（通过 {report.passed} / 失败 {len(report.failures)}）",

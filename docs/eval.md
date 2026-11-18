@@ -137,7 +137,7 @@ cd backend && python -m pytest tests/ -q
 
 ```
 cd frontend && npm test
-→ 16 / 16 passed
+→ 56 / 56 passed
 ```
 
 | 测试文件 | 覆盖 |
@@ -146,19 +146,22 @@ cd frontend && npm test
 | `kg-canvas.test.tsx` | KG 图谱面板画布 |
 | `panels.test.tsx` | 溯源/事实/意见面板 |
 | `theme-toast-byok.test.tsx` | 主题切换 / Toast / BYOK 密钥守卫 |
+| `scenarios.test.tsx` | 场景化入口渲染与交互 |
+| `plain-mode.test.tsx` | 通俗模式开关持久化 / 白话生成规则 / 术语红线 |
+| `storage-migrate.test.tsx` | 品牌更名后 localStorage 键迁移（BYOK / 主题 / 通俗模式） |
 
 ### 3.3 构建与性能
 
 | 项 | 结果 |
 | --- | --- |
-| `npm run build` | exit 0 · 0 warnings · `/mock-trial` 首载 100 kB |
-| Lighthouse（/mock-trial） | 性能 100 · LCP 1.9 s（门 <2.5 s）· CLS 0（门 <0.1）· TBT 0 ms |
+| `npm run build` | exit 0 · 0 warnings · `/mock-trial` 首载 109 kB |
+| Lighthouse（/mock-trial） | 性能 100 · LCP 1.9 s（门 <2.5 s）· CLS 0（门 <0.1）· TBT 50 ms |
 
 ### 3.4 一键回归清单
 
 ```bash
 cd backend  && python -m pytest tests/ -q          # 113 passed · 4 skipped
-cd frontend && npm test && npm run build           # 16/16 + build clean
+cd frontend && npm test && npm run build           # 56/56 + build clean
 ```
 
 ---

@@ -13,12 +13,12 @@ export default function BrandMark({ size = 36 }: { size?: number }) {
       focusable="false"
     >
       <defs>
-        <linearGradient id="lexsentinel-brand-ring" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id="excluslawyer-brand-ring" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="rgb(var(--c-accent))" />
           <stop offset="100%" stopColor="rgb(var(--c-accent-soft))" />
         </linearGradient>
       </defs>
-      <circle cx="32" cy="32" r="30" fill="none" stroke="url(#lexsentinel-brand-ring)" strokeWidth="2.5" />
+      <circle cx="32" cy="32" r="30" fill="none" stroke="url(#excluslawyer-brand-ring)" strokeWidth="2.5" />
       <circle cx="32" cy="32" r="25" fill="none" stroke="rgb(var(--c-line))" strokeWidth="1.5" />
       {/* 天平：法律推理的通用符号 */}
       <g

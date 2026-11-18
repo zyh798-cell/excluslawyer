@@ -111,7 +111,7 @@ describe("场景入口渲染与交互（Home）", () => {
     // 产品标识（内联 SVG 天平徽记 + 名称）
     const bar = screen.getByRole("region", { name: "产品标识与法域选择" });
     expect(bar).toBeInTheDocument();
-    expect(bar.querySelector("p")?.textContent).toBe("LexSentinel");
+    expect(bar.querySelector("p")?.textContent).toBe("EXCLUSLAWYER");
     const mark = document.querySelector('svg[viewBox="0 0 64 64"]');
     expect(mark).not.toBeNull();
 

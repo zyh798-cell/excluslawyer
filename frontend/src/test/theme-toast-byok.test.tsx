@@ -48,12 +48,12 @@ describe("ByokSettings 设置面板", () => {
     fireEvent.change(keyInput, { target: { value: "sk-test-12345678" } });
     await waitFor(() => expect(onChange).toHaveBeenCalled());
 
-    const stored = JSON.parse(localStorage.getItem("lexsentinel.byok")!);
+    const stored = JSON.parse(localStorage.getItem("excluslawyer.byok")!);
     expect(stored.apiKey).toBe("sk-test-12345678"); // 只在 localStorage
 
     fireEvent.click(screen.getByRole("button", { name: /一键清除 BYOK 配置/ }));
     // 一键清除 = 移除存储键（隐私设计）
-    expect(localStorage.getItem("lexsentinel.byok")).toBeNull();
+    expect(localStorage.getItem("excluslawyer.byok")).toBeNull();
   });
 
   it("安全自检：密钥混入后端载荷会被守卫拦截", async () => {

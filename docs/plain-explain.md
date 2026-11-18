@@ -28,7 +28,7 @@
 
 - 组件：`PlainToggle`（`role="switch"` + `aria-checked`，热区 ≥44px）
 - 状态：`lib/plain-mode.ts` 模块级 store（`useSyncExternalStore`），**全站单例**
-- 持久化：`localStorage["lexsentinel.plain"]`（`"plain"` / `"pro"`），默认 `plain`
+- 持久化：`localStorage["excluslawyer.plain"]`（`"plain"` / `"pro"`），默认 `plain`
 - 一致性：对话页（快速咨询 / 状态机）、意见书、KG 面板、模拟法庭裁决卡共用同一状态，
   任何一处切换全站即时同步
 
@@ -89,8 +89,8 @@ warnings（原样保留，不转写）
 
 | 项 | 结果 |
 |---|---|
-| 前端 vitest | **49 / 49**（原 30 + 本层新增 19） |
-| `next build` | exit 0 · 0 警告；`/` First Load 131 kB（白话层 +9 kB） |
+| 前端 vitest | **56 / 56**（原 30 + 白话层新增 19 + 品牌更名迁移新增 7） |
+| `next build` | exit 0 · 0 警告；`/` First Load 132 kB（白话层 +9 kB，品牌更名迁移 +1 kB） |
 | Lighthouse `/` | perf 0.99 · **a11y 1.00** · LCP 2.0s · CLS 0 · TBT 90ms · 失败项 0 |
 | Lighthouse `/mock-trial` | perf 1.00 · **a11y 1.00** · LCP 1.9s · CLS 0 · TBT 10ms · 失败项 0 |
 | Playwright 端到端 | 开关默认开 ✓ 持久化 ✓ 刷新保持 ✓ 跨组件同步 ✓ 白话分区 ✓ 原文折叠 ✓ 术语类比 ✓ 专业模式还原 ✓ 窄屏无溢出 ✓ 控制台 0 错误 |

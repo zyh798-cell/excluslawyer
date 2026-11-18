@@ -1,11 +1,11 @@
-# LexSentinel 服务编排
+# EXCLUSLAWYER 服务编排
 # ---------------------------------------------------------------
 # 最小启动（开发推荐，向量库用 Milvus Lite 本地文件，无 GPU 可跑）:
 #   docker compose up --build
 # 完整启动（Milvus Standalone + Neo4j + Celery Worker）:
 #   docker compose --profile full up --build
 # ---------------------------------------------------------------
-name: lex-sentinel
+name: excluslawyer
 
 services:
   redis:
@@ -102,7 +102,7 @@ services:
       - "7474:7474"
       - "7687:7687"
     environment:
-      NEO4J_AUTH: neo4j/lexsentinel
+      NEO4J_AUTH: neo4j/excluslawyer
       NEO4J_PLUGINS: '["apoc"]'
     volumes:
       - neo4j-data:/data

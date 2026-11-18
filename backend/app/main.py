@@ -20,7 +20,7 @@ from app.rag.vector_store import get_vector_store
 from app.services.ask_service import AskService
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
-logger = logging.getLogger("lexsentinel")
+logger = logging.getLogger("excluslawyer")
 
 
 @asynccontextmanager
@@ -60,7 +60,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="LexSentinel API",
+    title="EXCLUSLAWYER API",
     description="多法域法律推理引擎 —— 每条结论必挂现行有效法条原文",
     version="0.1.0",
     lifespan=lifespan,
@@ -81,7 +81,7 @@ app.include_router(trial_router)
 @app.get("/")
 def root() -> dict:
     return {
-        "name": "LexSentinel",
+        "name": "EXCLUSLAWYER",
         "docs": "/docs",
         "endpoints": [
             "/api/ask",

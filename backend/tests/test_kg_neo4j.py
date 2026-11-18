@@ -32,7 +32,7 @@ def neo4j_graph():
     g = Neo4jGraphBackend.connect(
         NEO4J_URI,
         os.environ.get("KG_NEO4J_USER", "neo4j"),
-        os.environ.get("KG_NEO4J_PASSWORD", "lexsentinel"),
+        os.environ.get("KG_NEO4J_PASSWORD", "excluslawyer"),
         timeout=5.0,
     )
     g.init_schema()

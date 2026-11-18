@@ -1,5 +1,7 @@
 "use client";
 
+import { readWithMigration } from "@/lib/storage-migrate";
+
 /**
  * 双主题管理：html.dark 类切换 + localStorage 持久化 + 系统偏好兜底。
  * 与 layout 内联防闪烁脚本共用同一个存储键。
@@ -7,12 +9,14 @@
 
 export type Theme = "light" | "dark";
 
-const THEME_STORAGE_KEY = "lexsentinel.theme";
+const THEME_STORAGE_KEY = "excluslawyer.theme";
+/** 旧品牌名（LexSentinel）时期的键，仅用于一次性迁移。 */
+const LEGACY_THEME_STORAGE_KEY = "lexsentinel.theme";
 
 export function getStoredTheme(): Theme | null {
   if (typeof window === "undefined") return null;
   try {
-    const t = localStorage.getItem(THEME_STORAGE_KEY);
+    const t = readWithMigration(THEME_STORAGE_KEY, LEGACY_THEME_STORAGE_KEY);
     return t === "light" || t === "dark" ? t : null;
   } catch {
     return null;

@@ -25,7 +25,7 @@ export default function ProductBar({
       <BrandMark size={40} />
       <div className="min-w-0">
         <p className="text-base font-bold tracking-tight text-fg">
-          Lex<span className="text-accent-soft">Sentinel</span>
+          EXCLUS<span className="text-accent-soft">LAWYER</span>
         </p>
         <p className="mt-0.5 text-xs leading-5 text-fg-subtle">
           多法域法律推理引擎 · 每条结论必挂现行法条原文，检索不到就说「证据不足」

@@ -1,4 +1,4 @@
-# LexSentinel 后端核心依赖（轻量，无 torch；不装 ML 也能跑通演示闭环）
+# EXCLUSLAWYER 后端核心依赖（轻量，无 torch；不装 ML 也能跑通演示闭环）
 fastapi>=0.110
 uvicorn[standard]>=0.29
 pydantic>=2.6

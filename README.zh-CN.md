@@ -31,7 +31,7 @@
   <a href="#法域与数据源"><img src="https://img.shields.io/badge/statutes-7%2C054-C8861A?style=flat-square" alt="7054 official statutes"></a>
   <a href="#法域与数据源"><img src="https://img.shields.io/badge/jurisdictions-CN%20%C2%B7%20JP%20%C2%B7%20KR%20%C2%B7%20SG-5EA9C9?style=flat-square" alt="China Japan Korea Singapore"></a>
   <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/pytest-113%20passed%20%C2%B7%204%20skipped-5EA9C9?style=flat-square" alt="backend 113 passed 4 skipped"></a>
-  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/vitest-49%2F49-5EA9C9?style=flat-square" alt="frontend 49 of 49"></a>
+  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/vitest-56%2F56-5EA9C9?style=flat-square" alt="frontend 56 of 56"></a>
   <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/Lighthouse%20a11y-1.00-C8861A?style=flat-square" alt="Lighthouse accessibility 1.00"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-AGPL--3.0-5EA9C9?style=flat-square" alt="code license AGPL-3.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/dataset-CC%20BY--NC%204.0-5EA9C9?style=flat-square" alt="dataset license CC BY-NC 4.0"></a>
@@ -98,8 +98,8 @@ EXCLUSLAYWER 是一套法律推理引擎，而不是一个聊天壳。它从官�
 | 时效判定准确率 | **100 %** | ≥ 99 % |
 | 庭审 Golden Set（10 例） | 行为闸门全过，四项指标在阈值内 | — |
 | 后端测试（pytest） | **113 passed · 4 skipped · 0 failed** | 0 failed |
-| 前端测试（vitest） | **49 / 49**，分布在 6 个测试文件 | 全绿 |
-| 生产构建（`next build`） | **exit 0 · 0 警告**——`/` 22.9 kB，First Load 131 kB | — |
+| 前端测试（vitest） | **56 / 56**，分布在 7 个测试文件 | 全绿 |
+| 生产构建（`next build`） | **exit 0 · 0 警告**——`/` 22.9 kB，First Load 132 kB | — |
 | Lighthouse，场景页（`/`） | perf **0.99** · a11y **1.00** · LCP **2.0 s** · CLS **0** · TBT 90 ms | LCP < 2.5 s，CLS < 0.1 |
 | Lighthouse，模拟法庭（`/mock-trial`） | perf **1.00** · a11y **1.00** · LCP **1.9 s** · CLS **0** · TBT 50 ms | LCP < 2.5 s，CLS < 0.1 |
 | 交互延迟（INP） | **N/A**——无头审计不产生交互样本，待复测 | < 200 ms，未验证 |
@@ -163,7 +163,7 @@ flowchart TB
 | 检索 | FlagEmbedding（BGE-M3、bge-reranker-v2-m3）· pymilvus ≥ 2.4 · NumPy 兜底 | 模型源不可达时重排自动退回向量相似度排序 |
 | 文档 | pypdf ≥ 4.0 · reportlab ≥ 4.0 | 合同扫描、法条 PDF 清洗、庭审记录导出 |
 | 基础设施 | Docker Compose · Redis 7 · Milvus 2.4.4（etcd + MinIO）· Neo4j 5.20 · Celery worker | 最小与完整两档 profile |
-| 测试 | pytest ≥ 8.0 · vitest 2.1 · Lighthouse 12.8 · Playwright（Chromium） | 后端 117 例、前端 49 例，含可访问性与性能闸门 |
+| 测试 | pytest ≥ 8.0 · vitest 2.1 · Lighthouse 12.8 · Playwright（Chromium） | 后端 117 例、前端 56 例，含可访问性与性能闸门 |
 | 运行时 | Python ≥ 3.11（实测 3.13.12）· Node ≥ 18（实测 22.22） | 前端工具链建议 Node 22 |
 
 ## 法域与数据源
@@ -233,7 +233,7 @@ python scripts/build_kg.py                            # 重建知识图谱快照
 
 1. 打开 Web 界面，展开页头的 **BYOK 设置**。
 2. 填入 OpenAI 兼容端点、API Key 与模型名。
-3. 密钥写入浏览器的 `localStorage`（键名 `lexsentinel.byok`）并留在那里。
+3. 密钥写入浏览器的 `localStorage`（键名 `excluslawyer.byok`）并留在那里。
 
 浏览器直接调用你选定的模型服务商。后端只暴露无状态的检索（`/api/retrieve`）与校验（`/api/verify`）接口；发往后端的每个载荷都断言不含密钥，服务端在设计上就不持有密钥。没有密钥时，答案退回摘录模式——只给法条原文，不生成自由文本。
 
@@ -242,7 +242,7 @@ python scripts/build_kg.py                            # 重建知识图谱快照
 ## 仓库结构
 
 ```text
-lex-sentinel/
+excluslawyer/
 ├── backend/
 │   ├── app/
 │   │   ├── api/             # REST 与 SSE 路由
@@ -262,7 +262,7 @@ lex-sentinel/
 │   ├── src/components/      # UI 组件
 │   ├── src/config/          # 场景配置
 │   ├── src/lib/             # API 客户端 · 主题 · 白话引擎 · 术语表
-│   └── src/test/            # vitest 用例 — 49 例
+│   └── src/test/            # vitest 用例 — 56 例
 ├── assets/                  # 品牌矢量源文件（logo.svg）
 ├── tools/                  # 品牌资产构建器与 README 一致性校验脚本
 ├── docs/                    # 文档集与品牌资源

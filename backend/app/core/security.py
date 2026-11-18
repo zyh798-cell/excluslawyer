@@ -60,7 +60,7 @@ def scan_untrusted(text: str) -> ScanResult:
                 safe=False,
                 category="refusal",
                 rule=rule,
-                detail=f"该请求涉及[{rule}]，需执业律师办理，LexSentinel 拒绝作答",
+                detail=f"该请求涉及[{rule}]，需执业律师办理，EXCLUSLAWYER 拒绝作答",
             )
     return ScanResult(safe=True)
 

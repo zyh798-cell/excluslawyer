@@ -161,7 +161,7 @@ CN-MINFA-188 ↔ JP-166 ↔ KR-162      （诉讼时效）
 ## 6. 安全架构（BYOK）
 
 ```
-浏览器 localStorage（lexsentinel.byok）
+浏览器 localStorage（excluslawyer.byok）
    │  直连 LLM 服务商 /chat/completions
    │
    ├── POST /api/retrieve   （拿法条上下文）

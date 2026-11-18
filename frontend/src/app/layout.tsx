@@ -6,13 +6,14 @@ import WarningIcon from "@/components/WarningIcon";
 import { LEGAL_DISCLAIMER } from "@/lib/disclaimer";
 
 export const metadata: Metadata = {
-  title: "LexSentinel — 多法域法律推理引擎",
+  title: "EXCLUSLAWYER — 多法域法律推理引擎",
   description:
     "每条法律结论必挂现行有效法条原文。开源 · 多法域 · 双视角对抗 · BYOK。仅供参考，不构成法律意见。",
 };
 
 // 防主题闪烁（FOUC→CLS）：首帧前同步主题类（与 lib/theme.ts 同一存储键）
-const THEME_INIT = `try{var t=localStorage.getItem('lexsentinel.theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d);}catch(e){}`;
+// 旧品牌键 lexsentinel.theme 仅在首帧时迁移一次，避免改名后主题偏好丢失
+const THEME_INIT = `try{var t=localStorage.getItem('excluslawyer.theme');if(!t){var l=localStorage.getItem('lexsentinel.theme');if(l){t=l;localStorage.setItem('excluslawyer.theme',l);localStorage.removeItem('lexsentinel.theme');}}var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d);}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
             <div className="flex items-center gap-3">
               <span className="text-xl font-bold tracking-tight text-fg">
-                Lex<span className="text-accent-soft">Sentinel</span>
+                EXCLUS<span className="text-accent-soft">LAWYER</span>
               </span>
               <span className="chip bg-accent/15 text-accent-soft">法律副驾 · 不是聊天套壳</span>
             </div>

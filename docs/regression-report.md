@@ -2,7 +2,7 @@
 
 > [English](../README.md) | [简体中文](../README.zh-CN.md) | [日本語](../README.ja.md) | [한국어](../README.ko.md)
 >
-> 生成时间：2026-11-16（任务③） / 2026-11-17（场景化入口 P0） / 2026-11-18（大白话解释层 + **v0.1.0 发布核验**） · 环境：Windows 11 / Python 3.13.12 / Node 22.22.2（Next.js 14.2.5）
+> 生成时间：2026-11-16（任务③） / 2026-11-17（场景化入口 P0） / 2026-11-18（大白话解释层 + **v0.1.0 发布核验** + **品牌更名 EXCLUSLAYWER**） · 环境：Windows 11 / Python 3.13.12 / Node 22.22.2（Next.js 14.2.5）
 > 测试解释器：Python 3.13.12（发行版内置解释器，路径形如 `<home>/.workbuddy/binaries/python/versions/<version>/python.exe`）
 
 ---
@@ -12,16 +12,16 @@
 | 项目 | 结果 | 判定 |
 | --- | --- | --- |
 | 后端全量（pytest） | **113 passed · 4 skipped · 0 failed**（117 collected） | ✅ |
-| 前端全量（vitest） | **49 / 49**（plain-mode 19 + scenarios 14 + consult-graph 3 + theme-toast-byok 5 + panels 4 + kg-canvas 4） | ✅ |
+| 前端全量（vitest） | **56 / 56**（plain-mode 19 + scenarios 14 + consult-graph 3 + theme-toast-byok 5 + panels 4 + kg-canvas 4 + storage-migrate 7） | ✅ |
 | #42 模拟法庭路由回归（test_trial_graph.py） | **11 / 11** | ✅ |
 | Golden Set 主集（100 条） | 未破坏，四指标达标 | ✅ |
 | 庭审 Golden Set（10 例） | 行为闸门 + 四指标达标 | ✅ |
-| 生产构建（next build） | **exit 0 · 0 警告**（`/` 22.9 kB · First Load 131 kB · 共享 87.2 kB） | ✅ |
+| 生产构建（next build） | **exit 0 · 0 警告**（`/` 22.9 kB · First Load 132 kB · 共享 87.2 kB） | ✅ |
 | tsc --noEmit（TrialView 移除后） | 0 错误 | ✅ |
 | Lighthouse（/）场景入口 | perf 0.99 · **a11y 1.00** · LCP 2.0 s · CLS 0 · TBT 90 ms · a11y 失败项 0 | ✅ |
 | Lighthouse（/mock-trial） | perf 1.00 · **a11y 1.00** · LCP 1.9 s · CLS 0 · TBT 50 ms · a11y 失败项 0 | ✅ |
 | INP | 无交互样本 N/A，**待真实交互复测** | ⚠️ 不阻断 |
-| 四语 README 一致性 | 342 行 / 14 个 H2 章节 / 8 徽章 / 50 表格行 × 4 语完全对齐 | ✅ |
+| 四语 README 一致性 | 348 行 / 14 个 H2 章节 / 8 徽章 / 50 表格行 × 4 语完全对齐 | ✅ |
 | 标识资产（三档 SVG） | 自包含 · 内联 CSS 动效 · 无外部依赖 · 单文件均 < 50 KB | ✅ |
 
 > 备注：任务③收尾核对基线为 pytest 108 passed；本次遗留项处理新增 5 例回归用例
@@ -74,7 +74,7 @@ python -m pytest tests/test_trial_graph.py -q   # 11 passed
 - 行为闸门全过；citation_recall ≥ 0.98、hallucination ≤ 0.03、timeliness ≥ 0.99；
 - limitation 用例支持 `checked: false` 期望（如"去年"相对时间不锁 risk_level，防时间漂移）。
 
-## 4. 前端回归（vitest 49/49 + 构建）
+## 4. 前端回归（vitest 56/56 + 构建）
 
 | 测试文件 | 用例 | 覆盖 |
 | --- | --- | --- |
@@ -85,7 +85,7 @@ python -m pytest tests/test_trial_graph.py -q   # 11 passed
 | src/test/panels.test.tsx | 4 | 引用面板/事实面板/裁决卡片 |
 | src/test/theme-toast-byok.test.tsx | 5 | 双主题、Toast、BYOK 设置与密钥自检 |
 
-- `next build`：**exit 0 · 0 警告**；`/` 路由 chunk 22.9 kB / First Load 131 kB；
+- `next build`：**exit 0 · 0 警告**；`/` 路由 chunk 22.9 kB / First Load 132 kB；
   `/mock-trial` 路由 chunk 175 B / First Load 109 kB；共享 chunk 87.2 kB
   （`fd9d1056` 53.6 kB + `23-d088bc8e140cb7d3` 31.5 kB + other 2.07 kB）；
 - `npx tsc --noEmit`：0 错误；
@@ -169,15 +169,15 @@ BYOK fail-closed、跨法域对比（含案由过滤）、KG 查询与快照回�
 - 场景化入口的问卷必填校验仅在客户端，无服务端结构化校验（KI-11）；
 - 场景化入口的后端逻辑、大白话解释、程序指引、多语言 UI 尚未实现（KI-09 / KI-10）。
 
-## 大白话解释层回归（2026-11-18）
+## 6.1 大白话解释层回归（2026-11-18）
 
-- 前端 vitest **49/49**（原有 30 + 新增 19）；tsc --noEmit 0 错误；
-  next build exit 0、0 警告，First Load 131kB。
+- 前端 vitest **56/56**（原有 30 + 白话层新增 19 + 品牌更名迁移新增 7）；tsc --noEmit 0 错误；
+  next build exit 0、0 警告，First Load 132kB。
 - Lighthouse：/ 场景页 perf 0.99 / a11y 1.00 / LCP 2.0s / CLS 0；/mock-trial perf 1.00 / a11y 1.00 / LCP 1.9s / CLS 0；INP 无交互样本 N/A。
 - Playwright 端到端矩阵通过；后端 pytest **113 passed / 4 skipped / 0 failed**，backend/ 零改动。
 - 遗留 WIP：问卷后端逻辑、程序指引、多语言 UI、证据助手/文书模板/跨境专题。
 
-## v0.1.0 发布前核验（对外文档与标识动效，2026-11-18）
+## 7. v0.1.0 发布前核验（对外文档与标识动效，2026-11-18）
 
 本轮**只动文档、README 与 SVG 静态资源**，业务逻辑与后端推理/检索/KG/模拟法庭/BYOK 零改动
 （`git status backend/` 为空，pytest 复跑 **113 passed / 4 skipped / 0 failed**，与基线一致）。
@@ -219,9 +219,62 @@ BYOK fail-closed、跨法域对比（含案由过滤）、KG 查询与快照回�
 
 | 项目 | 结果 |
 | --- | --- |
-| `npm run build` | exit 0，**0 警告**；`/` 22.9 kB / First Load 131 kB；`/mock-trial` 175 B / 109 kB；共享 87.2 kB |
-| `vitest run` | **49 / 49** 全绿（6 个测试文件） |
+| `npm run build` | exit 0，**0 警告**；`/` 22.9 kB / First Load 132 kB；`/mock-trial` 175 B / 109 kB；共享 87.2 kB |
+| `vitest run` | **56 / 56** 全绿（7 个测试文件） |
 | `pytest tests/ -q` | **113 passed / 4 skipped / 0 failed** |
 | Lighthouse（/） | perf 0.99 · a11y **1.00**（0 失败项）· LCP **2.0 s** · CLS **0** · TBT 90 ms |
 | Lighthouse（/mock-trial） | perf 1.00 · a11y **1.00**（0 失败项）· LCP **1.9 s** · CLS **0** · TBT 50 ms |
 | INP | **N/A**——无头审计无交互样本，待真实交互复测（已在四语 README 显式标注） |
+
+---
+
+## 8. 品牌更名与默认分支调整（2026-11-18）
+
+### 8.1 品牌更名：LexSentinel → EXCLUSLAWYER
+
+发布前统一对外品牌名，全库 **59 处旧名命中，38 个文件**完成替换，替换后旧名残留 **0**（仅保留迁移用的 `LEGACY_*` 常量与说明注释）。
+
+| 类别 | 处理方式 | 示例 |
+| --- | --- | --- |
+| 展示名 | `LexSentinel` → `EXCLUSLAWYER` | 页面 title、OpenAPI `title`/`name`、产品标识、免责声明文案、系统提示词自称 |
+| 拆分渲染 | `Lex<span>Sentinel</span>` → `EXCLUS<span>LAWYER</span>` | `layout.tsx`、`ProductBar.tsx`（保留双色设计） |
+| 标识符 | `lexsentinel.*` → `excluslawyer.*` | localStorage 键、logger 名、Neo4j 默认口令、SVG gradient id |
+| 仓库/包名 | `lex-sentinel` → `excluslawyer` | `docker-compose` 项目名、`package.json` name、README 目录树根节点 |
+
+- **未改动**：Python 包路径 `backend/app`、向量库 collection `lex_statutes`、`.workbuddy/` 工作目录 —— 这些是路径与数据标识，改动会破坏既有向量库与本地工作区。
+- **后端零逻辑改动**：仅 `prompts.py` / `security.py` / `opinion_service.py` / `main.py` 中的**自称字符串**替换，检索、推理、KG、模拟法庭、BYOK 链路逻辑未触碰（pytest 113 passed / 4 skipped 验证）。
+- **Golden Set 提示词敏感性**：系统提示词中的自称由 `LexSentinel` 改为 `EXCLUSLAWYER`，属语义等价替换，不改变任何法律判断口径。
+
+### 8.2 localStorage 旧键迁移（不丢用户数据）
+
+品牌更名会连带改变浏览器存储键前缀。为避免用户**重新输入 BYOK API Key** 或重设偏好，新增 `frontend/src/lib/storage-migrate.ts`（`readWithMigration`），三个存储点在读取时迁移旧键 → 写入新键 → 清理旧键：
+
+| 存储点 | 新键 | 旧键（仅迁移用） |
+| --- | --- | --- |
+| BYOK 配置 | `excluslawyer.byok` | `lexsentinel.byok` |
+| 通俗模式 | `excluslawyer.plain` | `lexsentinel.plain` |
+| 主题偏好 | `excluslawyer.theme` | `lexsentinel.theme` |
+
+- `layout.tsx` 的防闪烁内联脚本（首帧前执行）同样兼容旧键，避免改名前是暗色主题的用户在改名后首帧闪白。
+- 迁移幂等：新键命中即返回、不再触碰旧键；仅在旧键存在且新键缺失时执行一次写迁移。
+- 新增 `frontend/src/test/storage-migrate.test.tsx` **7 例**：工具层 4 例 + BYOK / 主题 / 通俗模式模块级迁移 3 例。
+
+### 8.3 默认分支 master → main
+
+| 项 | 结果 |
+| --- | --- |
+| 本地分支 | `git branch -m master main`（沿用原分支，不新建） |
+| 远端 | 推送 `main` 后删除远端 `master`；**未使用 force push**，历史完整可追溯 |
+| GitHub 默认分支 | 仓库设置改为 `main` |
+| 本地跟踪 | `main → origin/main` |
+
+### 8.4 自审核结果
+
+| 检查项 | 结果 |
+| --- | --- |
+| 全库旧名扫描 | `sentinel` 仅存于 `LEGACY_*` 迁移常量、迁移说明注释与 3 个 gitignored 临时脚本（不入库） |
+| `pytest tests/ -q` | **113 passed / 4 skipped / 0 failed**（9.69 s） |
+| `vitest run` | **56 / 56** 全绿（7 个测试文件，5.31 s） |
+| `next build` | exit 0 · **0 警告**；`/` 22.9 kB / First Load 132 kB；`/mock-trial` 175 B / 109 kB；共享 87.2 kB |
+| 四语 README 一致性 | `tools/check_readmes.py` → **ALL CHECKS PASSED**（348 行 / 14 H2 / 50 表格行 / 8 徽章 × 4 语） |
+| 敏感信息扫描 | 无 API Key、无本地绝对路径（用户目录 / 本地盘符）、无构建产物与虚拟环境 |

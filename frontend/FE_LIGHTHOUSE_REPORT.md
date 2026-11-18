@@ -1,4 +1,4 @@
-# LexSentinel 前端 Lighthouse 性能报告（任务①）
+# EXCLUSLAWYER 前端 Lighthouse 性能报告（任务①）
 
 日期：2026-11-15 ｜ Lighthouse 12.8.2 ｜ Chrome headless ｜ 目标：`next start` 生产构建 `http://127.0.0.1:3210/`
 原始数据：Lighthouse 原始 JSON 为本地产物（已加入 `.gitignore`，不随仓库分发）；可用 `npx lighthouse` 复现下表数值。

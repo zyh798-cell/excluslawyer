@@ -31,7 +31,7 @@
   <a href="#관할과-데이터-소스"><img src="https://img.shields.io/badge/statutes-7%2C054-C8861A?style=flat-square" alt="7054 official statutes"></a>
   <a href="#관할과-데이터-소스"><img src="https://img.shields.io/badge/jurisdictions-CN%20%C2%B7%20JP%20%C2%B7%20KR%20%C2%B7%20SG-5EA9C9?style=flat-square" alt="China Japan Korea Singapore"></a>
   <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/pytest-113%20passed%20%C2%B7%204%20skipped-5EA9C9?style=flat-square" alt="backend 113 passed 4 skipped"></a>
-  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/vitest-49%2F49-5EA9C9?style=flat-square" alt="frontend 49 of 49"></a>
+  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/vitest-56%2F56-5EA9C9?style=flat-square" alt="frontend 56 of 56"></a>
   <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/Lighthouse%20a11y-1.00-C8861A?style=flat-square" alt="Lighthouse accessibility 1.00"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-AGPL--3.0-5EA9C9?style=flat-square" alt="code license AGPL-3.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/dataset-CC%20BY--NC%204.0-5EA9C9?style=flat-square" alt="dataset license CC BY-NC 4.0"></a>
@@ -98,8 +98,8 @@ EXCLUSLAYWER는 채팅 래퍼가 아니라 법률 추론 엔진입니다. 공공
 | 시효 판정 정확도 | **100 %** | ≥ 99 % |
 | 법정 Golden Set(10건) | 행동 게이트 전부 통과, 4개 지표 모두 기준 이내 | — |
 | 백엔드 테스트(pytest) | **113 passed · 4 skipped · 0 failed** | 0 failed |
-| 프론트엔드 테스트(vitest) | 6개 파일에 걸쳐 **49 / 49** | 전부 통과 |
-| 프로덕션 빌드(`next build`) | **exit 0 · 0 경고** — `/` 22.9 kB, First Load 131 kB | — |
+| 프론트엔드 테스트(vitest) | 7개 파일에 걸쳐 **56 / 56** | 전부 통과 |
+| 프로덕션 빌드(`next build`) | **exit 0 · 0 경고** — `/` 22.9 kB, First Load 132 kB | — |
 | Lighthouse, 시나리오 페이지(`/`) | perf **0.99** · a11y **1.00** · LCP **2.0 s** · CLS **0** · TBT 90 ms | LCP < 2.5 s, CLS < 0.1 |
 | Lighthouse, 모의 법정(`/mock-trial`) | perf **1.00** · a11y **1.00** · LCP **1.9 s** · CLS **0** · TBT 50 ms | LCP < 2.5 s, CLS < 0.1 |
 | 조작 지연 시간(INP) | **N/A** — 헤드리스 감사에는 조작 샘플이 없어 재측정 예정 | < 200 ms, 미검증 |
@@ -163,7 +163,7 @@ flowchart TB
 | 검색 | FlagEmbedding(BGE-M3, bge-reranker-v2-m3) · pymilvus ≥ 2.4 · NumPy 폴백 | 모델 호스트 접근 불가 시 재순위화를 벡터 유사도로 자동으로 벡터 유사도 정렬로 되돌림 |
 | 문서 | pypdf ≥ 4.0 · reportlab ≥ 4.0 | 계약 스캔, 법조문 PDF 정제, 법정 기록 내보내기 |
 | 인프라 | Docker Compose · Redis 7 · Milvus 2.4.4(etcd + MinIO) · Neo4j 5.20 · Celery worker | minimal / full 두 프로파일 |
-| 테스트 | pytest ≥ 8.0 · vitest 2.1 · Lighthouse 12.8 · Playwright(Chromium) | 백엔드 117케이스, 프론트엔드 49케이스, 접근성과 성능 게이트 |
+| 테스트 | pytest ≥ 8.0 · vitest 2.1 · Lighthouse 12.8 · Playwright(Chromium) | 백엔드 117케이스, 프론트엔드 56케이스, 접근성과 성능 게이트 |
 | 런타임 | Python ≥ 3.11(실측 3.13.12) · Node ≥ 18(실측 22.22) | 프론트엔드 툴체인에는 Node 22 권장 |
 
 ## 관할과 데이터 소스
@@ -233,7 +233,7 @@ python scripts/build_kg.py                            # 지식 그래프 스냅�
 
 1. 웹 인터페이스를 열고 헤더의 **BYOK 设置** 을 펼치십시오.
 2. OpenAI 호환 엔드포인트, API 키, 모델 이름을 입력합니다.
-3. 키는 브라우저의 `localStorage`(`lexsentinel.byok`)에 기록되고 그 자리에 남습니다.
+3. 키는 브라우저의 `localStorage`(`excluslawyer.byok`)에 기록되고 그 자리에 남습니다.
 
 브라우저가 선택한 모델 제공업체에 직접 연결합니다. 백엔드는 상태 없는 검색(`/api/retrieve`)과 검증(`/api/verify`)만 노출하며 서버로 보내는 모든 페이로드는 비밀정보가 없음을 단언하고, 서버는 설계상 키를 보유하지 않습니다. 키가 없으면 답은 발췌 모드 — 조문 본문만, 자유로운 문장 생성 없음 — 로 낮아집니다.
 
@@ -242,7 +242,7 @@ python scripts/build_kg.py                            # 지식 그래프 스냅�
 ## 저장소 구조
 
 ```text
-lex-sentinel/
+excluslawyer/
 ├── backend/
 │   ├── app/
 │   │   ├── api/             # REST와 SSE 라우트
@@ -262,7 +262,7 @@ lex-sentinel/
 │   ├── src/components/      # UI 컴포넌트
 │   ├── src/config/          # 시나리오 정의
 │   ├── src/lib/             # API 클라이언트 · 테마 · 평이한 설명 엔진 · 용어집
-│   └── src/test/            # vitest 스위트 — 49케이스
+│   └── src/test/            # vitest 스위트 — 56케이스
 ├── assets/                  # 브랜드 벡터 원본(logo.svg)
 ├── tools/                  # 브랜드 자산 빌더와 README 일관성 검사기
 ├── docs/                    # 문서 모음과 브랜드 자원

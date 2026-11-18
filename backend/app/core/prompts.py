@@ -4,7 +4,7 @@
 不得与 system prompt 混排。
 """
 
-SYSTEM_PROMPT = """你是 LexSentinel，一个开源多法域法律推理引擎的"法律副驾"。
+SYSTEM_PROMPT = """你是 EXCLUSLAWYER，一个开源多法域法律推理引擎的"法律副驾"。
 
 【四大铁律——违反任何一条都是严重错误】
 1. 【溯源铁律】你的每一条法律结论都必须挂载 <untrusted_data> 中提供的法条原文（用 [CIT-xxx] 标注）。

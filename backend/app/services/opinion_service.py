@@ -34,7 +34,7 @@ _TOPIC_PATTERNS: list[tuple[str, re.Pattern]] = [
     ("消费者", re.compile(r"退货|假货|欺诈|退款|三倍|消费")),
 ]
 
-_OPINION_SYSTEM_PROMPT = """你是 LexSentinel 法律副驾。请输出一份五段式法律意见书。
+_OPINION_SYSTEM_PROMPT = """你是 EXCLUSLAWYER 法律副驾。请输出一份五段式法律意见书。
 【铁律】每条法律结论必须挂载给定法条（用 [CIT-xxx] 标注）；法条依据不足的部分明确写"证据不足"，禁止编造条文。
 【结构】
 一、事实认定（按：已确认 / 待核实 / 假设 / 主张 分组列出）

@@ -1,11 +1,12 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { readWithMigration } from "@/lib/storage-migrate";
 
 /**
  * 通俗模式（大白话解释层）全局开关。
  *
- * - 默认开启；状态持久化到 localStorage（键 lexsentinel.plain）；
+ * - 默认开启；状态持久化到 localStorage（键 excluslawyer.plain）；
  * - 用 useSyncExternalStore 做模块级订阅，对话页 / KG 面板 / 模拟法庭裁决卡片
  *   共享同一份状态，任何一处切换全站同步；
  * - SSR 安全：服务端无 window 时返回默认值 true。
@@ -13,7 +14,9 @@ import { useSyncExternalStore } from "react";
 
 export type PlainMode = "plain" | "pro";
 
-const PLAIN_STORAGE_KEY = "lexsentinel.plain";
+const PLAIN_STORAGE_KEY = "excluslawyer.plain";
+/** 旧品牌名（LexSentinel）时期的键，仅用于一次性迁移。 */
+const LEGACY_PLAIN_STORAGE_KEY = "lexsentinel.plain";
 const DEFAULT_MODE: PlainMode = "plain";
 
 let current: PlainMode = DEFAULT_MODE;
@@ -22,7 +25,8 @@ const listeners = new Set<() => void>();
 function readStored(): PlainMode {
   if (typeof window === "undefined") return DEFAULT_MODE;
   try {
-    return localStorage.getItem(PLAIN_STORAGE_KEY) === "pro" ? "pro" : DEFAULT_MODE;
+    const raw = readWithMigration(PLAIN_STORAGE_KEY, LEGACY_PLAIN_STORAGE_KEY);
+    return raw === "pro" ? "pro" : DEFAULT_MODE;
   } catch {
     return DEFAULT_MODE; // 隐私模式 localStorage 不可用，回退默认
   }

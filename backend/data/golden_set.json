@@ -1,6 +1,6 @@
 {
   "meta": {
-    "note": "LexSentinel Golden Set v1（100 条）。用途：每次改 prompt / 换模型 / 换 embedding 自动回归。质量指标：法条引用准确率≥98%、结论-依据一致性≥90%、幻觉率≤3%、时效正确率≥99%。'有误'用户反馈经人工标注后并入 golden_feedback.json 参与回归。",
+    "note": "EXCLUSLAWYER Golden Set v1（100 条）。用途：每次改 prompt / 换模型 / 换 embedding 自动回归。质量指标：法条引用准确率≥98%、结论-依据一致性≥90%、幻觉率≤3%、时效正确率≥99%。'有误'用户反馈经人工标注后并入 golden_feedback.json 参与回归。",
     "version": "1.0",
     "thresholds": {"citation_recall": 0.98, "consistency": 0.90, "hallucination_max": 0.03, "timeliness": 0.99}
   },
