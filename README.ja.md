@@ -1,195 +1,348 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 320" width="100%" role="img" aria-label="EXCLUSLAWYER — Open-source legal intelligence. A cat that reads before it speaks. The curled tail quietly echoes a citation bracket.">
-  <defs>
-    <linearGradient id="wm" gradientUnits="userSpaceOnUse" x1="240" y1="0" x2="1120" y2="0">
-      <stop offset="0" stop-color="#B08D57">
-        <animate attributeName="stop-color" values="#B08D57;#EDE7DA;#B08D57" dur="7s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="0.5" stop-color="#EDE7DA"/>
-      <stop offset="1" stop-color="#B08D57">
-        <animate attributeName="stop-color" values="#B08D57;#8A6F45;#B08D57" dur="7s" repeatCount="indefinite"/>
-      </stop>
-      <animate attributeName="x1" values="240;-260;240" dur="9s" repeatCount="indefinite"/>
-      <animate attributeName="x2" values="1120;620;1120" dur="9s" repeatCount="indefinite"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#B08D57" stop-opacity="0.26"/>
-      <stop offset="1" stop-color="#B08D57" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="rule" gradientUnits="userSpaceOnUse" x1="330" y1="0" x2="1100" y2="0">
-      <stop offset="0" stop-color="#B08D57" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#B08D57">
-        <animate attributeName="stop-opacity" values="0.35;0.95;0.35" dur="5s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="1" stop-color="#B08D57" stop-opacity="0"/>
-    </linearGradient>
-  </defs>
-
-  <rect width="1200" height="320" fill="#0B0E14"/>
-  <ellipse cx="380" cy="168" rx="430" ry="225" fill="url(#glow)">
-    <animate attributeName="opacity" values="0.5;1;0.5" dur="6s" repeatCount="indefinite"/>
-  </ellipse>
-
-  <g font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" letter-spacing="4" fill="#5A6274">
-    <text x="64" y="26">EXCLUSLAWYER &#183; ANIMAL IDENTITY 01</text>
-    <text x="1136" y="26" text-anchor="end">THE REVIEWER &#183; CN / JP / KR / SG</text>
-  </g>
-  <line x1="64" y1="36" x2="1136" y2="36" stroke="#232838" stroke-width="1"/>
-
-  <!-- cameo: warm-paper disc + brass ring + the Reviewer (from brand artwork) -->
-  <image x="92" y="75" width="186" height="186" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAKACAMAAAA7EzkRAAABgFBMVEXu6uIAAAAlKDQdIS0XGiUmLTsQExs5OkMxMzsJDBSYe1BFRUpBPUejhFbNycXY1dC4trOqqKfHvK9WVVaIiIicgVVoaGqXlpXn49zKw7h2dnY9QUjh3ddSRjVzZU+ThGz18++Ga0islW1tVjdoWkqmimRGOi5ZW2EtJRqgflGlopyJfGohHigkGxWhnZl6e4KEZzxkSzNeYWZaUTh3YTt+gYKam6G7vcF7cVZhXmCdoKOBfoHb3eNeYF47MhmykFw/QT1INR0fIRq+wL5BLheak2xZQhxgRR/f4OQWDSKfoJyhn6O7oHS/wMHBvsF+gH4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD7q70sAAAAgHRSTlP/AP///y7//////////////////////////////////////////////////////////////////////////////////////////////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE/n2PAAAFB3SURBVHja7Z0JY5u41veJpAoRWgyBgI2drU2bdJ/13vvs2/u8+/L9v817jgQYbIzBZrc0M+1MpnWc8Ov/LDqLcaWPPgMeQ38L9NEA6qMB1EcfDaA+GkB99NEA6qMB1EcfDaA+GkB99NEA6qMB1EcfDaA+GkB99NEA6qMB1EcfDaA+GkB99NEA6qMB1EcfDaA+GkB99NEA6qMB1EcfDaA+GkB99NEA6qMB1EcfDaA+GkB99NEAnvH9On70N0kD2Dt0GkYN4KjA0yBqAMdBnuZQAzgK9DSGGsARoKcx1ACOgT1NoQZwBPBpCC8dQGM8RwOo4dMQagAvF77LhdDQ9GkGNYATgu/NsaMh1AC2Td+bU49mUAN4Bn2nMdUeiRrAi6WvLSE7+3U0gJdGX9ve3PkvqwG8EPo6Qq+NT6EBnDt+naN37ifTAM6W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"/>
-
-  <text x="330" y="152" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="60" font-weight="700" letter-spacing="7" fill="url(#wm)">EXCLUSLAWYER</text>
-  <text x="333" y="192" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="6" fill="#B08D57">OPEN-SOURCE LEGAL INTELLIGENCE</text>
-  <line x1="330" y1="212" x2="1100" y2="212" stroke="url(#rule)" stroke-width="1"/>
-  <text x="330" y="238" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" letter-spacing="1.5" fill="#8B93A5">Intelligence &#183; Precision &#183; Open by design</text>
-  <g font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="16" fill="#C9C2B4">
-    <text x="330" y="272">A cat that reads before it speaks.</text>
-    <text x="330" y="296">The curled tail quietly echoes a citation bracket.</text>
-  </g>
-</svg>
-
 <p align="center">
-  <a href="README.md">English</a> | <a href="README.zh-CN.md">简体中文</a> | <a href="README.ja.md">日本語</a> | <a href="README.ko.md">한국어</a>
+  <img src="docs/logo.svg" alt="EXCLUSLAWYER マーク：片耳を立て、片耳が折れて下がった、半開きの目、アンバーの胸元、くるっと巻いた尾の黒い猫" width="128" height="128">
 </p>
 
-<br/>
+<h1 align="center">EXCLUSLAWYER</h1>
 
-> **本プロジェクトの出力はすべて、研究・参考目的の法的シミュレーションであり、法律相談ではありません。**
-> 実際の権利義務に関わる事案については、弁護士等の有資格者にご相談ください。
+<p align="center"><strong>オープンソースのマルチ法域リーガル推論ワークベンチ——すべての結論を、現行法条の原文に結びつけます。</strong></p>
 
-**EXCLUSLAWYER** はオープンソースの多法域法的推論エンジンです。チャットボットのラッパーではありません。
-すべての結論は、現行有効な法令の条文原文に紐づけられます。検索で該当が見つからない場合、システムは「証拠不十分」と応答します——決して捏造しません。
+<p align="center">
+  <a href="README.md">English</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.ja.md">日本語</a> · <a href="README.ko.md">한국어</a>
+</p>
 
-パイプライン全体を貫く 4 つの鉄則：
+<p align="center">
+  <a href="#概要">概要</a> ·
+  <a href="#機能">機能</a> ·
+  <a href="#コア原則">コア原則</a> ·
+  <a href="#システム構成">システム構成</a> ·
+  <a href="#法域とデータソース">法域</a> ·
+  <a href="#クイックスタート">クイックスタート</a> ·
+  <a href="#リポジトリ構成">リポジトリ</a> ·
+  <a href="#ドキュメント">ドキュメント</a> ·
+  <a href="#ステータスとロードマップ">ロードマップ</a> ·
+  <a href="#既知の制限">制限</a> ·
+  <a href="#セキュリティプライバシーコンプライアンス">セキュリティ</a> ·
+  <a href="#貢献する">貢献</a> ·
+  <a href="#ライセンス">ライセンス</a>
+</p>
 
-1. **条文引用の根拠づけ。** 条文原文の引用なしに結論を出さない。ヒットなしなら `証拠不十分`。
-2. **対抗的視点。** あらゆる主張を、相手方代理人の視点からストレステストする。
-3. **法令の時効性。** 改正・廃止済みの条文は評価を下げ、改歴を添付する。
-4. **多法域比較。** 中国 · 日本 · 韓国 · シンガポール——差異はデータであって、アーキテクチャの負債ではない。
+<p align="center">
+  <a href="#ステータスとロードマップ"><img src="https://img.shields.io/badge/release-v0.1.0%20%C2%B7%20pre--release-C8861A?style=flat-square" alt="release v0.1.0 pre-release"></a>
+  <a href="#法域とデータソース"><img src="https://img.shields.io/badge/statutes-7%2C054-C8861A?style=flat-square" alt="7054 official statutes"></a>
+  <a href="#法域とデータソース"><img src="https://img.shields.io/badge/jurisdictions-CN%20%C2%B7%20JP%20%C2%B7%20KR%20%C2%B7%20SG-5EA9C9?style=flat-square" alt="China Japan Korea Singapore"></a>
+  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/pytest-113%20passed%20%C2%B7%204%20skipped-5EA9C9?style=flat-square" alt="backend 113 passed 4 skipped"></a>
+  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/vitest-49%2F49-5EA9C9?style=flat-square" alt="frontend 49 of 49"></a>
+  <a href="docs/regression-report.md"><img src="https://img.shields.io/badge/Lighthouse%20a11y-1.00-C8861A?style=flat-square" alt="Lighthouse accessibility 1.00"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/code-AGPL--3.0-5EA9C9?style=flat-square" alt="code license AGPL-3.0"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/dataset-CC%20BY--NC%204.0-5EA9C9?style=flat-square" alt="dataset license CC BY-NC 4.0"></a>
+</p>
 
-<br/>
+<p align="center">
+  <img src="docs/banner.svg" alt="EXCLUSLAWYER バナー" width="100%">
+</p>
 
-## システムアーキテクチャ
+---
 
-```
-                ┌──────────────────────────────────────────────────┐
-                │            Frontend  ·  Next.js 14                │
-                │   consult · contract · cases · mock trial · tools │
-                │   BYOK keys live in localStorage — never the API  │
-                └────────────────────┬─────────────────────────────┘
-                                     │  REST + SSE
-                ┌────────────────────▼─────────────────────────────┐
-                │              FastAPI  ·  Gateway                  │
-                │     injection scan · untrusted-data wrapping      │
-                └───────┬────────────┬────────────┬────────────────┘
-                        │            │            │
-        ┌───────────────▼──┐  ┌──────▼──────┐  ┌──▼───────────────┐
-        │    LangGraph     │  │  RAG Core   │  │  Knowledge &     │
-        │ consult + trial  │  │  BGE-M3     │  │  Calculation     │
-        │ state machines   │  │  embed ·    │  │  Neo4j graph ·   │
-        │ interrupt/resume │  │  retrieve · │  │  calculator ·    │
-        │ SQLite checkpoint│  │  rerank ·   │  │  compare ·       │
-        │                  │  │  NLI verify │  │  export          │
-        └───────┬──────────┘  └──────┬──────┘  └──┬───────────────┘
-                │                    │            │
-                └────────────────────▼────────────┘
-                ┌──────────────────────────────────────────────────┐
-                │                      Data Plane                   │
-                │   Milvus Lite / Milvus Standalone / NumPy store   │
-                │   7,054 official statutes  ·  retrieval quality   │
-                │   gate (2-gram)  ·  status weights  ·  golden set  │
-                └──────────────────────────────────────────────────┘
-```
+> **免責事項。** EXCLUSLAWYER は法的情報の調査と推演のためのツールです。その出力は研究・参照目的の法的推演にとどまり、法律上の効力を有さず、法律意見ではなく、実際の訴訟に使用することはできません。本プロジェクトは刑事辯護戦略、訴訟代理人業務など、資格を要するサービスを提供しません。実際の権利と利益に関わる重要な案件については、当該法域の有資格弁護士にご相談ください。
 
-詳細ドキュメント：[docs/architecture.md](docs/architecture.md) · [docs/mock-court.md](docs/mock-court.md) · [docs/eval.md](docs/eval.md) · [docs/regression-report.md](docs/regression-report.md) · [docs/known-issues.md](docs/known-issues.md)
+## 概要
 
-## コア機能
+EXCLUSLAWYER はチャットラッパーではなく、リーガル推論エンジンです。公的公式ソースから法条本文を取得し、すべての結論を実際に読んだ条文に結びつけ、各論点を相手側の弁護士の視点から何度も検証し、失効した条文の重みを下げ、中国・日本・韓国・シンガポールを同じスキーマで並列比較します。
 
-**4 法域 · 7,054 条超の法令。**
-中国（2,338）· 日本（2,610、附則 134 条を含む）· 韓国（1,856）· シンガポール（250、SGA 1979 を含む）。
-すべて公式ソース——flk.npc.gov.cn、e-Gov、law.go.kr、sso.agc.gov.sg——からのみ取得。商用データベースは使いません。
+検索が品質ゲートを通る成果物を返せなかった場合、エンジンは条文を作り出す代わりに**証拠不足**と答えます。この「拒否」こそが本プロジェクトで最も重要な振る舞いです。
 
-**LangGraph 模擬裁判。**
-7 段階の法廷シミュレーション——事案受付 → 事実確定 → 訴状提出 → 証拠審理 → 対抗的弁論 → 最終弁論 → 模擬判決。人間の判断ポイントごとに中断・再開でき、セッションは完全に永続化。審理記録は引用チェーン付きでエクスポート可能です。
+本ワークベンチは二つの利用場面を想定しています。私有の端末で調査・学習する用途と、案件資料をサードパーティAPIに送れない組織内で自行構築・運用する用途です。モデルキーは任意です。検索と検証のコアは LLM が一切ない状態でも動作し、回答は「条文抜粋のみ」モードにフォールバックします。
 
-**デュアルバックエンド検索。**
-本番相当の負荷には Milvus Lite、テストと遮断環境には純 NumPy ストア。BGE-M3 多言語埋め込みとリランキング、文字 2-gram 品質ゲートによるハルシネーション防止、時効性ウェイト（現行 > 改正 > 不明 > 廃止）。
+<div align="center">
 
-**BYOK アーキテクチャ。**
-API キーはブラウザの localStorage にのみ保持され、バックエンドには一切渡りません。サーバーが公開するのはステートレスな検索・検証 API のみ。キーがない場合、エンジンは抽出型・引用のみの応答に縮退します——誠実な失敗モードです。
+| | |
+| --- | --- |
+| **登録法条数** | 7,054（すべて公式ソース由来） |
+| **法域** | 中国 · 日本 · 韓国 · シンガポール |
+| **バックエンドテスト** | 113 passed · 4 skipped · 0 failed |
+| **フロントエンドテスト** | 49 / 49 |
+| **ハルシネーション率** | 100 件の Golden Set で 0 % |
+| **デプロイ** | Docker Compose、またはソースから実行 |
+| **キー** | 任意——BYOK はブラウザ内のみ |
+
+</div>
+
+## 機能
+
+以下はすべて本リポジトリに実装済みであり、テストで検証されています。
+
+**ハルシネーション・ゲート付きの根拠検索。** 公的な法条本文を BGE-M3 で埋め込み、bge-reranker-v2-m3 で再順位付けします。候補が採用されるには、クエリとの文字 2-gram 重複率が 0.08 に達するか、意味類似度が 0.35 に達することが必要です。時効状態はランキングの重み付けに使われます（現行 1.0 · 改正済み 0.85 · 時効不明 0.7 · 廃止済み 0.3）——廃止条文は重みを下げ注記するだけで、静かに削除することはありません。
+
+**相談ステートマシン。** LangGraph のワークフローが事実構造化 → 検索 → 両論視点の検証 → NLI 検証 → 意見書生成を順に実行し、検証に落ちた結論は公開前に中断して人の判断を待ちます。承認または却下が可能で、チェックポイントによりセッションは再開できます。
+
+**模擬法廷。** 7 段階の法廷シミュレーション——事案受付 → 事実確定 → 提訴 → 証拠審理 → 対抗討論 → 最終陳述 → 模擬判決——を SSE でストリーミングし、セッションごとに永続化し、引用履歴をすべて含んだ Markdown / PDF として書き出せます。
+
+**平易な言葉レイヤー。** スイッチ（既定でオン）により、回答の平易な説明を緻密な分析より前に表示します。組み込みの 26 の法律用語はクリックで解説 日常の比喩が付きます。文言はバックエンドが実際に返した引用だけから組み立てられ、取得されていない法的根拠を新たに持ち込むことはありません。
+
+**シナリオ入口。** 8 つの生活場面（賃貸敷金、労働、消費、交通、家族、相続、契約、近隣トラブル）から短い質問票に進み、質問票の構造化サマリーが相談欄をプレフィルします（編集は可能です）。
+
+**法域横断比較とナレッジグラフ。** 同一テーマを 4 法域にわたって取得でき、`ANALOGOUS_TO` エッジが対応する規則を結びます。Neo4j があれば Neo4j を、なければ 55 ノード / 64 エッジのスナップショットへフォールバックするため、回答経路は切れません。
+
+**周辺ツール。** 5 段落構成の意見書、契約テキストスキャナ（PDF と貼り付けテキスト）、判例検索、OCR / マルチモーダル経路、法定経済補償・二倍賃料・人身損害賠償の計算器、そしてユーザー評価を Golden Set へ戻すフィードバック経路。
+
+**UI の細部。** ライト／ダークテーマ、ガラスモーフィズムとニューモーフィズムの面（CSS カスタムプロパティで駆動）、スケルトンローディング、キーボード到達可能なコントロール、`prefers-reduced-motion` 対応。アイコンはすべてインライン SVG で、絵文字もアイコンフォントも実行時の外部アセットもありません。
 
 ## 検証とベンチマーク
 
-| 指標 | 結果 | ゲート |
+| 指標 | 結果 | しきい値 |
 | --- | --- | --- |
-| ゴールデンセット（100 件） | **100 / 100** | 全件パス |
+| Golden Set メインセット（100件） | 行動ゲート **100 / 100** 通過 | すべて通過 |
 | ハルシネーション率 | **0 %** | ≤ 3 % |
-| 条文引用再現率 | **100 %** | ≥ 98 % |
-| 結論と証拠の一貫性（NLI） | **100 %** | ≥ 90 % |
-| 時効性判定精度 | **100 %** | ≥ 99 % |
-| バックエンドテスト（pytest） | **113 passed · 4 skipped** | 全緑 |
-| フロントエンドテスト（vitest） | **16 / 16** | 全緑 |
-| 本番ビルド（next build） | **exit 0 · 警告 0** | — |
-| Lighthouse（模擬裁判ページ） | **100 · LCP 1.9 s · CLS 0** | LCP < 2.5 s, CLS < 0.1 |
+| 法条引用の再現率 | **100 %** | ≥ 98 % |
+| 結論と根拠の一致（NLI） | **100 %** | ≥ 90 % |
+| 時効判定の正確率 | **100 %** | ≥ 99 % |
+| 法廷 Golden Set（10例） | 行動ゲート全通過、4指標すべてしきい値内 | — |
+| バックエンドテスト（pytest） | **113 passed · 4 skipped · 0 failed** | 0 failed |
+| フロントエンドテスト（vitest） | 6ファイルで **49 / 49** | すべて green |
+| 本番ビルド（`next build`） | **exit 0 · 0 警告**——`/` 22.9 kB、First Load 131 kB | — |
+| Lighthouse、シナリオページ（`/`） | perf **0.99** · a11y **1.00** · LCP **2.0 s** · CLS **0** · TBT 90 ms | LCP < 2.5 s、CLS < 0.1 |
+| Lighthouse、模擬法廷（`/mock-trial`） | perf **1.00** · a11y **1.00** · LCP **1.9 s** · CLS **0** · TBT 50 ms | LCP < 2.5 s、CLS < 0.1 |
+| 操作レイテンシ（INP） | **N/A**——ヘッドレス監査では操作サンプルが出ない、再測定待ち | < 200 ms、未検証 |
 
-評価手法と完全な回帰マトリクス：[docs/eval.md](docs/eval.md)。
+スキップされたバックエンド4ケースは Neo4j の実データベース検証です。稼働中の Docker インスタンスが必要で、同じ経路をカバーするスナップショットバックエンドは毎回テストで実行されます。INP は推測値ではなく N/A とします。ヘッドレスの Lighthouse 実行はポインタやキーボード操作を記録しないためです。
+
+方法論、しきい値、マトリクスの全体は [docs/eval.md](docs/eval.md) · [docs/regression-report.md](docs/regression-report.md) を参照してください。
+
+## コア原則
+
+4 つのルールはパイプライン全体に及びます。スタイル上の好みではなく、コードに書き込まれテストで担保されている硬い制約です。
+
+1. **結論は現行法条の原文に必ず紐づく。** 法条原文に裏づけられない結論は出力しません。検索が品質ゲートを通る成果物を返せなければ、答えは*証拠不足*です。
+2. **両論視点の対抗。** すべての論点を相手側弁護士の視点から検討します。事実の穴は積極的に探り、法的リスクは標的検索が実際に裏づけを返した場合にのみ提起します。
+3. **時効を造型。** すべての条文は状態、発効日、改正の履歴とともに保存されます。置き換えられた条文は重みを下げて記録として残し、こっそり削除することはありません。
+4. **法域間の比較可能性。** 中国・日本・韓国は大陸法系で共通スキーマを共有し、シンガポールはコモンローとして独立した判例層を持ちます。法域間の差はアーキテクチャではなくデータの問題です。
+
+## システム構成
+
+```mermaid
+flowchart TB
+  subgraph FE["フロントエンド — Next.js 14"]
+    UI["相談 · 意見書 · 契約 · 判例<br/>模擬法廷 · ツールボックス · ナレッジグラフ"]
+    KEYS["BYOK キー<br/>ブラウザ localStorage のみ"]
+  end
+  subgraph GW["ゲートウェイ — FastAPI"]
+    GUARD["注入スキャン · untrusted_data ラップ<br/>assertNoSecretsToBackend · キーマスキング"]
+  end
+  subgraph CORE["推論コア"]
+    LG["LangGraph ステートマシン<br/>相談 + 法廷 · interrupt / resume<br/>SQLite チェックポイント"]
+    RAG["RAG コア<br/>BGE-M3 埋め込み · 検索 · 再順位付け<br/>2-gram ゲート · 状態重み · NLI 検証"]
+    KGC["知識と計算<br/>Neo4j グラフ · 法域横断比較<br/>計算器 · MD/PDF 書き出し"]
+  end
+  subgraph DATA["データプレーン"]
+    VS["Milvus Lite / Milvus Standalone / NumPy ストア"]
+    STAT["official_statutes.json — 7,054 条"]
+    GOLD["Golden Set 100 + 法廷セット 10"]
+  end
+
+  UI -->|"REST + SSE"| GW
+  KEYS -.->|"ブラウザから直接プロバイダへ"| LLM["LLM プロバイダ"]
+  GUARD --> LG
+  GUARD --> RAG
+  GUARD --> KGC
+  LG --> RAG
+  LG --> KGC
+  RAG --> VS
+  VS --> STAT
+  GOLD --> RAG
+  KGC --> STAT
+```
+
+### 技術スタック
+
+| レイヤ | 技術 | 備考 |
+| --- | --- | --- |
+| フロントエンド | Next.js 14.2.5 · React 18.3 · TypeScript 5.5 · Tailwind CSS 3.4 | App Router、両ルートとも静的出力 |
+| グラフ・アイコン | AntV G6 5.1 · lucide-react 0.408 | ナレッジグラフのキャンバス。インライン SVG、絵文字なし |
+| API | FastAPI ≥ 0.110 · Pydantic ≥ 2.6 · pydantic-settings ≥ 2.2 · uvicorn ≥ 0.29 | REST と SSE ストリーミング |
+| オーケストレーション | LangGraph ≥ 0.2 · langgraph-checkpoint-sqlite ≥ 2.0 | 2 つのステートマシン、interrupt / resume 対応 |
+| 検索 | FlagEmbedding（BGE-M3、bge-reranker-v2-m3）· pymilvus ≥ 2.4 · NumPy フォールバック | モデルホスト到達不能時は再順位付けをベクトル類似度へ自動的にベクトル類似度へフォールバック |
+| 文書 | pypdf ≥ 4.0 · reportlab ≥ 4.0 | 契約スキャン、法条 PDF の改行・汚染除去、法廷記録の書き出し |
+| インフラ | Docker Compose · Redis 7 · Milvus 2.4.4（etcd + MinIO）· Neo4j 5.20 · Celery worker | minimal / full の 2 プロファイル |
+| テスト | pytest ≥ 8.0 · vitest 2.1 · Lighthouse 12.8 · Playwright（Chromium） | バックエンド 117 ケース、フロントエンド 49 ケース、アクセシビリティと性能のゲート |
+| ランタイム | Python ≥ 3.11（実測 3.13.12）· Node ≥ 18（実測 22.22） | フロントエンドのツールチェーンは Node 22 を推奨 |
+
+## 法域とデータソース
+
+**7,054 条をすべて公的公式ポータルから取り込みました。** 商用データベースは一切使用せず、対応もしていません——Westlaw、LexisNexis、北大法宝、威科先行は意図的にスコープ外であり、データパイプラインにも該当アダプターは存在しません。
+
+| 法域 | 条数 | 公式ソース | 備考 |
+| --- | --- | --- | --- |
+| 中国 | 2,338 | [flk.npc.gov.cn](https://flk.npc.gov.cn) | 国家法律および行政法規。`sxx` フラグが廃止／旧版／現行を区別 |
+| 日本 | 2,610 | [laws.e-gov.go.jp](https://laws.e-gov.go.jp) | e-Gov 法令検索。附則（`附則`）134 条を含む |
+| 韓国 | 1,856 | [law.go.kr](https://law.go.kr) | 韓国法令情報センター。憲法は正式名称で登録 |
+| シンガポール | 250 | [sso.agc.gov.sg](https://sso.agc.gov.sg) | Singapore Statutes Online：Contracts 107、CRTPA 9、Electronic Transactions 71、Sale of Goods 63 |
+
+中国・日本・韓国は大陸法系で共通スキーマを共有するため、「訴訟時効」のような概念を3法域まとめて検索できます。シンガポールはコモンローで、条文ではなく判例に紐づく独立した判例層を持ちます。
+
+すべての条文は法域、言語、状態、発効日、改正履歴を保持します。再取り込みは冪等です。upsert は条文 id をキーとします。
 
 ## クイックスタート
 
 ```bash
-# 最小構成 — API + Web + Redis（ベクトルストアはローカルファイル）
+git clone https://github.com/zyh798-cell/excluslawyer.git
+cd excluslawyer
+```
+
+### Docker
+
+```bash
+# minimal 構成 — API + Web + Redis（ベクトルストアはローカルファイル）
 docker compose up --build
 
-# フル構成 — Milvus Standalone、Neo4j、Celeryワーカーを追加
+# full 構成 — Milvus Standalone、Neo4j、Celery ワーカーを追加
 docker compose --profile full up --build
 ```
 
-- Web UI：`http://localhost:3000`
-- API ドキュメント：`http://localhost:8000/docs`
+- Web インターフェース — <http://localhost:3000>
+- API ドキュメント — <http://localhost:8000/docs>
 
-Docker を使わないローカル開発：
+### ソースから実行
 
 ```bash
 cd backend
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt          # コア（torch なし）
-pip install -r requirements-ml.txt       # 任意：BGE-M3 + リランカー
-python scripts/ingest_cn.py              # 法令データ投入
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -r requirements.txt     # コア実行時依存（torch 不要）
+pip install -r requirements-ml.txt  # 任意：BGE-M3 埋め込みと再順位付け
+python scripts/ingest_cn.py         # ベクトルストアへのシード投入
 uvicorn app.main:app --reload --port 8000
 
 cd ../frontend
-npm install && npm run dev
+npm install
+npm run dev
 ```
 
-`requirements-ml.txt` がなくても、エンジンはエンドツーエンドで動作します。埋め込みはハッシュベクトルにフォールバックし、LLM は引用のみのデモモードに入ります。劣化はしても、決して捏造はしません。
+`requirements-ml.txt` を入れなくてもエンジン全体は動きます。埋め込みはハッシュベクトルへ退避し、言語モデルは「条文抜粋のみ」のデモモードに入ります。劣化はしますが、捏造はしません。
+
+同梱のシードではなく公式ポータルから条文群を更新する場合:
+
+```bash
+cd backend
+python scripts/fetch_statutes.py --jur --ingest      # 空の --jur はオンライン化せず統合・登録のみ
+python scripts/build_kg.py                            # ナレッジグラフのスナップショットを再構築
+```
+
+### BYOK —— 自分で用意するキー
+
+モデルアクセスは任意で、キーがサーバーに届くことはありません。
+
+1. Web インターフェースを開き、ヘッダーの **BYOK 设置** を展開します。
+2. OpenAI 互換のエンドポイント、API キー、モデル名を入力します。
+3. キーはブラウザの `localStorage`（`lexsentinel.byok`）に書き込まれ、そこに留まります。
+
+ブラウザは選択したモデルプロバイダへ直接接続します。バックエンドが露出するのはステートレスな検索（`/api/retrieve`）と検証（`/api/verify`）のみで、サーバーへ送るすべての载荷は秘密情報を含まぬことを表明し、サーバーは設計上キーを保持しません。キーがない場合、回答は抜粋モード——条文本文のみ、自由な文章生成なし——に退避します。
+
+サーバー側デモモードを使う場合は `.env.example` を `.env` にコピーし、`LLM_BASE_URL`、`LLM_API_KEY`、`LLM_MODEL` を設定します。BYOK 運用では空のままにしてください。
+
+## リポジトリ構成
+
+```text
+lex-sentinel/
+├── backend/
+│   ├── app/
+│   │   ├── api/             # REST と SSE のルート
+│   │   ├── core/            # LLM クライアント · プロンプト · セキュリティガード
+│   │   ├── data_pipeline/   # 公式ソース取得器と正規化
+│   │   ├── eval/            # Golden Set ランナー
+│   │   ├── graph/           # LangGraph 相談／法廷ステートマシン
+│   │   ├── kg/              # スキーマ · ビルダ · Neo4j バックエンド · スナップショット
+│   │   ├── rag/             # エンベッダ · リトリーバ · ベクトルストア
+│   │   ├── services/        # ask · opinion · trial · compare · 書き出し
+│   │   └── main.py
+│   ├── data/                # 条文 · Golden Set · グラフスナップショット（一部 git 除外）
+│   ├── scripts/             # fetch_statutes · ingest_cn · build_kg · golden_regression
+│   └── tests/               # 117 ケース収集 — 113 passed · 4 skipped
+├── frontend/
+│   ├── src/app/             # ルート：/ と /mock-trial
+│   ├── src/components/      # UI コンポーネント
+│   ├── src/config/          # シナリオ定義
+│   ├── src/lib/             # API クライアント · テーマ · 平易な言葉エンジン · 用語集
+│   └── src/test/            # vitest スイート — 49 ケース
+├── assets/                  # ブランドベクター原版（logo.svg）
+├── tools/                  # ブランド資産ビルダーと README 整合性チェッカー
+├── docs/                    # ドキュメント一式とブランド素材
+├── docker-compose.yml
+├── .env.example
+└── LICENSE
+```
 
 ## ドキュメント
 
 | ドキュメント | 内容 |
 | --- | --- |
-| [docs/architecture.md](docs/architecture.md) | デュアルバックエンド検索、BGE-M3、Neo4j グラフ、SGA 1979 PDF デノイズ |
-| [docs/mock-court.md](docs/mock-court.md) | 模擬裁判ステートマシン、trial ルート8本、証拠/時効/対抗的視点の仕組み、MD+PDF 出力 |
-| [docs/scenario-entry.md](docs/scenario-entry.md) | シナリオ入口（一般ユーザー向け P0）：8 つの生活シナリオ、ステップ式質問票、構造化サマリーの下書き投入 |
-| [docs/plain-explain.md](docs/plain-explain.md) | 平易語説明層：かんたんモード切替、テンプレート説明、用語の即時解説（26 語） |
-| [docs/mock-trial.md](docs/mock-trial.md) | 実装詳細ノート（初期稿）：checkpointer シリアライズ、SSE フレーミング、出力スキーマ |
-| [docs/eval.md](docs/eval.md) | ゴールデンセット手法、ハルシネーション 0% 検証、回帰マトリクス |
-| [docs/regression-report.md](docs/regression-report.md) | 本イテレーション的回帰検証レポート |
-| [docs/known-issues.md](docs/known-issues.md) | 既知不具合一覧：症状・原因・影響・改修計画 |
+| [docs/architecture.md](docs/architecture.md) | デュアルバックエンド検索、BGE-M3 パイプライン、ナレッジグラフ、公式ソース取り込み、SGA 1979 の PDF デコンタミナション |
+| [docs/scenario-entry.md](docs/scenario-entry.md) | シナリオ入口レイヤー：8 つの生活シナリオ、段階式質問票、構造化サマリーのプレフィル、アクセシビリティ整改の記録 |
+| [docs/plain-explain.md](docs/plain-explain.md) | 平易な言葉レイヤー：モードスイッチ、生成規則、セクション配置、26 語の用語解説 |
+| [docs/mock-court.md](docs/mock-court.md) | 模擬法廷ステートマシン、7 つの法廷段階、証拠と時効の仕組み、MD と PDF の書き出し |
+| [docs/mock-trial.md](docs/mock-trial.md) | 実装メモ：チェックポイントのシリアライズ、SSE のフレーミング、書き出しスキーマ |
+| [docs/eval.md](docs/eval.md) | Golden Set の方法論、ハルシネーション検証、回帰マトリクス |
+| [docs/regression-report.md](docs/regression-report.md) | 本反復の回帰レポート：テスト件数、ビルド出力、Lighthouse 結果、手動確認マトリクス |
+| [docs/known-issues.md](docs/known-issues.md) | 既知の問題一覧：症状、根本原因、影響、修正計画、項目ごとの状況 |
 
-## セキュリティとコンプライアンス
+ブランド素材はドキュメントと同じ場所に置かれます：`docs/banner.svg`（アニメーションするバナー）、`docs/logo.svg`（120 × 120 のアニメーション標章）、`docs/favicon.svg`（16 / 24 / 32 px 用のモノクロシルエット）、`assets/logo.svg`（静的ベクター原版）。いずれも自己完結型の SVG で、動きはインライン CSS によるもので外部依存はありません。`prefers-reduced-motion: reduce` の環境ではアニメーションが停止します。
 
-- **BYOK** — キーはブラウザの外に出ない。ペイロードはキー漏洩に対してフェイルクローズ。
-- **プロンプトインジェクション対策** — 信頼できないコンテンツをシステムプロンプトから物理分離。ジェイルブレイクテンプレートを遮断。
-- **データコンプライアンス** — 公式の公開法令ソースのみ使用。裁判文書は匿名化してから取り込む。
-- **辞退ポリシー** — 刑事弁護戦略、訴訟代理、その他有資格業務に該当する成果物は辞退し、有資格者へ誘導する。
+## ステータスとロードマップ
+
+**v0.1.0 はプレリリースです。** エンジン、模擬法廷、平易な言葉レイヤー、データパイプラインは動作し、テストを通っています。UI は現在中国語（簡体字）のみです。
+
+### 進行中
+
+- 質問票の構造化スキーマとサーバサイド検証（現在はブラウザ側のみで検証）
+- 手続きガイダンス——「次は何をするか」の行動リスト。公式の申立窓口や訴訟時効と連動させます
+- 多言語 UI——ドキュメントは4言語用意済みですが、プロダクトの UI にはまだありません
+- 平易な言葉の個別生成——バックエンドが `plain_answer` フィールドを返した場合、決定論的テンプレートよりそちらを優先します
+- 証拠アシスタント、文書テンプレート生成、越境ファシクパック
+- 中国語 26 語を超える多言語用例集
+
+### 計画中
+
+- 公開評価ダッシュボード
+- 匿名化済みデモ案例集
+- ブラウザ拡張機能
+- モバイル PWA
+- 新しい法域の追加
+
+## 既知の制限
+
+- **一貫性チェックは語彙的であって意味的ではありません。** NLI 段階は「結論が根拠と一致するか」を文字と語の集合の重なりで近似します。方針は保守的で、合わなければ放行せず降格させます。ただし表現が正しくても語彙が違う結論は低く評価されることがあります。
+- **操作応答性は未計測です。** Lighthouse はヘッドレス実行で操作トレースを生成しないため、INP は推測値ではなく N/A と記載しています。両ルートとも LCP と CLS は予算内です。
+- **グラフのテストには Docker が必要です。** 接続可能な Neo4j がない場合 4 ケースがスキップされます。代替のスナップショットバックエンドにはカバレッジがあります。
+- **2 つの法廷 API が併存しています。** 旧来のラウンド制エンドポイントは互換性のために残しており、削除予定として示されています。UI はすでにステートマシンを使用しています。
+- **シンガポール ポータルは頻度女演员に敏感です。** WAF が自動リクエストを断続的に拒否するため、パイプラインは再試行を連打せず、クールダウンを待って差分補完します。
+- **法域横断のシード項目は要確認です。** 一部のテーマ別比較行は概要シードであり、公式確認が必要と注記されています。
+- **平易な言葉レイヤーはテンプレート式です。** 翻訳と解説を行うのみで言語モデルを呼びません。したがって渡された引用以上に具体的なことは言えません。
+- **UI の言語は中国語（簡体字）のみです。** ドキュメントは多言語ですが、プロダクトはまだです。
+
+## セキュリティ、プライバシー、コンプライアンス
+
+- **案件データはローカルに留まります。** 文書や案件資料はエンジンを動かす端末で解析されます。自分で設定しない限り、第三者のサービスへ送信されることも、モデルの学習に使われることもありません。
+- **文書は明示的に保存しない限り永続化しません。** 解析されたテキストは現在のセッション内だけに保持され、保存には明示的な操作が必要です。
+- **プロンプト注入は物理的に隔離されます。** 取得された文書とユーザー入力はいずれも untrusted data として包み、システムプロンプトとは別領域に置かれます。ジェイルブレイクテンプレートは検知され拒答されます。
+- **キーがサーバーに届くことはありません。** BYOK キーはブラウザの `localStorage` に置かれ、ブラウザがプロバイダへ直接接続します。サーバーへ送る载荷は秘密情報を含まぬことが表明され、エラー出力はマスキングされます。
+- **公的公式ソースのみ。** 条文本文は公開法情報ポータル由来で、裁判所文書は取り込み前にプライバシー加工されます。商用データベースは一切接続しません。
+- **設計上、拒否します。** 刑事辯護戦略、訴訟代理人業務など資格を要する成果物は拒否し、有資格弁護士へ誘導します。
+- **本リポジトリが提供するのはコードだけです。** 公開インスタンスを運用する各方は、法・プライバシー・セキュリティ上の責任を自行して負います。プロジェクトは保証を提供せず、ホスティングも行いません。
+
+## 貢献する
+
+Issue と Pull Request を歓迎します。特に、引用を厳密化する場合、検索が失敗しているケースを改善する場合、他の法域へカバレッジを広げる場合の貢献が уніjetaされます。
+
+- 提出前にバックエンドのテストを通してください：`cd backend && python -m pytest tests/ -q`
+- フロントエンドのテストを通してください：`cd frontend && npm test`
+- 4 つのコア原則を保ってください。根拠づけ、両論視点、時効、法域比較を弱める変更は取り込まれません。
+- 新しい法域の追加は公的公式ソースを用い、取り込み方法、品質ゲート、テストを文書化してください。
+- 既存のコードスタイルに合わせ、ユーザー向け文言に絵文字を使わないでください。アイコンはインライン SVG です。
 
 ## ライセンス
 
-- **コード** — [AGPL-3.0](LICENSE)：エンジン本体は GNU Affero General Public License v3 で授權。
-- **データセット** — 条文テキストとナレッジグラフのスナップショットは [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) で提供：条文の文面は各法域の公式法令データベース（flk.npc.gov.cn / e-Gov / law.go.kr / sso.agc.gov.sg）由来、構造化・整形とグラフ構築は当方の独自の整理であり、表示条件下で非商用に再利用可。
+- **コード** — [AGPL-3.0](LICENSE)。エンジンソースは GNU Affero General Public License v3 でライセンスされています。
+- **データセット** — 条文本文とナレッジグラフのスナップショットは [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) で公開しています。条文の文言は公的公式法情報データベース（flk.npc.gov.cn、laws.e-gov.go.jp、law.go.kr、sso.agc.gov.sg）由来であり、構造化・整形・グラフ構築は原作で、クレジットを付せば非商用に再利用できます。
 
-> 製品UIは現在簡体字中国語のみ。英語・日本語・韓国語の README は文書の写しであり、多言語UIは開発中（[docs/known-issues.md](docs/known-issues.md) KI-09 参照）。
+---
 
-<br/>
-
-*Intelligence · Precision · Open by design*
+<p align="center"><em>Intelligence · Precision · Open by design</em></p>
